@@ -133,7 +133,10 @@
     }
 
     .page-loader-logo {
-      width: 94px;
+      width: auto;
+      height: 64px;
+      max-width: 280px;
+      object-fit: contain;
       filter: drop-shadow(0 6px 16px rgba(254, 107, 9, 0.25));
       animation: loaderPulse 1.25s ease-in-out infinite;
     }
@@ -163,6 +166,13 @@
       }
     }
 
+    .pillars-accordion details>summary {
+      list-style: none;
+    }
+
+    .pillars-accordion details>summary::-webkit-details-marker {
+      display: none;
+    }
   </style>
 </head>
 
@@ -173,7 +183,7 @@
       <div class="loader-orbit">
         <span class="loader-ring"></span>
         <span class="loader-ring secondary"></span>
-        <img class="page-loader-logo" src="image/logo.png" alt="PREHAB loading" />
+        <img class="page-loader-logo" src="image/logo.svg" alt="PREHAB Musculoskeletal &amp; Sports Health Clinics" />
       </div>
       <p class="loader-text">Preparing your care journey</p>
     </div>
@@ -183,7 +193,7 @@
     <div class="mx-auto w-[94%] max-w-[1320px]">
       <div class="relative flex min-h-[84px] items-center justify-between gap-6 py-2">
         <a href="index.html" class="flex shrink-0 items-center whitespace-nowrap">
-          <img src="image/logo.png" alt="PREHAB" class="h-[54px] w-auto block" />
+          <img src="image/logo.svg" alt="PREHAB Musculoskeletal &amp; Sports Health Clinics" class="h-12 w-auto max-w-[min(300px,50vw)] object-contain sm:h-14" />
         </a>
 
         <nav
@@ -254,7 +264,7 @@
   <div id="mobile-menu" class="hidden fixed inset-0 z-[1200] bg-white px-6 py-6 overflow-y-auto xl:hidden">
     <div class="mb-8 flex items-center justify-between border-b border-slate-200 pb-4">
       <a href="index.html" class="flex items-center">
-        <img src="image/logo.png" alt="PREHAB" class="h-[48px] w-auto" />
+        <img src="image/logo.svg" alt="PREHAB Musculoskeletal &amp; Sports Health Clinics" class="h-11 w-auto max-w-[min(280px,72vw)] object-contain sm:h-12" />
       </a>
       <button id="close-menu"
         class="grid h-[42px] w-[42px] place-items-center rounded-full border border-gray-300 text-dark">
@@ -312,7 +322,7 @@
           class="sticky top-0 z-10 -mx-4 mb-5 border-b border-slate-100 bg-white/95 px-4 pb-3 pt-1 backdrop-blur sm:static sm:m-0 sm:mb-5 sm:border-0 sm:bg-transparent sm:px-0 sm:pb-0 sm:pt-0">
           <div class="flex items-start justify-between gap-4">
             <div>
-              <p class="text-[0.72rem] font-bold uppercase tracking-[0.12em] text-primary">PREHAB Corporate Wellness</p>
+              <p class="text-[0.72rem] font-bold uppercase tracking-[0.12em] text-primary">PREHAB</p>
               <h3 class="mt-1 text-[1.35rem] font-extrabold leading-tight text-[#062332]">Book Appointment</h3>
               <p class="mt-1 text-[0.86rem] text-slate-500">Get a call back from our expert team.</p>
             </div>
@@ -364,65 +374,6 @@
     </div>
   </div>
 
-  <div id="complimentary-modal" class="fixed inset-0 z-[1400] hidden">
-    <div id="complimentary-modal-backdrop" class="absolute inset-0 bg-slate-950/70 backdrop-blur-[2px]"></div>
-    <div class="relative mx-auto flex min-h-full w-full items-center px-3 py-6 sm:max-w-[560px] sm:px-4 sm:py-8">
-      <div class="w-full max-h-[92dvh] overflow-y-auto rounded-2xl border border-white/70 bg-white p-4 shadow-2xl sm:p-7">
-        <div
-          class="sticky top-0 z-10 -mx-4 mb-5 border-b border-slate-100 bg-white/95 px-4 pb-3 pt-1 backdrop-blur sm:static sm:m-0 sm:mb-5 sm:border-0 sm:bg-transparent sm:px-0 sm:pb-0 sm:pt-0">
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <p class="text-[0.72rem] font-bold uppercase tracking-[0.12em] text-primary">PREHAB Corporate Wellness</p>
-              <h3 class="mt-1 text-[1.35rem] font-extrabold leading-tight text-[#062332]">Book your first <span class="text-primary">complimentary</span> appointment now</h3>
-              <p class="mt-1 text-[0.86rem] text-slate-500">Share your details and our expert team will call you back.</p>
-            </div>
-            <button id="complimentary-modal-close" type="button"
-              class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-slate-200 text-slate-600 transition hover:bg-slate-100">
-              <i class="fa-solid fa-xmark"></i>
-            </button>
-          </div>
-        </div>
-
-        <form id="complimentary-form" class="space-y-3 sm:space-y-4">
-          <div>
-            <label for="complimentary-name" class="mb-1.5 block text-[0.85rem] font-semibold text-slate-700">Full Name</label>
-            <div class="relative">
-              <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
-              <input id="complimentary-name" name="name" type="text" required placeholder="Enter your full name"
-                class="w-full rounded-xl border border-slate-300 bg-slate-50/40 py-3.5 pl-10 pr-4 text-[0.95rem] outline-none transition focus:border-primary focus:bg-white" />
-            </div>
-          </div>
-
-          <div>
-            <label for="complimentary-phone" class="mb-1.5 block text-[0.85rem] font-semibold text-slate-700">Phone Number</label>
-            <div class="relative">
-              <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
-              <input id="complimentary-phone" name="phone" type="tel" required placeholder="Enter your phone number"
-                class="w-full rounded-xl border border-slate-300 bg-slate-50/40 py-3.5 pl-10 pr-4 text-[0.95rem] outline-none transition focus:border-primary focus:bg-white" />
-            </div>
-          </div>
-
-          <div>
-            <label for="complimentary-email" class="mb-1.5 block text-[0.85rem] font-semibold text-slate-700">Email (Optional)</label>
-            <div class="relative">
-              <i class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
-              <input id="complimentary-email" name="email" type="email" placeholder="Enter your email"
-                class="w-full rounded-xl border border-slate-300 bg-slate-50/40 py-3.5 pl-10 pr-4 text-[0.95rem] outline-none transition focus:border-primary focus:bg-white" />
-            </div>
-          </div>
-
-          <div class="sticky bottom-0 -mx-4 mt-4 border-t border-slate-100 bg-white px-4 pb-1 pt-3 sm:static sm:m-0 sm:border-0 sm:px-0 sm:pb-0 sm:pt-0">
-            <button id="complimentary-submit-btn" type="submit"
-              class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-[1rem] font-bold text-white shadow-[0_10px_24px_rgba(254,107,9,0.3)] transition hover:bg-primaryDark">
-              Submit Request
-              <i class="fa-solid fa-arrow-right text-[0.85rem]"></i>
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
   <main class="w-full min-w-0">
     <section id="home"
       class="relative flex min-h-[90vh] w-full min-w-0 items-center overflow-hidden border-b border-white/10 px-4 py-12 sm:px-6 lg:px-12 lg:py-14">
@@ -435,20 +386,27 @@
         <div class="grid min-w-0 items-center justify-items-center gap-10 text-center lg:gap-16">
 
           <div class="w-full max-w-[700px] min-w-0 text-center">
-            <p class="mb-2 text-[0.72rem] font-bold uppercase tracking-[0.2em] text-primary">Corporate physical health &amp; wellness</p>
+            <p class="mb-2 text-[0.72rem] font-bold uppercase tracking-[0.22em] text-primary">PREHAB</p>
             <h1
               class="mx-auto mb-3 max-w-[700px] text-[clamp(1.85rem,4vw,2.85rem)] font-extrabold leading-[1.08] tracking-[-0.02em] text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.3)]"
               style="text-transform: uppercase;">
-              Corporate physical<br>
-              <span class="text-[#FE6B09]">health &amp; wellness</span>
+              Corporate wellness<br>
+              <span class="text-[#FE6B09]">rooted in how people move</span>
             </h1>
-            <p class="mx-auto mb-6 max-w-[620px] text-[1rem] leading-[1.55] text-white/90">
-              Build a healthier, more resilient workforce with evidence-based prevention, performance, and recovery programs.
+            <p class="mx-auto mb-4 max-w-[640px] text-[1rem] leading-[1.55] text-white/90">
+              Like preparing the body before the day picks up pace, PREHAB helps teams build mobility, stability, and calm focus — so everyday work feels less taxing on muscles and joints.
             </p>
-            <div class="flex justify-center">
+            <p class="mx-auto mb-6 max-w-[640px] text-[0.95rem] leading-[1.65] text-white/80">
+              Evidence-based physiotherapy, nutrition, strength &amp; conditioning, and sports massage in one programme — on-site at your workplace, at our clinics, or online — for prevention-first care that fits real schedules.
+            </p>
+            <div class="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
               <a href="tel:+918867205650"
                 class="inline-flex w-full max-w-[320px] min-h-[52px] items-center justify-center rounded-full bg-primary px-6 text-[0.95rem] font-bold text-white shadow-glow transition hover:-translate-y-[2px] hover:bg-primaryDark sm:w-auto">
                 Call +91 88672 05650
+              </a>
+              <a href="#what-is"
+                class="inline-flex w-full max-w-[320px] min-h-[52px] items-center justify-center rounded-full border border-white/40 bg-white/10 px-6 text-[0.95rem] font-bold text-white backdrop-blur-sm transition hover:bg-white/20 sm:w-auto">
+                Learn how the programme works
               </a>
             </div>
           </div>
@@ -461,7 +419,7 @@
       <div class="mx-auto max-w-[1200px] px-5">
         <div class="grid items-center gap-8 md:grid-cols-2 md:gap-12">
           <div class="order-1">
-            <img src="wellnessimg/PHYSICALHEALTHWELL.jpg" alt="Corporate physical health and wellness"
+            <img src="wellnessimg/beautiful-women-doing-fitness-exercises.jpg" alt="Corporate physical health and wellness — outdoor strength training"
               class="w-full rounded-2xl object-cover shadow-softxl" />
           </div>
           <div class="order-2 text-left">
@@ -486,99 +444,96 @@
     </section>
 
     <!-- MSK impact -->
-    <section class="border-y border-[#f1e9e2] bg-[linear-gradient(180deg,#fff8f3_0%,#fafafa_100%)] py-14 md:py-16">
+    <section id="msk-impact" class="border-y border-[#f1e9e2] bg-[linear-gradient(180deg,#fff8f3_0%,#fafafa_100%)] py-14 md:py-16">
       <div class="mx-auto max-w-[1240px] px-5">
-        <h2 class="text-center text-[clamp(1.5rem,3.2vw,2.1rem)] font-extrabold leading-snug text-dark md:px-8">
-          How do work-related <span class="text-primary">MSK health disorders</span> affect your organisation?
+        <h2 class="mx-auto max-w-[1100px] text-center text-[clamp(1.65rem,3.5vw,2.35rem)] font-extrabold uppercase leading-snug tracking-wide text-primary">
+          How do work-related MSK health disorders affect your organisation?
         </h2>
 
-        <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <article class="rounded-2xl border border-[#fde6d5] bg-white p-6 text-center shadow-sm">
-            <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#ffe8da] text-primary">
-              <i class="fa-solid fa-bone text-2xl"></i>
-            </div>
-            <h3 class="text-[1.08rem] font-extrabold text-dark">Muscles or joint pains</h3>
-            <p class="mt-2 text-[0.92rem] leading-relaxed text-slate-600">Pain at work doesn&rsquo;t just hurt the body — it weakens the foundation of productivity.</p>
-          </article>
-
-          <article class="rounded-2xl border border-[#fde6d5] bg-white p-6 text-center shadow-sm">
-            <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#e8f2ff] text-[#2f7ce0]">
-              <i class="fa-solid fa-user-clock text-2xl"></i>
-            </div>
-            <h3 class="text-[1.08rem] font-extrabold text-dark">Unavailability / sick leave</h3>
-            <p class="mt-2 text-[0.92rem] leading-relaxed text-slate-600">Each absence due to pain is a step away from the team&rsquo;s goals.</p>
-          </article>
-
-          <article class="rounded-2xl border border-[#fde6d5] bg-white p-6 text-center shadow-sm">
-            <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#e8fbf5] text-[#20b985]">
-              <i class="fa-solid fa-house-chimney-medical text-2xl"></i>
-            </div>
-            <h3 class="text-[1.08rem] font-extrabold text-dark">Compromised personal lifestyle</h3>
-            <p class="mt-2 text-[0.92rem] leading-relaxed text-slate-600">Work pain spills over, affecting life beyond the workplace.</p>
-          </article>
-
-          <article class="rounded-2xl border border-[#fde6d5] bg-white p-6 text-center shadow-sm">
-            <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#eaf0ff] text-[#5b79d6]">
-              <i class="fa-solid fa-star-half-stroke text-2xl"></i>
-            </div>
-            <h3 class="text-[1.08rem] font-extrabold text-dark">Compromised quality</h3>
-            <p class="mt-2 text-[0.92rem] leading-relaxed text-slate-600">When discomfort takes over, quality takes a back seat.</p>
-          </article>
-
-          <article class="rounded-2xl border border-[#fde6d5] bg-white p-6 text-center shadow-sm">
-            <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#e8faff] text-[#14b8d4]">
-              <i class="fa-solid fa-chart-column text-2xl"></i>
-            </div>
-            <h3 class="text-[1.08rem] font-extrabold text-dark">Productivity / growth</h3>
-            <p class="mt-2 text-[0.92rem] leading-relaxed text-slate-600">Strained workers mean strained progress.</p>
-          </article>
-
-          <article class="rounded-2xl border border-[#fde6d5] bg-white p-6 text-center shadow-sm">
-            <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#eef9df] text-[#7eb840]">
-              <i class="fa-solid fa-sack-dollar text-2xl"></i>
-            </div>
-            <h3 class="text-[1.08rem] font-extrabold text-dark">Finances / cost burden</h3>
-            <p class="mt-2 text-[0.92rem] leading-relaxed text-slate-600">MSK disorders strain not just muscles, but also the individual&rsquo;s and company&rsquo;s bottom line.</p>
-          </article>
+        <div class="mt-10 overflow-hidden rounded-2xl border border-[#fde6d5] bg-white shadow-softxl">
+          <img src="wellnessimg/orgnisation.png" alt="How work-related MSK health disorders affect your organisation — impact flowchart"
+            class="block w-full h-auto object-contain" />
         </div>
       </div>
     </section>
 
     <!-- Four pillars -->
-    <section class="bg-lightBg py-14 md:py-20">
+    <section id="pillars" class="bg-lightBg py-14 md:py-20">
       <div class="mx-auto max-w-[1200px] px-5">
         <h2 class="text-center text-[clamp(1.65rem,3.5vw,2.35rem)] font-extrabold text-dark">
           The four <span class="text-primary">pillars</span> of corporate wellness
         </h2>
-        <div class="mt-10 grid gap-5 md:grid-cols-2">
-          <div class="flex gap-4 rounded-2xl border border-slate-200/80 bg-white p-6 shadow-sm">
-            <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary text-white"><i class="fa-solid fa-user-doctor"></i></span>
-            <div>
-              <h3 class="text-lg font-extrabold text-dark">Physiotherapy</h3>
-              <p class="mt-1 text-[0.95rem] leading-relaxed text-slate-600">Musculoskeletal screening, postural correction, injury prevention &amp; rehabilitation.</p>
+        <p class="mx-auto mt-3 max-w-[560px] text-center text-[0.92rem] text-slate-600">
+          Expand each pillar to see how it supports your workforce.
+        </p>
+        <div class="pillars-accordion mx-auto mt-8 max-w-[1100px] grid grid-cols-1 items-start gap-3 sm:grid-cols-2 sm:gap-4">
+          <details class="group rounded-2xl border border-slate-200 bg-white shadow-sm transition open:border-primary/40 open:shadow-md">
+            <summary
+              class="flex cursor-pointer select-none items-center gap-4 p-4 sm:p-5 [&:focus-visible]:outline [&:focus-visible]:outline-2 [&:focus-visible]:outline-offset-2 [&:focus-visible]:outline-primary">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary text-white shadow-[0_6px_16px_rgba(254,107,9,0.28)]">
+                <i class="fa-solid fa-user-doctor text-[1.05rem]" aria-hidden="true"></i>
+              </span>
+              <span class="min-w-0 flex-1 text-left text-lg font-extrabold text-dark">Physiotherapy</span>
+              <span
+                class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-slate-200 text-slate-500 transition group-open:rotate-180 group-open:border-primary/35 group-open:text-primary">
+                <i class="fa-solid fa-chevron-down text-[0.65rem]" aria-hidden="true"></i>
+              </span>
+            </summary>
+            <div class="border-t border-slate-100 px-4 pb-5 pt-3 sm:px-5 sm:pb-6 sm:pl-[4.75rem] sm:pt-4">
+              <p class="text-[0.95rem] leading-relaxed text-slate-600">Musculoskeletal screening, postural correction, injury prevention &amp; rehabilitation.</p>
             </div>
-          </div>
-          <div class="flex gap-4 rounded-2xl border border-slate-200/80 bg-white p-6 shadow-sm">
-            <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary text-white"><i class="fa-solid fa-bowl-food"></i></span>
-            <div>
-              <h3 class="text-lg font-extrabold text-dark">Nutrition</h3>
-              <p class="mt-1 text-[0.95rem] leading-relaxed text-slate-600">Performance nutrition, energy management, metabolic health &amp; body composition.</p>
+          </details>
+
+          <details class="group rounded-2xl border border-slate-200 bg-white shadow-sm transition open:border-primary/40 open:shadow-md">
+            <summary
+              class="flex cursor-pointer select-none items-center gap-4 p-4 sm:p-5 [&:focus-visible]:outline [&:focus-visible]:outline-2 [&:focus-visible]:outline-offset-2 [&:focus-visible]:outline-primary">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary text-white shadow-[0_6px_16px_rgba(254,107,9,0.28)]">
+                <i class="fa-solid fa-bowl-food text-[1.05rem]" aria-hidden="true"></i>
+              </span>
+              <span class="min-w-0 flex-1 text-left text-lg font-extrabold text-dark">Nutrition</span>
+              <span
+                class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-slate-200 text-slate-500 transition group-open:rotate-180 group-open:border-primary/35 group-open:text-primary">
+                <i class="fa-solid fa-chevron-down text-[0.65rem]" aria-hidden="true"></i>
+              </span>
+            </summary>
+            <div class="border-t border-slate-100 px-4 pb-5 pt-3 sm:px-5 sm:pb-6 sm:pl-[4.75rem] sm:pt-4">
+              <p class="text-[0.95rem] leading-relaxed text-slate-600">Performance nutrition, energy management, metabolic health &amp; body composition.</p>
             </div>
-          </div>
-          <div class="flex gap-4 rounded-2xl border border-slate-200/80 bg-white p-6 shadow-sm">
-            <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary text-white"><i class="fa-solid fa-dumbbell"></i></span>
-            <div>
-              <h3 class="text-lg font-extrabold text-dark">Strength training</h3>
-              <p class="mt-1 text-[0.95rem] leading-relaxed text-slate-600">Functional movement, load tolerance, physical conditioning &amp; longevity.</p>
+          </details>
+
+          <details class="group rounded-2xl border border-slate-200 bg-white shadow-sm transition open:border-primary/40 open:shadow-md">
+            <summary
+              class="flex cursor-pointer select-none items-center gap-4 p-4 sm:p-5 [&:focus-visible]:outline [&:focus-visible]:outline-2 [&:focus-visible]:outline-offset-2 [&:focus-visible]:outline-primary">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary text-white shadow-[0_6px_16px_rgba(254,107,9,0.28)]">
+                <i class="fa-solid fa-dumbbell text-[1.05rem]" aria-hidden="true"></i>
+              </span>
+              <span class="min-w-0 flex-1 text-left text-lg font-extrabold text-dark">Strength training</span>
+              <span
+                class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-slate-200 text-slate-500 transition group-open:rotate-180 group-open:border-primary/35 group-open:text-primary">
+                <i class="fa-solid fa-chevron-down text-[0.65rem]" aria-hidden="true"></i>
+              </span>
+            </summary>
+            <div class="border-t border-slate-100 px-4 pb-5 pt-3 sm:px-5 sm:pb-6 sm:pl-[4.75rem] sm:pt-4">
+              <p class="text-[0.95rem] leading-relaxed text-slate-600">Functional movement, load tolerance, physical conditioning &amp; longevity.</p>
             </div>
-          </div>
-          <div class="flex gap-4 rounded-2xl border border-slate-200/80 bg-white p-6 shadow-sm">
-            <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary text-white"><i class="fa-solid fa-spa"></i></span>
-            <div>
-              <h3 class="text-lg font-extrabold text-dark">Sports massage</h3>
-              <p class="mt-1 text-[0.95rem] leading-relaxed text-slate-600">Soft tissue recovery, tension management, circulation &amp; stress reduction.</p>
+          </details>
+
+          <details class="group rounded-2xl border border-slate-200 bg-white shadow-sm transition open:border-primary/40 open:shadow-md">
+            <summary
+              class="flex cursor-pointer select-none items-center gap-4 p-4 sm:p-5 [&:focus-visible]:outline [&:focus-visible]:outline-2 [&:focus-visible]:outline-offset-2 [&:focus-visible]:outline-primary">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary text-white shadow-[0_6px_16px_rgba(254,107,9,0.28)]">
+                <i class="fa-solid fa-spa text-[1.05rem]" aria-hidden="true"></i>
+              </span>
+              <span class="min-w-0 flex-1 text-left text-lg font-extrabold text-dark">Sports massage</span>
+              <span
+                class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-slate-200 text-slate-500 transition group-open:rotate-180 group-open:border-primary/35 group-open:text-primary">
+                <i class="fa-solid fa-chevron-down text-[0.65rem]" aria-hidden="true"></i>
+              </span>
+            </summary>
+            <div class="border-t border-slate-100 px-4 pb-5 pt-3 sm:px-5 sm:pb-6 sm:pl-[4.75rem] sm:pt-4">
+              <p class="text-[0.95rem] leading-relaxed text-slate-600">Soft tissue recovery, tension management, circulation &amp; stress reduction.</p>
             </div>
-          </div>
+          </details>
         </div>
       </div>
     </section>
@@ -655,128 +610,59 @@
       </div>
     </section>
 
-    <!-- Technology -->
-    <section class="bg-white py-14 md:py-20">
-      <div class="mx-auto max-w-[1200px] px-5">
-        <h2 class="text-center text-[clamp(1.65rem,3.5vw,2.35rem)] font-extrabold uppercase tracking-wide text-primary">
-          Technology
-        </h2>
-        <div class="mt-10 space-y-5">
-          <div class="grid items-start gap-5 lg:grid-cols-[1.05fr_1fr]">
-            <div>
-              <h3 class="text-lg font-extrabold text-dark">Muscle Meter</h3>
-              <ol class="mt-2 list-decimal pl-5 space-y-1.5 text-[0.98rem] leading-relaxed text-slate-700">
-                <li>The Muscle Meter is a versatile, pocket-sized, 3-in-1 handheld dynamometer (push, pull, and grip) used by professionals to measure force in nearly every muscle group.</li>
-                <li>The device is designed to improve client outcomes by providing objective data, without slowing down workflows or requiring expensive, long-term contracts.</li>
-              </ol>
-            </div>
-            <div class="grid grid-cols-2 gap-3">
-              <img src="wellnessimg/imat.png" alt="Muscle meter device close-up" class="h-48 w-full rounded-xl border border-slate-200 object-cover object-center md:h-56" />
-              <img src="wellnessimg/imat1.png" alt="Muscle meter app dashboard" class="h-48 w-full rounded-xl border border-slate-200 object-cover object-center md:h-56" />
-            </div>
-          </div>
-
-          <div class="grid items-start gap-5 lg:grid-cols-[0.95fr_1.1fr]">
-            <div class="grid grid-cols-2 gap-3">
-              <img src="wellnessimg/imat2.png" alt="K-Invent force plate hardware" class="h-48 w-full rounded-xl border border-slate-200 object-cover object-center md:h-56" />
-              <img src="wellnessimg/imat3.png" alt="Force plate report dashboard" class="h-48 w-full rounded-xl border border-slate-200 object-cover object-center md:h-56" />
-            </div>
-            <div>
-              <h3 class="text-lg font-extrabold text-dark">K-Invent Force Plates</h3>
-              <ol class="mt-2 list-decimal pl-5 space-y-1.5 text-[0.98rem] leading-relaxed text-slate-700">
-                <li>Kinvent force plates are portable, lightweight, high-precision tools designed for measuring balance, strength, and power in rehabilitation and athletic performance.</li>
-                <li>The plates integrate with the Kinvent Physio App, allowing for data visualisation, real-time feedback, and personalized reporting.</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Reporting -->
-    <section class="bg-white py-14 md:py-20">
-      <div class="mx-auto max-w-[1200px] px-5">
-        <h2 class="text-center text-[clamp(1.65rem,3.5vw,2.35rem)] font-extrabold uppercase tracking-wide text-primary">
-          Reporting System
-        </h2>
-        <div class="mt-10 grid items-start gap-10 lg:grid-cols-[0.95fr_1.05fr]">
-          <div class="rounded-2xl border border-[#f1e9e2] bg-[#fff8f3] p-6 shadow-sm md:p-8">
-            <ol class="space-y-6 text-[0.97rem] leading-relaxed text-slate-700">
-              <li>
-                <p class="font-extrabold text-dark">1. The “Hardware”: Precision Assessment</p>
-                <p class="mt-2">We don&rsquo;t guess; we measure. Elite-grade sports science technology gives a digital blueprint of physical health.</p>
-                <ul class="mt-2 space-y-1.5 text-[0.92rem]">
-                  <li><span class="font-bold text-primary">Kinvent Force Plate:</span> measures power symmetry and balance to identify overcompensation on one side.</li>
-                  <li><span class="font-bold text-primary">MAT Muscle Meter:</span> quantifies exact muscle strength and reveals weak links earlier.</li>
-                </ul>
-              </li>
-              <li>
-                <p class="font-extrabold text-dark">2. The “Software”: Live Progress Architecture</p>
-                <p class="mt-2">Reporting is a living document. Cloud-based S&amp;C trackers log every rep, set, and recovery metric in one transparent system.</p>
-                <p class="mt-2 text-[0.92rem]">With progressive loading, you can see real-time capability growth across 3, 6, and 12 months.</p>
-              </li>
-            </ol>
-          </div>
-
-          <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-softxl md:p-5">
-            <div class="grid grid-cols-2 gap-3">
-              <img src="wellnessimg/imagr.png" alt="Reporting dashboard summary" class="h-36 w-full rounded-xl border border-slate-200 object-cover object-center md:h-44" />
-              <img src="wellnessimg/imagr1.png" alt="Reporting asymmetry graph panel" class="h-36 w-full rounded-xl border border-slate-200 object-cover object-center md:h-44" />
-              <img src="wellnessimg/imagr2.png" alt="Reporting spreadsheet and progress logs" class="col-span-2 h-36 w-full rounded-xl border border-slate-200 object-cover object-center md:h-44" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Advantage -->
-    <section class="border-t border-[#f1e9e2] bg-[linear-gradient(180deg,#fafafa_0%,#fff8f3_100%)] py-14 md:py-20">
-      <div class="mx-auto max-w-[1200px] px-5">
-        <h2 class="text-center text-[clamp(1.65rem,3.5vw,2.35rem)] font-extrabold text-dark">
+    <section id="advantage" class="relative overflow-hidden border-y-2 border-primary/20 bg-[linear-gradient(165deg,#fff4ec_0%,#fffaf6_42%,#ffffff_100%)] py-16 md:py-24">
+      <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(254,107,9,0.14),transparent_55%)]" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-[1200px] px-5">
+        <div class="mx-auto mb-3 h-1.5 w-16 rounded-full bg-primary shadow-[0_0_24px_rgba(254,107,9,0.45)]"></div>
+        <h2 class="text-center text-[clamp(1.85rem,4vw,2.75rem)] font-black leading-tight tracking-tight text-dark">
           The <span class="text-primary">PREHAB</span> advantage
         </h2>
-        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <article class="rounded-2xl border border-white bg-white/90 p-6 shadow-sm backdrop-blur">
-            <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-              <i class="fa-solid fa-bolt"></i>
+        <p class="mx-auto mt-3 max-w-[640px] text-center text-[0.98rem] font-medium leading-relaxed text-slate-600 md:text-[1.02rem]">
+          The outcomes organisations care about — backed by clinical depth, measurable data, and long-term partnership.
+        </p>
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          <article class="group flex flex-col items-center rounded-2xl border-2 border-[#fde6d5] bg-white p-7 text-center shadow-[0_14px_40px_rgba(15,23,42,0.08)] transition duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_22px_55px_rgba(254,107,9,0.14)] md:p-8">
+            <span class="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[#fff4ec] text-primary ring-2 ring-primary/15 transition group-hover:ring-primary/35">
+              <i class="fa-solid fa-bolt text-[1.2rem]"></i>
             </span>
-            <h3 class="text-base font-extrabold uppercase tracking-wide text-primary">Increased productivity</h3>
-            <p class="mt-2 text-[0.92rem] leading-relaxed text-slate-600">Better physical health leads to better physical and mental function and greater energy levels.</p>
+            <h3 class="text-[0.95rem] font-extrabold uppercase tracking-wide text-primary md:text-base">Increased productivity</h3>
+            <p class="mt-3 text-[0.95rem] leading-relaxed text-slate-600">Better physical health leads to better physical and mental function and greater energy levels.</p>
           </article>
-          <article class="rounded-2xl border border-white bg-white/90 p-6 shadow-sm backdrop-blur">
-            <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-              <i class="fa-solid fa-user-check"></i>
+          <article class="group flex flex-col items-center rounded-2xl border-2 border-[#fde6d5] bg-white p-7 text-center shadow-[0_14px_40px_rgba(15,23,42,0.08)] transition duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_22px_55px_rgba(254,107,9,0.14)] md:p-8">
+            <span class="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[#fff4ec] text-primary ring-2 ring-primary/15 transition group-hover:ring-primary/35">
+              <i class="fa-solid fa-user-check text-[1.2rem]"></i>
             </span>
-            <h3 class="text-base font-extrabold uppercase tracking-wide text-primary">Reduced absenteeism</h3>
-            <p class="mt-2 text-[0.92rem] leading-relaxed text-slate-600">Greater availability by reducing incidences of injury and disease.</p>
+            <h3 class="text-[0.95rem] font-extrabold uppercase tracking-wide text-primary md:text-base">Reduced absenteeism</h3>
+            <p class="mt-3 text-[0.95rem] leading-relaxed text-slate-600">Greater availability by reducing incidences of injury and disease.</p>
           </article>
-          <article class="rounded-2xl border border-white bg-white/90 p-6 shadow-sm backdrop-blur">
-            <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-              <i class="fa-solid fa-award"></i>
+          <article class="group flex flex-col items-center rounded-2xl border-2 border-[#fde6d5] bg-white p-7 text-center shadow-[0_14px_40px_rgba(15,23,42,0.08)] transition duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_22px_55px_rgba(254,107,9,0.14)] md:p-8">
+            <span class="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[#fff4ec] text-primary ring-2 ring-primary/15 transition group-hover:ring-primary/35">
+              <i class="fa-solid fa-award text-[1.2rem]"></i>
             </span>
-            <h3 class="text-base font-extrabold uppercase tracking-wide text-primary">Proven excellence</h3>
-            <p class="mt-2 text-[0.92rem] leading-relaxed text-slate-600"><span class="brand-word font-bold">PREHAB</span> Clinics endorses a team with collective experience of 40+ years.</p>
+            <h3 class="text-[0.95rem] font-extrabold uppercase tracking-wide text-primary md:text-base">Proven excellence</h3>
+            <p class="mt-3 text-[0.95rem] leading-relaxed text-slate-600"><span class="brand-word font-bold">PREHAB</span> Clinics endorses a team with collective experience of 40+ years.</p>
           </article>
-          <article class="rounded-2xl border border-white bg-white/90 p-6 shadow-sm backdrop-blur">
-            <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-              <i class="fa-solid fa-handshake-angle"></i>
+          <article class="group flex flex-col items-center rounded-2xl border-2 border-[#fde6d5] bg-white p-7 text-center shadow-[0_14px_40px_rgba(15,23,42,0.08)] transition duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_22px_55px_rgba(254,107,9,0.14)] md:p-8">
+            <span class="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[#fff4ec] text-primary ring-2 ring-primary/15 transition group-hover:ring-primary/35">
+              <i class="fa-solid fa-handshake-angle text-[1.2rem]"></i>
             </span>
-            <h3 class="text-base font-extrabold uppercase tracking-wide text-primary">Enhanced morale &amp; loyalty</h3>
-            <p class="mt-2 text-[0.92rem] leading-relaxed text-slate-600">Directly enhances workforce morale, retention, and organisational loyalty — people stay where they feel genuinely valued.</p>
+            <h3 class="text-[0.95rem] font-extrabold uppercase tracking-wide text-primary md:text-base">Enhanced morale &amp; loyalty</h3>
+            <p class="mt-3 text-[0.95rem] leading-relaxed text-slate-600">Directly enhances workforce morale, retention, and organisational loyalty — people stay where they feel genuinely valued.</p>
           </article>
-          <article class="rounded-2xl border border-white bg-white/90 p-6 shadow-sm backdrop-blur">
-            <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-              <i class="fa-solid fa-chart-line"></i>
+          <article class="group flex flex-col items-center rounded-2xl border-2 border-[#fde6d5] bg-white p-7 text-center shadow-[0_14px_40px_rgba(15,23,42,0.08)] transition duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_22px_55px_rgba(254,107,9,0.14)] md:p-8">
+            <span class="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[#fff4ec] text-primary ring-2 ring-primary/15 transition group-hover:ring-primary/35">
+              <i class="fa-solid fa-chart-line text-[1.2rem]"></i>
             </span>
-            <h3 class="text-base font-extrabold uppercase tracking-wide text-primary">Measurable ROI</h3>
-            <p class="mt-2 text-[0.92rem] leading-relaxed text-slate-600">Through reduced healthcare costs and increased productivity.</p>
+            <h3 class="text-[0.95rem] font-extrabold uppercase tracking-wide text-primary md:text-base">Measurable ROI</h3>
+            <p class="mt-3 text-[0.95rem] leading-relaxed text-slate-600">Through reduced healthcare costs and increased productivity.</p>
           </article>
-          <article class="rounded-2xl border border-white bg-white/90 p-6 shadow-sm backdrop-blur">
-            <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-              <i class="fa-solid fa-people-group"></i>
+          <article class="group flex flex-col items-center rounded-2xl border-2 border-[#fde6d5] bg-white p-7 text-center shadow-[0_14px_40px_rgba(15,23,42,0.08)] transition duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_22px_55px_rgba(254,107,9,0.14)] md:p-8">
+            <span class="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[#fff4ec] text-primary ring-2 ring-primary/15 transition group-hover:ring-primary/35">
+              <i class="fa-solid fa-people-group text-[1.2rem]"></i>
             </span>
-            <h3 class="text-base font-extrabold uppercase tracking-wide text-primary">Resilient workforce</h3>
-            <p class="mt-2 text-[0.92rem] leading-relaxed text-slate-600">A physically fit and healthy team works together and grows together.</p>
+            <h3 class="text-[0.95rem] font-extrabold uppercase tracking-wide text-primary md:text-base">Resilient workforce</h3>
+            <p class="mt-3 text-[0.95rem] leading-relaxed text-slate-600">A physically fit and healthy team works together and grows together.</p>
           </article>
         </div>
       </div>
@@ -855,18 +741,11 @@
           <h2 class="text-[clamp(1.65rem,3.2vw,2.4rem)] font-black leading-tight">
             Bring <span class="text-primary">corporate wellness</span> to your workplace
           </h2>
-          <p class="mx-auto mt-4 max-w-[560px] text-[0.95rem] leading-relaxed text-white/85">
-            Rajajinagar, Bengaluru · <a href="tel:+918867205650" class="font-bold text-white hover:text-primary">+91 88672 05650</a>
-          </p>
-          <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div class="mt-10 flex justify-center">
             <button type="button"
               class="book-slot-btn inline-flex min-h-[54px] items-center justify-center gap-3 rounded-full bg-primary px-8 text-[1rem] font-bold text-white shadow-[0_8px_22px_rgba(254,107,9,0.35)] transition hover:-translate-y-[2px] hover:bg-primaryDark">
               Talk to us about corporate wellness
             </button>
-            <a href="index.html#contact"
-              class="inline-flex min-h-[54px] items-center justify-center gap-3 rounded-full border border-white/30 bg-white/10 px-8 text-[1rem] font-bold text-white transition hover:bg-white/20">
-              Online consultation
-            </a>
           </div>
         </div>
       </div>
@@ -875,11 +754,10 @@
 
   <footer class="bg-[#FE6B09] text-white pt-14 pb-6">
     <div class="max-w-[1200px] mx-auto px-5">
-      <div class="grid grid-cols-1 gap-y-8 gap-x-5 sm:grid-cols-2 lg:grid-cols-[140px_1.45fr_1fr_1fr] items-start">
+      <div class="grid grid-cols-1 gap-y-8 gap-x-5 sm:grid-cols-2 lg:grid-cols-[200px_1.45fr_1fr_1fr] items-start">
         <div class="flex justify-center lg:justify-start">
-          <img
-            src="https://static.wixstatic.com/media/377b16_10d7d5bf2d244f48ae237939ccd14569~mv2.png/v1/fill/w_509,h_509,al_c,lg_1,q_85,enc_avif,quality_auto/Asset%2096_100x.png"
-            alt="PREHAB Footer Logo" class="w-32 h-32 object-contain" />
+          <img src="image/logo.svg" alt="PREHAB Musculoskeletal &amp; Sports Health Clinics"
+            class="h-auto w-full max-w-[200px] object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.15)] sm:max-w-[240px]" />
         </div>
         <div>
           <h4 class="text-[0.95rem] font-bold tracking-wide mb-3 uppercase">Contact</h4>
@@ -936,12 +814,6 @@
     const appointmentForm = document.getElementById("appointment-form");
     const appointmentFormMessage = document.getElementById("appointment-form-message");
     const appointmentSubmitBtn = document.getElementById("appointment-submit-btn");
-    const complimentaryModal = document.getElementById("complimentary-modal");
-    const complimentaryModalClose = document.getElementById("complimentary-modal-close");
-    const complimentaryModalBackdrop = document.getElementById("complimentary-modal-backdrop");
-    const complimentaryForm = document.getElementById("complimentary-form");
-    const complimentarySubmitBtn = document.getElementById("complimentary-submit-btn");
-    const COMPLIMENTARY_SUBMITTED_KEY = "complimentaryAppointmentSubmitted";
 
     const getIstTimestamp = () => new Intl.DateTimeFormat("en-GB", {
       timeZone: "Asia/Kolkata",
@@ -962,8 +834,7 @@
     const syncBodyScrollLock = () => {
       const isMobileMenuOpen = mobileMenu && !mobileMenu.classList.contains("hidden");
       const isModalOpen = appointmentModal && !appointmentModal.classList.contains("hidden");
-      const isComplimentaryModalOpen = complimentaryModal && !complimentaryModal.classList.contains("hidden");
-      document.body.classList.toggle("overflow-hidden", isMobileMenuOpen || isModalOpen || isComplimentaryModalOpen);
+      document.body.classList.toggle("overflow-hidden", isMobileMenuOpen || isModalOpen);
     };
 
     const postToSheet = async ({ name, phone, email, service, message }) => {
@@ -1155,67 +1026,6 @@
           syncBodyScrollLock();
         }
       });
-    }
-
-    if (complimentaryModal && complimentaryForm && complimentarySubmitBtn) {
-      const hasSubmittedComplimentaryForm = () => sessionStorage.getItem(COMPLIMENTARY_SUBMITTED_KEY) === "true";
-      const openComplimentaryModal = () => {
-        if (hasSubmittedComplimentaryForm()) return;
-        complimentaryModal.classList.remove("hidden");
-        syncBodyScrollLock();
-      };
-      const closeComplimentaryModal = () => {
-        complimentaryModal.classList.add("hidden");
-        syncBodyScrollLock();
-      };
-      const isAnotherModalOpen = () => appointmentModal && !appointmentModal.classList.contains("hidden");
-
-      if (complimentaryModalClose) complimentaryModalClose.addEventListener("click", closeComplimentaryModal);
-      if (complimentaryModalBackdrop) complimentaryModalBackdrop.addEventListener("click", closeComplimentaryModal);
-
-      complimentaryForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        complimentarySubmitBtn.innerHTML = 'Submitting... <i class="fa-solid fa-spinner fa-spin text-[0.85rem]"></i>';
-        complimentarySubmitBtn.disabled = true;
-        complimentarySubmitBtn.classList.add("opacity-70", "cursor-not-allowed");
-        if (window.Swal) Swal.fire({ title: "Submitting...", didOpen: () => Swal.showLoading(), allowOutsideClick: false });
-        try {
-          const formData = new FormData(complimentaryForm);
-          await postToSheet({
-            name: String(formData.get("name") || "").trim(),
-            phone: String(formData.get("phone") || "").trim(),
-            email: String(formData.get("email") || "").trim(),
-            service: "First Complimentary Appointment",
-            message: "Submitted from corporate wellness page"
-          });
-          sessionStorage.setItem(COMPLIMENTARY_SUBMITTED_KEY, "true");
-          complimentaryForm.reset();
-          closeComplimentaryModal();
-          if (window.Swal) {
-            Swal.close();
-            Swal.fire({ icon: "success", title: "Submitted!", confirmButtonColor: "#FE6B09" });
-          }
-        } catch {
-          if (window.Swal) {
-            Swal.close();
-            Swal.fire({ icon: "error", title: "Submission failed", confirmButtonColor: "#FE6B09" });
-          }
-        } finally {
-          complimentarySubmitBtn.disabled = false;
-          complimentarySubmitBtn.classList.remove("opacity-70", "cursor-not-allowed");
-          complimentarySubmitBtn.innerHTML = 'Submit Request <i class="fa-solid fa-arrow-right text-[0.85rem]"></i>';
-        }
-      });
-
-      const popupIntervalMs = 15000;
-      setTimeout(() => {
-        if (!hasSubmittedComplimentaryForm() && !isAnotherModalOpen()) openComplimentaryModal();
-        setInterval(() => {
-          if (!hasSubmittedComplimentaryForm() && complimentaryModal.classList.contains("hidden") && !isAnotherModalOpen()) {
-            openComplimentaryModal();
-          }
-        }, popupIntervalMs);
-      }, popupIntervalMs);
     }
   </script>
 </body>
