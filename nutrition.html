@@ -1,0 +1,2212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PREHAB DigiCare | Nutrition</title>
+  <meta
+    name="description"
+    content="Book online nutrition consultation with PREHAB DigiCare. Personalized guidance for weight management, gut health, hormone balance, sports nutrition, and sustainable healthy eating."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <div id="free-copy-modal" class="fixed inset-0 z-[1400] hidden">
+    <div id="free-copy-modal-backdrop" class="absolute inset-0 bg-slate-950/70 backdrop-blur-[2px]"></div>
+    <div class="relative mx-auto flex min-h-full w-full items-center px-3 py-6 sm:max-w-[560px] sm:px-4 sm:py-8">
+      <div class="w-full max-h-[92dvh] overflow-y-auto rounded-2xl border border-white/70 bg-white p-4 shadow-2xl sm:p-7">
+        <div
+          class="sticky top-0 z-10 -mx-4 mb-5 border-b border-slate-100 bg-white/95 px-4 pb-3 pt-1 backdrop-blur sm:static sm:m-0 sm:mb-5 sm:border-0 sm:bg-transparent sm:px-0 sm:pb-0 sm:pt-0">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-[0.72rem] font-bold uppercase tracking-[0.12em] text-primary">Free Download</p>
+              <h3 id="free-copy-modal-title" class="mt-1 text-[1.25rem] font-extrabold leading-tight text-[#0F172A]">Get Free Copy</h3>
+              <p class="mt-1 text-[0.86rem] text-slate-500">Please share your details to download this guide.</p>
+            </div>
+            <button id="free-copy-modal-close" type="button"
+              class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-slate-200 text-slate-600 transition hover:bg-slate-100">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+
+        <form id="free-copy-form" class="space-y-3 sm:space-y-4">
+          <input type="hidden" id="free-copy-file" name="download_file" />
+          <input type="hidden" id="free-copy-guide-name" name="guide_name" />
+          <div>
+            <label for="free-copy-name" class="mb-1.5 block text-[0.85rem] font-semibold text-slate-700">Full Name</label>
+            <div class="relative">
+              <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+              <input id="free-copy-name" name="name" type="text" required placeholder="Enter your full name"
+                class="w-full rounded-xl border border-slate-300 bg-slate-50/40 py-3.5 pl-10 pr-4 text-[0.95rem] outline-none transition focus:border-primary focus:bg-white" />
+            </div>
+          </div>
+          <div>
+            <label for="free-copy-phone" class="mb-1.5 block text-[0.85rem] font-semibold text-slate-700">Phone Number</label>
+            <div class="relative">
+              <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+              <input id="free-copy-phone" name="phone" type="tel" required placeholder="Enter your phone number"
+                class="w-full rounded-xl border border-slate-300 bg-slate-50/40 py-3.5 pl-10 pr-4 text-[0.95rem] outline-none transition focus:border-primary focus:bg-white" />
+            </div>
+          </div>
+          <div>
+            <label for="free-copy-email" class="mb-1.5 block text-[0.85rem] font-semibold text-slate-700">Email ID</label>
+            <div class="relative">
+              <i class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+              <input id="free-copy-email" name="email" type="email" required placeholder="Enter your email"
+                class="w-full rounded-xl border border-slate-300 bg-slate-50/40 py-3.5 pl-10 pr-4 text-[0.95rem] outline-none transition focus:border-primary focus:bg-white" />
+            </div>
+          </div>
+          <p id="free-copy-form-message" class="hidden text-[0.84rem] font-medium"></p>
+          <div class="sticky bottom-0 -mx-4 mt-4 border-t border-slate-100 bg-white px-4 pb-1 pt-3 sm:static sm:m-0 sm:border-0 sm:px-0 sm:pb-0 sm:pt-0">
+            <button id="free-copy-submit-btn" type="submit"
+              class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-[1rem] font-bold text-white shadow-[0_10px_24px_rgba(254,107,9,0.3)] transition hover:bg-primaryDark">
+              Submit &amp; Download
+              <i class="fa-solid fa-download text-[0.85rem]"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FE6B09',
+            primaryDark: '#db5a00',
+            dark: '#062332',
+            soft: '#fff3eb',
+            muted: '#6b7280'
+          },
+          fontFamily: {
+            montserrat: ['Montserrat', 'sans-serif']
+          },
+          boxShadow: {
+            softxl: '0 10px 30px rgba(0,0,0,0.08)',
+            glow: '0 10px 28px rgba(254, 107, 9, 0.35)',
+            form: '0 24px 56px rgba(0,0,0,0.22)',
+            button: '0 8px 22px rgba(254, 107, 9, 0.38)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --orange: #FE6B09;
+      --primary: var(--orange);
+      --primary-dark: #db5a00;
+      --primary-soft: #fff3eb;
+      --dark: #062332;
+      --text: #4b5563;
+      --muted: #6b7280;
+      --light: #f7f7f9;
+      --white: #ffffff;
+      --border: #ececf1;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --radius: 18px;
+      --max: 1280px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Montserrat", Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: #fafafa;
+      line-height: 1.65;
+      letter-spacing: 0.1px;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    h1, h2, h3, h4 {
+      text-transform: lowercase;
+    }
+
+    h1::first-letter,
+    h2::first-letter,
+    h3::first-letter,
+    h4::first-letter {
+      text-transform: uppercase;
+    }
+
+    body.loading {
+      overflow: hidden;
+    }
+
+    .swal2-container {
+      z-index: 1600 !important;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .accent-orange {
+      color: var(--primary);
+    }
+
+    .section-title {
+      font-size: clamp(28px, 3.6vw, 44px);
+      line-height: 1.15;
+      margin-bottom: 14px;
+      color: var(--dark);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .section-text {
+      font-size: 15.5px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .btn,
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 26px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.4);
+      color: #fff;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.16);
+      border-color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .page-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at 50% 30%, #fff6ef 0%, #ffffff 58%);
+      transition: opacity 0.45s ease, visibility 0.45s ease;
+    }
+
+    .page-loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .page-loader-inner {
+      display: grid;
+      place-items: center;
+      gap: 14px;
+    }
+
+    .loader-orbit {
+      position: relative;
+      width: 168px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+    }
+
+    .loader-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 999px;
+      border: 3px solid rgba(254, 107, 9, 0.18);
+      border-top-color: #FE6B09;
+      animation: loaderSpin 1.2s linear infinite;
+    }
+
+    .loader-ring.secondary {
+      inset: 14px;
+      border-width: 2px;
+      border-top-color: #0F172A;
+      border-right-color: rgba(15, 23, 42, 0.2);
+      animation-duration: 1.7s;
+      animation-direction: reverse;
+    }
+
+    .page-loader-logo {
+      width: 94px;
+      filter: drop-shadow(0 6px 16px rgba(254, 107, 9, 0.25));
+      animation: loaderPulse 1.25s ease-in-out infinite;
+    }
+
+    .loader-text {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #0F172A;
+      text-transform: uppercase;
+      opacity: 0.75;
+    }
+
+    @keyframes loaderSpin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes loaderPulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.07);
+      }
+    }
+
+    /* Header */
+    .top-navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1100;
+      background: #fff;
+      border-bottom: 1px solid #efefef;
+    }
+
+    .top-navbar .container {
+      width: min(94%, 1320px);
+    }
+
+    .top-navbar-inner {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 8px 0;
+      position: relative;
+    }
+
+    .top-brand {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    .top-brand img {
+      height: 54px;
+      width: auto;
+      display: block;
+    }
+
+    .top-login-mobile {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--primary);
+      border-radius: 999px;
+      color: var(--primary);
+      background: #fff;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+    }
+
+    .top-menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--primary);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--primary);
+      font-size: 1.05rem;
+      cursor: pointer;
+    }
+
+    .top-nav-collapse {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex: 1;
+      justify-content: flex-end;
+      min-width: 0;
+    }
+
+    .top-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.82rem;
+      color: #1f2230;
+      font-weight: 500;
+      white-space: nowrap;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    .top-nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .top-nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      white-space: nowrap;
+      font-size: 0.96rem;
+    }
+
+    .login-link {
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
+    }
+
+    .login-icon,
+    .cart-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 0.84rem;
+    }
+
+    .book-btn-small {
+      padding: 13px 22px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 6px 16px rgba(254, 107, 9, 0.25);
+    }
+
+    .cart-link {
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      background: #111827;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(105deg, rgba(15, 23, 42, 0.82) 0%, rgba(15, 23, 42, 0.62) 48%, rgba(15, 23, 42, 0.48) 100%),
+        url("./image/Joint%20Pain.jpg") center/cover no-repeat;
+      transform: scale(1.03);
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding-top: 38px;
+      padding-bottom: 38px;
+    }
+
+    .hero-content {
+      max-width: 1060px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(254,107,9,0.18);
+      border: 1px solid rgba(254,107,9,0.36);
+      padding: 9px 16px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+      font-weight: 700;
+      font-size: 0.78rem;
+      color: #fff;
+    }
+
+    .badge i {
+      color: var(--primary);
+    }
+
+    .hero h1 {
+      max-width: 1060px;
+      margin: 0 0 24px;
+      font-size: clamp(1.7rem, 7vw, 3.2rem);
+      line-height: 1.12;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #fff;
+    }
+
+    .hero-title {
+      text-transform: none;
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-buttons {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-direction: column;
+    }
+
+    .hero-buttons .btn,
+    .hero-buttons .btn-outline {
+      min-height: 54px;
+      width: 100%;
+      max-width: 280px;
+      padding: 0 28px;
+      font-size: 16px;
+    }
+
+    .hero-buttons .btn {
+      box-shadow: 0 10px 30px rgba(254, 107, 9, 0.25);
+    }
+
+    .hero-buttons .btn-outline {
+      background: #fff;
+      color: var(--dark);
+      border-color: #ffd6bf;
+    }
+
+    .hero-buttons .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: #fff;
+    }
+
+    @media (min-width: 640px) {
+      .hero-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .hero-buttons .btn,
+      .hero-buttons .btn-outline {
+        width: auto;
+        max-width: none;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        min-height: 380px;
+      }
+
+      .hero .container {
+        padding-top: 50px;
+        padding-bottom: 50px;
+      }
+
+      .badge {
+        font-size: 0.84rem;
+      }
+    }
+
+    /* Details */
+    .details {
+      padding: 88px 0;
+      background: var(--light);
+    }
+
+    .details-header {
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto 42px;
+    }
+
+    .conditions-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .condition-card {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    .condition-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .condition-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .condition-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.5), transparent);
+    }
+
+    .condition-content {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 12px;
+    }
+
+    .condition-content h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      line-height: 1.25;
+      color: #fff;
+    }
+
+    .condition-content p {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(4px);
+      margin-top: 0;
+      font-size: 0.7rem;
+      line-height: 1.4;
+      color: rgba(255, 255, 255, 0.82);
+      transition: all 0.3s ease;
+    }
+
+    .condition-card:hover .condition-content p {
+      max-height: 64px;
+      opacity: 1;
+      transform: translateY(0);
+      margin-top: 6px;
+    }
+
+    @media (min-width: 640px) {
+      .conditions-grid {
+        gap: 16px;
+      }
+
+      .condition-content {
+        padding: 16px;
+      }
+
+      .condition-content h4 {
+        font-size: 1rem;
+      }
+
+      .condition-content p {
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .conditions-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .conditions-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* USP */
+    .usp-section {
+      margin-top: 34px;
+    }
+
+    .usp-title {
+      font-size: clamp(28px, 3.6vw, 44px);
+      font-weight: 800;
+      color: var(--dark);
+      text-align: center;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .usp-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+    }
+
+    .flip-card {
+      perspective: 1000px;
+      min-height: 220px;
+      transition: 0.25s ease;
+    }
+
+    .flip-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-face {
+      position: absolute;
+      inset: 0;
+      border: 1px solid #f0e7e2;
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: 0 10px 24px rgba(17, 24, 39, 0.05);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 22px 18px;
+      text-align: center;
+    }
+
+    .flip-back {
+      transform: rotateY(180deg);
+    }
+
+    .flip-face i {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 1.55rem;
+    }
+
+    .flip-face h4 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .flip-back h4 {
+      margin-bottom: 8px;
+    }
+
+    .flip-face p {
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .team-section {
+      padding: 24px 0 70px;
+      background: #f4f7f8;
+    }
+
+    .team-section .container,
+    .cta .container {
+      padding-left: 28px;
+      padding-right: 28px;
+    }
+
+    .team-section-header {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+
+    .team-section-header h2 {
+      font-size: clamp(28px, 3.6vw, 44px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--dark);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: minmax(220px, 260px);
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .team-card {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      background: #fff;
+      transition: 0.3s ease;
+    }
+
+    .team-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .team-image-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+    }
+
+    .team-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .team-overlay {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 20px 12px 12px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      color: #fff;
+    }
+
+    .team-overlay h3 {
+      font-size: 16px;
+      margin: 0;
+      font-weight: 800;
+      text-transform: capitalize;
+    }
+
+    .team-role {
+      font-size: 12px;
+      margin: 0;
+    }
+
+    .team-exp {
+      font-size: 11px;
+      color: #f97316;
+      font-weight: 600;
+    }
+
+    /* CTA */
+    .cta {
+      padding: 0 0 88px;
+      background: var(--light);
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, rgba(31,34,48,0.96), rgba(31,34,48,0.86));
+      color: #fff;
+      border-radius: 28px;
+      padding: 42px 32px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-box h2 {
+      font-size: clamp(1.9rem, 3.6vw, 3rem);
+      line-height: 1.12;
+      margin-bottom: 14px;
+      font-weight: 900;
+    }
+
+    .cta-box p {
+      max-width: 760px;
+      margin: 0 auto 24px;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.8;
+      font-size: 0.98rem;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--primary);
+      color: #fff;
+      padding: 48px 0 22px;
+    }
+
+    .footer-logo img {
+      width: 132px;
+      height: auto;
+      display: block;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: minmax(120px, 0.7fr) minmax(260px, 1.35fr) minmax(150px, 1fr) minmax(170px, 1fr);
+      gap: 26px 22px;
+      align-items: start;
+    }
+
+    .footer-heading {
+      font-size: 0.82rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .footer-contact p {
+      line-height: 1.65;
+      color: #fff;
+      max-width: 340px;
+      margin: 0;
+      font-size: 0.94rem;
+    }
+
+    .footer-links,
+    .footer-meta {
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer a {
+      color: #fff;
+      font-size: 0.94rem;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .footer-bottom {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 36px;
+      padding: 18px 52px 0 0;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      min-height: 48px;
+    }
+
+    .footer-legal {
+      margin: 0;
+      text-align: center;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      color: #fff;
+      max-width: min(100%, 920px);
+    }
+
+    .footer-back-top {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--dark);
+      color: #fff !important;
+      display: grid;
+      place-items: center;
+      font-size: 1rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .usp-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .team-grid {
+        grid-template-columns: minmax(220px, 260px);
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .top-navbar .container {
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .top-navbar-inner {
+        display: grid;
+        grid-template-columns: 42px 1fr 42px;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .top-brand {
+        grid-column: 2;
+        justify-self: center;
+      }
+
+      .top-brand img {
+        height: 58px;
+      }
+
+      .top-login-mobile {
+        display: inline-flex;
+        grid-column: 1;
+        justify-self: start;
+      }
+
+      .top-menu-toggle {
+        display: inline-grid;
+        place-items: center;
+        grid-column: 3;
+        justify-self: end;
+      }
+
+      .top-nav-collapse {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding: 14px;
+        background: #fff;
+        box-shadow: 0 12px 30px rgba(17, 24, 39, 0.08);
+        z-index: 1200;
+      }
+
+      .top-navbar.open .top-nav-collapse {
+        display: flex;
+      }
+
+      .top-nav-links {
+        gap: 4px;
+        font-size: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        position: static;
+        transform: none;
+      }
+
+      .top-nav-links a {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 10px;
+      }
+
+      .top-nav-right {
+        width: 100%;
+        justify-content: flex-start;
+        border-top: 1px solid #eef1f5;
+        padding-top: 10px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
+
+      .top-nav-right .login-link {
+        display: none;
+      }
+
+      .top-nav-right .book-btn-small,
+      .top-nav-right .cart-link {
+        width: 100%;
+        min-height: 48px;
+        border-radius: 999px;
+        background: var(--primary);
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.95rem;
+        font-weight: 700;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .hero h1 {
+        font-size: clamp(1.7rem, 7vw, 2.35rem);
+      }
+
+      .team-section .container,
+      .cta .container {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .details,
+      .cta {
+        padding-top: 64px;
+        padding-bottom: 64px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 26px;
+      }
+
+      .usp-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .team-grid {
+        grid-template-columns: minmax(220px, 260px);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .top-navbar-inner {
+        min-height: 74px;
+        padding-left: 4px;
+        padding-right: 4px;
+      }
+
+      .top-brand img {
+        height: 44px;
+      }
+
+      .top-login-mobile,
+      .top-menu-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+      }
+
+      .section-text,
+      .detail-list li,
+      .cta-box p {
+        font-size: 0.92rem;
+      }
+
+      .usp-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .team-grid {
+        grid-template-columns: minmax(220px, 260px);
+        gap: 12px;
+      }
+
+      .team-image-wrap {
+        height: 220px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        padding-right: 0;
+        padding-top: 20px;
+        gap: 14px;
+      }
+
+      .footer-back-top {
+        position: static;
+        transform: none;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+
+<body class="loading" id="home">
+  <div class="page-loader" id="pageLoader" aria-label="Loading">
+    <div class="page-loader-inner">
+      <div class="loader-orbit">
+        <span class="loader-ring"></span>
+        <span class="loader-ring secondary"></span>
+        <img class="page-loader-logo" src="image/logo.png" alt="PREHAB DigiCare Loading Logo" />
+      </div>
+      <p class="loader-text">Preparing your care journey</p>
+    </div>
+  </div>
+
+  <header class="sticky top-0 z-[1100] border-b border-[#efefef] bg-white">
+    <div class="mx-auto w-[94%] max-w-[1320px]">
+      <div class="relative flex min-h-[84px] items-center justify-between gap-6 py-2">
+        <a href="index.html" class="flex shrink-0 items-center whitespace-nowrap">
+          <img src="image/logo.png" alt="PREHAB DigiCare" class="h-[54px] w-auto block" />
+        </a>
+
+        <nav
+          class="absolute left-1/2 hidden -translate-x-1/2 items-center gap-5 whitespace-nowrap text-[0.82rem] font-medium text-dark xl:flex">
+          <a href="index.html" class="transition hover:text-primary">Home</a>
+          <div class="relative group">
+            <button type="button" class="flex items-center gap-1 transition hover:text-primary focus:outline-none">
+              Services
+              <i class="fa-solid fa-chevron-down text-[0.6rem]"></i>
+            </button>
+            <div
+              class="invisible absolute left-0 top-full z-[1300] min-w-[220px] rounded-lg border border-slate-100 bg-white p-2 opacity-0 shadow-lg transition duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              <a href="physiotharapy.html" class="block rounded-md px-3 py-2 text-[0.82rem] hover:bg-[#fff7f2]">Physical Therapy</a>
+              <a href="nutrition.html" class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] hover:bg-[#fff7f2]">Nutrition</a>
+              <a href="fitness-training.html" class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] hover:bg-[#fff7f2]">Fitness Training</a>
+              <a href="corporate-wellness.html" class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] hover:bg-[#fff7f2]">Corporate Wellness</a>
+            </div>
+          </div>
+          <a href="https://www.prehabclinics.com/category/all-products" class="transition hover:text-primary">Store</a>
+          <a href="https://www.prehabclinics.com/blog" class="transition hover:text-primary">Blog</a>
+          <a href="https://www.prehabclinics.com/about" class="transition hover:text-primary">About</a>
+          <a href="https://www.prehabclinics.com/contact" class="transition hover:text-primary">Contact</a>
+          <a href="https://www.prehabclinics.com/gallery" class="transition hover:text-primary">Gallery</a>
+          <a href="https://www.prehabclinics.com/careers" class="transition hover:text-primary">Careers</a>
+          <div class="relative group">
+            <button type="button" class="flex items-center gap-1 transition hover:text-primary focus:outline-none">
+              Courses
+              <i class="fa-solid fa-chevron-down text-[0.6rem]"></i>
+            </button>
+            <div
+              class="invisible absolute right-0 top-full z-[1300] min-w-[220px] rounded-lg border border-slate-100 bg-white p-2 opacity-0 shadow-lg transition duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              <a href="https://www.prehabclinics.com/course" class="block rounded-md px-3 py-2 text-[0.82rem] hover:bg-[#fff7f2]">MSK &amp; Sports Physiotherapy</a>
+              <a href="https://www.prehabclinics.com/course-1" class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] hover:bg-[#fff7f2]">Strength and Conditioning</a>
+            </div>
+          </div>
+        </nav>
+
+        <div class="ml-auto flex items-center gap-3">
+          <a href="https://www.prehabclinics.com/contact"
+            class="hidden sm:grid h-[42px] w-[42px] place-items-center rounded-full border border-primary bg-white text-primary transition hover:bg-[#fff7f2]">
+            <i class="fa-solid fa-user text-[1.02rem]"></i>
+          </a>
+
+          <button id="header-book-btn" type="button"
+            class="hidden md:inline-block rounded-full bg-primary px-6 py-[12px] text-[0.9rem] font-bold text-white shadow-[0_6px_16px_rgba(254,107,9,0.25)] transition hover:-translate-y-[1px]">
+            Book Appointment
+          </button>
+
+          <a href="https://www.prehabclinics.com/cart-page"
+            class="hidden sm:grid h-[42px] w-[42px] place-items-center rounded-full bg-primary text-white">
+            <i class="fa-solid fa-bag-shopping text-[0.85rem]"></i>
+          </a>
+
+          <button id="menu-btn"
+            class="xl:hidden ml-1 grid h-[42px] w-[42px] place-items-center rounded-full border border-gray-300 text-dark">
+            <i class="fa-solid fa-bars text-lg"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div id="mobile-menu" class="hidden fixed inset-0 z-[1200] bg-white px-6 py-6 overflow-y-auto xl:hidden">
+    <div class="mb-8 flex items-center justify-between border-b border-slate-200 pb-4">
+      <a href="index.html" class="flex items-center">
+        <img src="image/logo.png" alt="PREHAB DigiCare" class="h-[48px] w-auto" />
+      </a>
+      <button id="close-menu"
+        class="grid h-[42px] w-[42px] place-items-center rounded-full border border-gray-300 text-dark">
+        <i class="fa-solid fa-xmark text-xl"></i>
+      </button>
+    </div>
+
+    <div class="flex flex-col gap-5 text-[1rem] font-semibold text-dark">
+      <a href="index.html" class="border-b border-slate-100 pb-3">Home</a>
+      <details class="border-b border-slate-100 pb-3">
+        <summary class="flex cursor-pointer list-none items-center justify-between">Services
+          <i class="fa-solid fa-chevron-down text-[0.7rem]"></i>
+        </summary>
+        <div class="mt-3 flex flex-col gap-2 pl-3 text-[0.95rem] font-medium">
+          <a href="physiotharapy.html">Physical Therapy</a>
+          <a href="nutrition.html">Nutrition</a>
+          <a href="fitness-training.html">Fitness Training</a>
+          <a href="corporate-wellness.html">Corporate Wellness</a>
+        </div>
+      </details>
+      <a href="https://www.prehabclinics.com/category/all-products" class="border-b border-slate-100 pb-3">Store</a>
+      <a href="https://www.prehabclinics.com/blog" class="border-b border-slate-100 pb-3">Blog</a>
+      <a href="https://www.prehabclinics.com/about" class="border-b border-slate-100 pb-3">About</a>
+      <a href="https://www.prehabclinics.com/contact" class="border-b border-slate-100 pb-3">Contact</a>
+      <a href="https://www.prehabclinics.com/gallery" class="border-b border-slate-100 pb-3">Gallery</a>
+      <a href="https://www.prehabclinics.com/careers" class="border-b border-slate-100 pb-3">Careers</a>
+      <details class="border-b border-slate-100 pb-3">
+        <summary class="flex cursor-pointer list-none items-center justify-between">Courses
+          <i class="fa-solid fa-chevron-down text-[0.7rem]"></i>
+        </summary>
+        <div class="mt-3 flex flex-col gap-2 pl-3 text-[0.95rem] font-medium">
+          <a href="https://www.prehabclinics.com/course">MSK &amp; Sports Physiotherapy</a>
+          <a href="https://www.prehabclinics.com/course-1">Strength and Conditioning</a>
+        </div>
+      </details>
+    </div>
+
+    <div class="mt-8 flex flex-col gap-3">
+      <button id="mobile-book-btn" type="button"
+        class="inline-flex min-h-[50px] items-center justify-center rounded-full bg-primary px-6 text-[0.95rem] font-bold text-white">
+        Book Appointment
+      </button>
+      <a href="tel:+918867205650"
+        class="inline-flex min-h-[50px] items-center justify-center rounded-full border border-primary px-6 text-[0.95rem] font-bold text-primary">
+        Call Now
+      </a>
+    </div>
+  </div>
+
+  <div id="appointment-modal" class="fixed inset-0 z-[1400] hidden">
+    <div id="appointment-modal-backdrop" class="absolute inset-0 bg-slate-950/70 backdrop-blur-[2px]"></div>
+    <div class="relative mx-auto flex min-h-full w-full items-center px-3 py-6 sm:max-w-[560px] sm:px-4 sm:py-8">
+      <div class="w-full max-h-[92dvh] overflow-y-auto rounded-2xl border border-white/70 bg-white p-4 shadow-2xl sm:p-7">
+        <div
+          class="sticky top-0 z-10 -mx-4 mb-5 border-b border-slate-100 bg-white/95 px-4 pb-3 pt-1 backdrop-blur sm:static sm:m-0 sm:mb-5 sm:border-0 sm:bg-transparent sm:px-0 sm:pb-0 sm:pt-0">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-[0.72rem] font-bold uppercase tracking-[0.12em] text-primary">PREHAB DigiCare</p>
+              <h3 class="mt-1 text-[1.35rem] font-extrabold leading-tight text-[#062332]">Book Appointment</h3>
+              <p class="mt-1 text-[0.86rem] text-slate-500">Get a call back from our expert team.</p>
+            </div>
+            <button id="appointment-modal-close" type="button"
+              class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-slate-200 text-slate-600 transition hover:bg-slate-100">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+
+        <form id="appointment-form" class="space-y-3 sm:space-y-4">
+          <div>
+            <label for="popup-name" class="mb-1.5 block text-[0.85rem] font-semibold text-slate-700">Full Name</label>
+            <div class="relative">
+              <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+              <input id="popup-name" name="name" type="text" required placeholder="Enter your full name"
+                class="w-full rounded-xl border border-slate-300 bg-slate-50/40 py-3.5 pl-10 pr-4 text-[0.95rem] outline-none transition focus:border-primary focus:bg-white" />
+            </div>
+          </div>
+
+          <div>
+            <label for="popup-phone" class="mb-1.5 block text-[0.85rem] font-semibold text-slate-700">Phone Number</label>
+            <div class="relative">
+              <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+              <input id="popup-phone" name="phone" type="tel" required placeholder="Enter your phone number"
+                class="w-full rounded-xl border border-slate-300 bg-slate-50/40 py-3.5 pl-10 pr-4 text-[0.95rem] outline-none transition focus:border-primary focus:bg-white" />
+            </div>
+          </div>
+
+          <div>
+            <label for="popup-email" class="mb-1.5 block text-[0.85rem] font-semibold text-slate-700">Email (Optional)</label>
+            <div class="relative">
+              <i class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+              <input id="popup-email" name="email" type="email" placeholder="Enter your email"
+                class="w-full rounded-xl border border-slate-300 bg-slate-50/40 py-3.5 pl-10 pr-4 text-[0.95rem] outline-none transition focus:border-primary focus:bg-white" />
+            </div>
+          </div>
+          <p id="appointment-form-message" class="hidden text-[0.84rem] font-medium"></p>
+
+          <div class="sticky bottom-0 -mx-4 mt-4 border-t border-slate-100 bg-white px-4 pb-1 pt-3 sm:static sm:m-0 sm:border-0 sm:px-0 sm:pb-0 sm:pt-0">
+            <button id="appointment-submit-btn" type="submit"
+              class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-[1rem] font-bold text-white shadow-[0_10px_24px_rgba(254,107,9,0.3)] transition hover:bg-primaryDark">
+              Submit Request
+              <i class="fa-solid fa-arrow-right text-[0.85rem]"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="complimentary-modal" class="fixed inset-0 z-[1400] hidden">
+    <div id="complimentary-modal-backdrop" class="absolute inset-0 bg-slate-950/70 backdrop-blur-[2px]"></div>
+    <div class="relative mx-auto flex min-h-full w-full items-center px-3 py-6 sm:max-w-[560px] sm:px-4 sm:py-8">
+      <div class="w-full max-h-[92dvh] overflow-y-auto rounded-2xl border border-white/70 bg-white p-4 shadow-2xl sm:p-7">
+        <div
+          class="sticky top-0 z-10 -mx-4 mb-5 border-b border-slate-100 bg-white/95 px-4 pb-3 pt-1 backdrop-blur sm:static sm:m-0 sm:mb-5 sm:border-0 sm:bg-transparent sm:px-0 sm:pb-0 sm:pt-0">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-[0.72rem] font-bold uppercase tracking-[0.12em] text-primary">PREHAB DigiCare</p>
+              <h3 class="mt-1 text-[1.35rem] font-extrabold leading-tight text-[#062332]">Book your first <span class="text-primary">complimentary</span> appointment now</h3>
+              <p class="mt-1 text-[0.86rem] text-slate-500">Share your details and our expert team will call you back.</p>
+            </div>
+            <button id="complimentary-modal-close" type="button"
+              class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-slate-200 text-slate-600 transition hover:bg-slate-100">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+
+        <form id="complimentary-form" class="space-y-3 sm:space-y-4">
+          <div>
+            <label for="complimentary-name" class="mb-1.5 block text-[0.85rem] font-semibold text-slate-700">Full Name</label>
+            <div class="relative">
+              <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+              <input id="complimentary-name" name="name" type="text" required placeholder="Enter your full name"
+                class="w-full rounded-xl border border-slate-300 bg-slate-50/40 py-3.5 pl-10 pr-4 text-[0.95rem] outline-none transition focus:border-primary focus:bg-white" />
+            </div>
+          </div>
+
+          <div>
+            <label for="complimentary-phone" class="mb-1.5 block text-[0.85rem] font-semibold text-slate-700">Phone Number</label>
+            <div class="relative">
+              <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+              <input id="complimentary-phone" name="phone" type="tel" required placeholder="Enter your phone number"
+                class="w-full rounded-xl border border-slate-300 bg-slate-50/40 py-3.5 pl-10 pr-4 text-[0.95rem] outline-none transition focus:border-primary focus:bg-white" />
+            </div>
+          </div>
+
+          <div>
+            <label for="complimentary-email" class="mb-1.5 block text-[0.85rem] font-semibold text-slate-700">Email (Optional)</label>
+            <div class="relative">
+              <i class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+              <input id="complimentary-email" name="email" type="email" placeholder="Enter your email"
+                class="w-full rounded-xl border border-slate-300 bg-slate-50/40 py-3.5 pl-10 pr-4 text-[0.95rem] outline-none transition focus:border-primary focus:bg-white" />
+            </div>
+          </div>
+
+          <div class="sticky bottom-0 -mx-4 mt-4 border-t border-slate-100 bg-white px-4 pb-1 pt-3 sm:static sm:m-0 sm:border-0 sm:px-0 sm:pb-0 sm:pt-0">
+            <button id="complimentary-submit-btn" type="submit"
+              class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-[1rem] font-bold text-white shadow-[0_10px_24px_rgba(254,107,9,0.3)] transition hover:bg-primaryDark">
+              Submit Request
+              <i class="fa-solid fa-arrow-right text-[0.85rem]"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="badge">
+          <i class="fa-solid fa-heart-pulse"></i>
+          Nutrition
+        </div>
+
+        <h1 class="hero-title">
+          <span>Fuel your body. Balance your health.</span>
+          <span>Transform your lifestyle.</span>
+        </h1>
+
+        <div class="hero-buttons">
+          <a href="index.html#contact" class="btn book-slot-btn">Book Your Slot</a>
+          <a href="#details" class="btn-outline">View Complete Details</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="details" id="details">
+    <div class="mx-auto w-full max-w-[1280px] px-5">
+
+      <div class="details-header">
+        <h2 class="section-title">
+          Consult with<br> <span class="accent-orange">experienced nutritionist</span> for...
+        </h2>
+
+      </div>
+
+      <div class="conditions-grid">
+        <div class="condition-card">
+          <img src="./image/weight management.jpg" alt="Weight management nutrition" />
+          <div class="condition-overlay"></div>
+          <div class="condition-content">
+            <h4>Weight Management</h4>
+            <p>Structured nutrition for healthy fat loss and body recomposition.</p>
+          </div>
+        </div>
+
+
+        <div class="condition-card">
+          <img src="./image/micronutrient deficiency.jpg" alt="Micronutrient-rich diet" />
+          <div class="condition-overlay"></div>
+          <div class="condition-content">
+            <h4>Micronutrient Deficiency Support</h4>
+            <p>Improve vitamin and mineral intake with targeted food guidance.</p>
+          </div>
+        </div>
+
+        <div class="condition-card">
+          <img src="./image/Sports nutrition.jpg" alt="Sports nutrition meals" />
+          <div class="condition-overlay"></div>
+          <div class="condition-content">
+            <h4>Sports Nutrition</h4>
+            <p>Fueling plans to improve performance, stamina, and recovery.</p>
+          </div>
+        </div>
+
+        <div class="condition-card">
+          <img src="./image/Hormone health.png" alt="PCOS and hormonal health nutrition" />
+          <div class="condition-overlay"></div>
+          <div class="condition-content">
+            <h4>Hormonal Health Nutrition</h4>
+            <p>Diet support for PCOS, thyroid balance, and cycle wellness.</p>
+          </div>
+        </div>
+
+        <div class="condition-card">
+          <img src="./image/gut health.jpg" alt="Gut-friendly foods" />
+          <div class="condition-overlay"></div>
+          <div class="condition-content">
+            <h4>Gut Health</h4>
+            <p>Meal recommendations for digestion, bloating, and gut comfort.</p>
+          </div>
+        </div>
+
+        <div class="condition-card">
+          <img src="./image/blood sugar management.jpg" alt="Diabetes-friendly nutrition plan" />
+          <div class="condition-overlay"></div>
+          <div class="condition-content">
+            <h4>Blood Sugar Management</h4>
+            <p>Smart carbohydrate planning for stable glucose and energy.</p>
+          </div>
+        </div>
+
+        <div class="condition-card">
+          <img src="./image/heart health.jpg" alt="Heart healthy diet" />
+          <div class="condition-overlay"></div>
+          <div class="condition-content">
+            <h4>Heart-Healthy Nutrition</h4>
+            <p>Food choices focused on better cholesterol and heart function.</p>
+          </div>
+        </div>
+
+        <div class="condition-card">
+          <img src="./image/Lifestyle coaching.jpg" alt="Lifestyle nutrition coaching" />
+          <div class="condition-overlay"></div>
+          <div class="condition-content">
+            <h4>Lifestyle Nutrition Coaching</h4>
+            <p>Sustainable habits for long-term health and daily consistency.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="usp-section">
+        <h3 class="usp-title">What We <span class="accent-orange">Provide</span></h3>
+
+        <div class="usp-grid">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-face">
+                <i class="fa-solid fa-user-check"></i>
+                <h4>1-on-1 Nutrition Consultation</h4>
+              </div>
+              <div class="flip-face flip-back">
+                <h4>1-on-1 Nutrition Consultation</h4>
+                <p>Dedicated sessions to understand your goals, food habits, lifestyle, and health requirements.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-face">
+                <i class="fa-solid fa-dumbbell"></i>
+                <h4>Personalized Meal Plan</h4>
+              </div>
+              <div class="flip-face flip-back">
+                <h4>Personalized Meal Plan</h4>
+                <p>Customized nutrition plans designed around your body, goals, schedule, and food preferences.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-face">
+                <i class="fa-solid fa-person-running"></i>
+                <h4>Lifestyle & Habit Coaching</h4>
+              </div>
+              <div class="flip-face flip-back">
+                <h4>Lifestyle & Habit Coaching</h4>
+                <p>Practical strategies to build sustainable food habits and long-term consistency.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-face">
+                <i class="fa-solid fa-chart-line"></i>
+                <h4>Progress Tracking</h4>
+              </div>
+              <div class="flip-face flip-back">
+                <h4>Progress Tracking</h4>
+                <p>Structured monitoring to keep your nutrition plan effective, measurable, and goal-oriented.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-face">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <h4>Ongoing Nutrition Support</h4>
+              </div>
+              <div class="flip-face flip-back">
+                <h4>Ongoing Nutrition Support</h4>
+                <p>Continuous expert guidance to improve energy, recovery, and overall wellbeing.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="team-section">
+    <div class="mx-auto w-full max-w-[1280px] px-5">
+      <div class="team-section-header">
+        <h2><span class="accent-orange">Meet your nutrition</span> care team</h2>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-image-wrap">
+            <img src="image/n1.jpeg" alt="Dr. Arun Kumar Rawal">
+            <div class="team-overlay">
+              <h3>Harshavardhini</h3>
+              <p class="team-role">Clinical and Sports Nutritionist</p>
+              <span class="team-exp">Experience: 3 years</span>
+            </div>
+          </div>
+        </div>
+
+       
+
+        
+
+       
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="mx-auto w-full max-w-[1280px] px-5">
+      <div class="cta-box">
+        <h2>Start your transformation with <span class="accent-orange">expert nutrition guidance</span></h2>
+       
+        <a href="index.html#contact" class="btn cta-book-btn">Book Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="free-handouts" class="py-14 bg-[linear-gradient(180deg,#fafafa_0%,#fff8f3_100%)]">
+    <div class="max-w-[1200px] mx-auto px-5">
+      <div class="text-center mb-8">
+        <h2 class="text-[1.85rem] md:text-[2.2rem] font-extrabold text-[#062332]">
+          Free <span class="text-[#FE6B09]">health guides</span>
+        </h2>
+        <p class="mt-2 text-[0.92rem] text-slate-600">
+          Explore three practical guides to support your recovery, fitness, and daily wellness.
+        </p>
+      </div>
+
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <article class="flex flex-col items-center text-center">
+          <div class="flex justify-center">
+            <img src="assests/books/Medical%20Nutrition%20Therapy.jpeg" alt="Medical Nutrition Therapy in Musculoskeletal and Post Rehabilitation"
+              class="max-h-[260px] w-auto h-auto rounded-lg object-contain shadow-[0_10px_24px_rgba(15,23,42,0.16)]" />
+          </div>
+          <h3 class="mt-3 text-[1.02rem] leading-snug font-extrabold text-[#0F172A]">Medical Nutrition Therapy</h3>
+          <a href="#"
+            class="free-copy-btn mt-4 inline-flex min-h-[40px] items-center justify-center rounded-full bg-[#FE6B09] px-4 text-[0.84rem] font-bold text-white transition hover:bg-[#db5a00]"
+            data-title="Medical Nutrition Therapy" data-download="assests/books/copies/Medical%20Nutrition%20Therapy.pdf">
+            Get Free Copy
+          </a>
+        </article>
+
+        <article class="flex flex-col items-center text-center">
+          <div class="flex justify-center">
+            <img src="assests/books/Pilates%20%26%20Your%20Health.jpg.jpeg" alt="Pilates and Your Health"
+              class="max-h-[260px] w-auto h-auto rounded-lg object-contain shadow-[0_10px_24px_rgba(15,23,42,0.16)]" />
+          </div>
+          <h3 class="mt-3 text-[1.02rem] leading-snug font-extrabold text-[#0F172A]">Pilates &amp; Your Health</h3>
+          <a href="#"
+            class="free-copy-btn mt-4 inline-flex min-h-[40px] items-center justify-center rounded-full bg-[#FE6B09] px-4 text-[0.84rem] font-bold text-white transition hover:bg-[#db5a00]"
+            data-title="Pilates &amp; Your Health" data-download="assests/books/copies/Pilates%20%26%20Your%20Health.pdf">
+            Get Free Copy
+          </a>
+        </article>
+
+        <article class="flex flex-col items-center text-center">
+          <div class="flex justify-center">
+            <img src="assests/books/Strength%20Training%20for%20Everybody%20-%20Myths%20and%20Facts.jpeg"
+              alt="Strength Training for Everybody - Myths and Facts" class="max-h-[260px] w-auto h-auto rounded-lg object-contain shadow-[0_10px_24px_rgba(15,23,42,0.16)]" />
+          </div>
+          <h3 class="mt-3 text-[1.02rem] leading-snug font-extrabold text-[#0F172A]">Strength Training for Everybody</h3>
+          <a href="#"
+            class="free-copy-btn mt-4 inline-flex min-h-[40px] items-center justify-center rounded-full bg-[#FE6B09] px-4 text-[0.84rem] font-bold text-white transition hover:bg-[#db5a00]"
+            data-title="Strength Training for Everybody" data-download="assests/books/copies/Strength%20Training%20for%20Everybody%20-%20Myths%20and%20Facts.pdf">
+            Get Free Copy
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-[#FE6B09] text-white pt-14 pb-6">
+    <div class="max-w-[1200px] mx-auto px-5">
+
+      <!-- GRID -->
+      <div class="grid grid-cols-1 gap-y-8 gap-x-5 sm:grid-cols-2 lg:grid-cols-[140px_1.45fr_1fr_1fr] items-start">
+
+        <!-- LOGO -->
+        <div class="flex justify-center lg:justify-start">
+          <img
+            src="https://static.wixstatic.com/media/377b16_10d7d5bf2d244f48ae237939ccd14569~mv2.png/v1/fill/w_509,h_509,al_c,lg_1,q_85,enc_avif,quality_auto/Asset%2096_100x.png"
+            alt="PREHAB Footer Logo" class="w-32 h-32 object-contain" />
+        </div>
+
+        <!-- CONTACT -->
+        <div>
+          <h4 class="text-[0.95rem] font-bold tracking-wide mb-3 uppercase">
+            Contact
+          </h4>
+          <p class="text-[0.9rem] leading-[1.7] text-white/90">
+            2934, Triveni Arcade, Second Floor,<br>
+            2nd Stage D Block,<br>
+            Mahakavi Kuvempu Rd,<br>
+            Rajajinagar,<br>
+            Bengaluru, Karnataka 560010<br>
+            Landmark Mahakavi Kuvempu<br>
+            Metro Station
+          </p>
+        </div>
+
+        <!-- LINKS -->
+        <div>
+          <h4 class="text-[0.95rem] font-bold tracking-wide mb-3 uppercase">
+            Links
+          </h4>
+          <div class="flex flex-col gap-2 text-[0.9rem] text-white/90">
+            <a href="#home" class="hover:underline">Home</a>
+            <a href="#about" class="hover:underline">About</a>
+            <a href="#contact" class="hover:underline">Contact</a>
+            <a href="#careers" class="hover:underline">Careers</a>
+          </div>
+        </div>
+
+        <!-- POLICIES -->
+        <div>
+          <h4 class="text-[0.95rem] font-bold tracking-wide mb-3 uppercase">
+            Policies
+          </h4>
+          <div class="flex flex-col gap-2 text-[0.9rem] text-white/90">
+            <a href="#" class="hover:underline">Privacy Policy</a>
+            <a href="#" class="hover:underline">Terms and Conditions</a>
+            <a href="#" class="hover:underline">Accessibility Statement</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- DIVIDER -->
+      <div class="mt-10 border-t border-white/30 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+
+        <!-- LEGAL -->
+        <p class="text-[0.8rem] text-white/90 text-center md:text-left">
+          SARVFIT Healthcare Pvt Ltd | CIN U86900KA2024PTC190092 | GSTIN 29ABNCS7588L1Z3
+        </p>
+
+        <!-- BACK TO TOP -->
+        <a href="#home"
+          class="w-10 h-10 flex items-center justify-center rounded-full bg-[#0F172A] text-white shadow-lg hover:scale-105 transition">
+          ↑
+        </a>
+
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    const APPOINTMENT_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzb35JZyVIgSC-fSxDTz53eryyX9YprGTDpFiG_0DWCnIpk8cJjaLhr9rLzl1eDyfBuKA/exec";
+
+    const pageLoader = document.getElementById("pageLoader");
+    const menuBtn = document.getElementById("menu-btn");
+    const closeBtn = document.getElementById("close-menu");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileLinks = document.querySelectorAll("#mobile-menu a");
+    const headerBookBtn = document.getElementById("header-book-btn");
+    const mobileBookBtn = document.getElementById("mobile-book-btn");
+    const bookSlotButtons = document.querySelectorAll(".book-slot-btn, .cta-book-btn");
+    const appointmentModal = document.getElementById("appointment-modal");
+    const appointmentModalClose = document.getElementById("appointment-modal-close");
+    const appointmentModalBackdrop = document.getElementById("appointment-modal-backdrop");
+    const appointmentForm = document.getElementById("appointment-form");
+    const appointmentFormMessage = document.getElementById("appointment-form-message");
+    const appointmentSubmitBtn = document.getElementById("appointment-submit-btn");
+    const complimentaryModal = document.getElementById("complimentary-modal");
+    const complimentaryModalClose = document.getElementById("complimentary-modal-close");
+    const complimentaryModalBackdrop = document.getElementById("complimentary-modal-backdrop");
+    const complimentaryForm = document.getElementById("complimentary-form");
+    const complimentarySubmitBtn = document.getElementById("complimentary-submit-btn");
+    const COMPLIMENTARY_SUBMITTED_KEY = "complimentaryAppointmentSubmitted";
+    const freeCopyButtons = document.querySelectorAll(".free-copy-btn");
+    const freeCopyModal = document.getElementById("free-copy-modal");
+    const freeCopyModalBackdrop = document.getElementById("free-copy-modal-backdrop");
+    const freeCopyModalClose = document.getElementById("free-copy-modal-close");
+    const freeCopyForm = document.getElementById("free-copy-form");
+    const freeCopySubmitBtn = document.getElementById("free-copy-submit-btn");
+    const freeCopyFormMessage = document.getElementById("free-copy-form-message");
+    const freeCopyModalTitle = document.getElementById("free-copy-modal-title");
+    const freeCopyFileInput = document.getElementById("free-copy-file");
+    const freeCopyGuideNameInput = document.getElementById("free-copy-guide-name");
+
+    const getIstTimestamp = () => new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Asia/Kolkata",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false
+    }).format(new Date());
+
+    window.addEventListener("load", () => {
+      if (pageLoader) {
+        pageLoader.classList.add("hidden");
+      }
+      document.body.classList.remove("loading");
+    });
+
+    const syncBodyScrollLock = () => {
+      const isMobileMenuOpen = mobileMenu && !mobileMenu.classList.contains("hidden");
+      const isModalOpen = appointmentModal && !appointmentModal.classList.contains("hidden");
+      const isFreeCopyModalOpen = freeCopyModal && !freeCopyModal.classList.contains("hidden");
+      const isComplimentaryModalOpen = complimentaryModal && !complimentaryModal.classList.contains("hidden");
+      document.body.classList.toggle("overflow-hidden", isMobileMenuOpen || isModalOpen || isFreeCopyModalOpen || isComplimentaryModalOpen);
+    };
+
+    const postToSheet = async ({ name, phone, email, service, message }) => {
+      const payload = new URLSearchParams();
+      payload.append("Tmesatmp", getIstTimestamp());
+      payload.append("Name", String(name || "").trim());
+      payload.append("Phone", String(phone || "").trim());
+      payload.append("Email", String(email || "").trim());
+      payload.append("Service", String(service || "").trim());
+      payload.append("Message", String(message || "").trim());
+
+      const response = await fetch(APPOINTMENT_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+        body: payload.toString()
+      });
+
+      if (!response.ok) throw new Error("Request failed");
+      let result = {};
+      try { result = await response.json(); } catch { result = { result: "success" }; }
+      if (result.result !== "success") throw new Error(result.error || "Unable to submit");
+    };
+
+    if (menuBtn && closeBtn && mobileMenu) {
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.remove("hidden");
+        syncBodyScrollLock();
+      });
+
+      closeBtn.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        syncBodyScrollLock();
+      });
+
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          syncBodyScrollLock();
+        });
+      });
+    }
+
+    if (appointmentModal) {
+      const openAppointmentModal = () => {
+        appointmentModal.classList.remove("hidden");
+        syncBodyScrollLock();
+      };
+
+      const closeAppointmentModal = () => {
+        appointmentModal.classList.add("hidden");
+        syncBodyScrollLock();
+      };
+
+      if (headerBookBtn) {
+        headerBookBtn.addEventListener("click", openAppointmentModal);
+      }
+
+      if (mobileBookBtn) {
+        mobileBookBtn.addEventListener("click", () => {
+          if (mobileMenu) {
+            mobileMenu.classList.add("hidden");
+          }
+          openAppointmentModal();
+        });
+      }
+
+      if (bookSlotButtons.length) {
+        bookSlotButtons.forEach((button) => {
+          button.addEventListener("click", (event) => {
+            event.preventDefault();
+            openAppointmentModal();
+          });
+        });
+      }
+
+      if (appointmentModalClose) {
+        appointmentModalClose.addEventListener("click", closeAppointmentModal);
+      }
+
+      if (appointmentModalBackdrop) {
+        appointmentModalBackdrop.addEventListener("click", closeAppointmentModal);
+      }
+
+      if (appointmentForm && appointmentSubmitBtn) {
+        appointmentForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          if (appointmentFormMessage) {
+            appointmentFormMessage.classList.add("hidden");
+            appointmentFormMessage.classList.remove("text-red-600", "text-green-600", "text-primary");
+          }
+
+          appointmentSubmitBtn.disabled = true;
+          appointmentSubmitBtn.classList.add("opacity-70", "cursor-not-allowed");
+          appointmentSubmitBtn.innerHTML = 'Submitting... <i class="fa-solid fa-spinner fa-spin text-[0.85rem]"></i>';
+
+          if (window.Swal) {
+            Swal.fire({
+              title: "Submitting...",
+              text: "Please wait while we save your details.",
+              allowOutsideClick: false,
+              allowEscapeKey: false,
+              didOpen: () => Swal.showLoading()
+            });
+          }
+
+          try {
+            const formData = new FormData(appointmentForm);
+            await postToSheet({
+              name: formData.get("name"),
+              phone: formData.get("phone"),
+              email: formData.get("email"),
+              service: "General Appointment",
+              message: "Submitted from popup form"
+            });
+
+            appointmentForm.reset();
+            closeAppointmentModal();
+
+            if (window.Swal) {
+              Swal.close();
+              Swal.fire({
+                icon: "success",
+                title: "Submitted!",
+                text: "Your appointment request has been submitted successfully.",
+                confirmButtonColor: "#FE6B09"
+              });
+            }
+          } catch (error) {
+            if (window.Swal) {
+              Swal.close();
+              Swal.fire({
+                icon: "error",
+                title: "Submission failed",
+                text: "Please try again.",
+                confirmButtonColor: "#FE6B09"
+              });
+            }
+
+            if (appointmentFormMessage) {
+              appointmentFormMessage.textContent = "Submission failed. Please try again.";
+              appointmentFormMessage.classList.remove("hidden");
+              appointmentFormMessage.classList.add("text-red-600");
+            }
+          } finally {
+            appointmentSubmitBtn.disabled = false;
+            appointmentSubmitBtn.classList.remove("opacity-70", "cursor-not-allowed");
+            appointmentSubmitBtn.innerHTML = 'Submit Request <i class="fa-solid fa-arrow-right text-[0.85rem]"></i>';
+          }
+        });
+      }
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !appointmentModal.classList.contains("hidden")) {
+          closeAppointmentModal();
+        }
+      });
+    }
+
+    if (complimentaryModal && complimentaryForm && complimentarySubmitBtn) {
+      const hasSubmittedComplimentaryForm = () => sessionStorage.getItem(COMPLIMENTARY_SUBMITTED_KEY) === "true";
+      const openComplimentaryModal = () => {
+        if (hasSubmittedComplimentaryForm()) return;
+        complimentaryModal.classList.remove("hidden");
+        syncBodyScrollLock();
+      };
+      const closeComplimentaryModal = () => {
+        complimentaryModal.classList.add("hidden");
+        syncBodyScrollLock();
+      };
+      const isAnotherModalOpen = () => {
+        const isAppointmentOpen = appointmentModal && !appointmentModal.classList.contains("hidden");
+        const isFreeCopyOpen = freeCopyModal && !freeCopyModal.classList.contains("hidden");
+        return isAppointmentOpen || isFreeCopyOpen;
+      };
+
+      if (complimentaryModalClose) complimentaryModalClose.addEventListener("click", closeComplimentaryModal);
+      if (complimentaryModalBackdrop) complimentaryModalBackdrop.addEventListener("click", closeComplimentaryModal);
+
+      complimentaryForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        complimentarySubmitBtn.innerHTML = 'Submitting... <i class="fa-solid fa-spinner fa-spin text-[0.85rem]"></i>';
+        complimentarySubmitBtn.disabled = true;
+        complimentarySubmitBtn.classList.add("opacity-70", "cursor-not-allowed");
+
+        if (window.Swal) {
+          Swal.fire({
+            title: "Submitting...",
+            text: "Please wait while we submit your appointment request.",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            didOpen: () => Swal.showLoading()
+          });
+        }
+
+        try {
+          const formData = new FormData(complimentaryForm);
+          await postToSheet({
+            name: String(formData.get("name") || "").trim(),
+            phone: String(formData.get("phone") || "").trim(),
+            email: String(formData.get("email") || "").trim(),
+            service: "First Complimentary Appointment",
+            message: "Submitted from complimentary popup form"
+          });
+
+          sessionStorage.setItem(COMPLIMENTARY_SUBMITTED_KEY, "true");
+          complimentaryForm.reset();
+          closeComplimentaryModal();
+
+          if (window.Swal) {
+            Swal.close();
+            Swal.fire({
+              icon: "success",
+              title: "Submitted!",
+              text: "Your appointment request has been submitted successfully.",
+              confirmButtonColor: "#FE6B09"
+            });
+          }
+        } catch (error) {
+          if (window.Swal) {
+            Swal.close();
+            Swal.fire({
+              icon: "error",
+              title: "Submission failed",
+              text: "Could not submit your appointment request. Please try again.",
+              confirmButtonColor: "#FE6B09"
+            });
+          }
+        } finally {
+          complimentarySubmitBtn.disabled = false;
+          complimentarySubmitBtn.classList.remove("opacity-70", "cursor-not-allowed");
+          complimentarySubmitBtn.innerHTML = 'Submit Request <i class="fa-solid fa-arrow-right text-[0.85rem]"></i>';
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !complimentaryModal.classList.contains("hidden")) {
+          closeComplimentaryModal();
+        }
+      });
+
+      const popupIntervalMs = 15000;
+      setTimeout(() => {
+        if (!hasSubmittedComplimentaryForm() && !isAnotherModalOpen()) {
+          openComplimentaryModal();
+        }
+
+        setInterval(() => {
+          if (!hasSubmittedComplimentaryForm() && complimentaryModal.classList.contains("hidden") && !isAnotherModalOpen()) {
+            openComplimentaryModal();
+          }
+        }, popupIntervalMs);
+      }, popupIntervalMs);
+    }
+    if (freeCopyModal && freeCopyForm && freeCopySubmitBtn) {
+      const openFreeCopyModal = ({ title, file }) => {
+        if (freeCopyModalTitle) freeCopyModalTitle.textContent = `Get Free Copy - ${title}`;
+        if (freeCopyFileInput) freeCopyFileInput.value = file;
+        if (freeCopyGuideNameInput) freeCopyGuideNameInput.value = title;
+        if (freeCopyFormMessage) {
+          freeCopyFormMessage.classList.add("hidden");
+          freeCopyFormMessage.classList.remove("text-red-600", "text-green-600", "text-primary");
+        }
+        freeCopyModal.classList.remove("hidden");
+        syncBodyScrollLock();
+      };
+
+      const closeFreeCopyModal = () => {
+        freeCopyModal.classList.add("hidden");
+        syncBodyScrollLock();
+      };
+
+      if (freeCopyButtons.length) {
+        freeCopyButtons.forEach((button) => {
+          button.addEventListener("click", (event) => {
+            event.preventDefault();
+            openFreeCopyModal({
+              title: button.getAttribute("data-title") || "Health Guide",
+              file: button.getAttribute("data-download") || ""
+            });
+          });
+        });
+      }
+
+      if (freeCopyModalClose) freeCopyModalClose.addEventListener("click", closeFreeCopyModal);
+      if (freeCopyModalBackdrop) freeCopyModalBackdrop.addEventListener("click", closeFreeCopyModal);
+
+      freeCopyForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const defaultBtnHtml = 'Submit &amp; Download <i class="fa-solid fa-download text-[0.85rem]"></i>';
+        freeCopySubmitBtn.innerHTML = 'Submitting... <i class="fa-solid fa-spinner fa-spin text-[0.85rem]"></i>';
+        freeCopySubmitBtn.disabled = true;
+        freeCopySubmitBtn.classList.add("opacity-70", "cursor-not-allowed");
+
+        try {
+          const formData = new FormData(freeCopyForm);
+          const guideName = String(formData.get("guide_name") || "").trim();
+          const downloadFile = String(formData.get("download_file") || "").trim();
+
+          await postToSheet({
+            name: formData.get("name"),
+            phone: formData.get("phone"),
+            email: formData.get("email"),
+            service: `Free Handout - ${guideName || "Health Guide"}`,
+            message: `Requested free copy download: ${downloadFile || "N/A"}`
+          });
+
+          if (downloadFile) {
+            const downloadLink = document.createElement("a");
+            downloadLink.href = downloadFile;
+            const safeFileName = `${(guideName || "health-guide").replace(/[^\w\s-]/g, "").trim().replace(/\s+/g, "-") || "health-guide"}.pdf`;
+            downloadLink.download = safeFileName;
+            downloadLink.rel = "noopener";
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            downloadLink.remove();
+          }
+
+          freeCopyForm.reset();
+          closeFreeCopyModal();
+
+          if (window.Swal) {
+            Swal.fire({
+              icon: "success",
+              title: "Submitted!",
+              text: "Your details are saved and download has started.",
+              confirmButtonColor: "#FE6B09"
+            });
+          }
+        } catch (error) {
+          if (freeCopyFormMessage) {
+            freeCopyFormMessage.textContent = "Submission failed. Please try again.";
+            freeCopyFormMessage.classList.remove("hidden");
+            freeCopyFormMessage.classList.add("text-red-600");
+          }
+          if (window.Swal) {
+            Swal.fire({
+              icon: "error",
+              title: "Submission failed",
+              text: "Please try again.",
+              confirmButtonColor: "#FE6B09"
+            });
+          }
+        } finally {
+          freeCopySubmitBtn.disabled = false;
+          freeCopySubmitBtn.classList.remove("opacity-70", "cursor-not-allowed");
+          freeCopySubmitBtn.innerHTML = defaultBtnHtml;
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !freeCopyModal.classList.contains("hidden")) closeFreeCopyModal();
+      });
+    }
+  </script>
+</body>
+</html>

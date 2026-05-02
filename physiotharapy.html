@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PREHAB DigiCare | Physiotherapy</title>
+  <meta name="description"
+    content="Book online physiotherapy consultation with PREHAB DigiCare. Expert support for lower back pain, neck pain, knee pain, shoulder pain, sports injuries, arthritis, posture correction, and rehabilitation." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#FE6B09",
+            primaryDark: "#db5a00",
+            primarySoft: "#fff3eb",
+            dark: "#062332",
+            muted: "#6b7280",
+            lightBg: "#f7f7f9",
+            borderSoft: "#ececf1"
+          },
+          fontFamily: {
+            montserrat: ["Montserrat", "Arial", "Helvetica", "sans-serif"]
+          },
+          boxShadow: {
+            softxl: "0 10px 30px rgba(0, 0, 0, 0.08)",
+            card: "0 10px 26px rgba(17, 24, 39, 0.06)",
+            cardHover: "0 16px 30px rgba(17, 24, 39, 0.08)",
+            glow: "0 10px 30px rgba(0,0,0,0.08)"
+          },
+          keyframes: {
+            loaderPulse: {
+              "0%, 100%": { transform: "scale(1)", opacity: "0.9" },
+              "50%": { transform: "scale(1.06)", opacity: "1" }
+            }
+          },
+          animation: {
+            loaderPulse: "loaderPulse 1.1s ease-in-out infinite"
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body.loading {
+      overflow: hidden;
+    }
+
+    .swal2-container {
+      z-index: 1600 !important;
+    }
+
+    h1, h2, h3, h4 {
+      text-transform: lowercase;
+    }
+
+    h1::first-letter,
+    h2::first-letter,
+    h3::first-letter,
+    h4::first-letter {
+      text-transform: uppercase;
+    }
+
+    .page-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at 50% 30%, #fff6ef 0%, #ffffff 58%);
+      transition: opacity 0.45s ease, visibility 0.45s ease;
+    }
+
+    .page-loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .page-loader-inner {
+      display: grid;
+      place-items: center;
+      gap: 14px;
+    }
+
+    .loader-orbit {
+      position: relative;
+      width: 168px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+    }
+
+    .loader-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 999px;
+      border: 3px solid rgba(254, 107, 9, 0.18);
+      border-top-color: #FE6B09;
+      animation: loaderSpin 1.2s linear infinite;
+    }
+
+    .loader-ring.secondary {
+      inset: 14px;
+      border-width: 2px;
+      border-top-color: #0F172A;
+      border-right-color: rgba(15, 23, 42, 0.2);
+      animation-duration: 1.7s;
+      animation-direction: reverse;
+    }
+
+    .page-loader-logo {
+      width: 94px;
+      filter: drop-shadow(0 6px 16px rgba(254, 107, 9, 0.25));
+      animation: loaderPulse 1.25s ease-in-out infinite;
+    }
+
+    .loader-text {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #0F172A;
+      text-transform: uppercase;
+      opacity: 0.75;
+    }
+
+    @keyframes loaderSpin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes loaderPulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.07);
+      }
+    }
+
+    .flip-card {
+      perspective: 1000px;
+      min-height: 220px;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-face {
+      position: absolute;
+      inset: 0;
+      border: 1px solid #f0e7e2;
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: 0 10px 24px rgba(17, 24, 39, 0.05);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .flip-back {
+      transform: rotateY(180deg);
+    }
+
+    .team-section {
+      padding: 24px 0 70px;
+      background: #f4f7f8;
+    }
+
+    .team-section-header {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+
+    .team-section-header h2 {
+      font-size: clamp(28px, 3.6vw, 44px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #1f2230;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .team-card {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      background: #fff;
+      transition: 0.3s ease;
+    }
+
+    .team-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .team-image-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+    }
+
+    .team-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .team-overlay {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 20px 12px 12px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      color: #fff;
+    }
+
+    .team-overlay h3 {
+      font-size: 16px;
+      margin: 0;
+      font-weight: 800;
+      text-transform: capitalize;
+    }
+
+    .team-role {
+      font-size: 12px;
+      margin: 0;
+    }
+
+    .team-exp {
+      font-size: 11px;
+      color: #f97316;
+      font-weight: 600;
+    }
+
+    @media (max-width: 1100px) {
+      .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 767px) {
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .team-image-wrap {
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-[#fafafa] font-montserrat text-slate-600 antialiased overflow-x-hidden loading" id="home">
+
+  <!-- Loader -->
+  <div id="pageLoader" aria-label="Loading" class="page-loader">
+    <div class="page-loader-inner">
+      <div class="loader-orbit">
+        <span class="loader-ring"></span>
+        <span class="loader-ring secondary"></span>
+        <img class="page-loader-logo" src="image/logo.png" alt="PREHAB DigiCare Loading Logo" />
+      </div>
+      <p class="loader-text">Preparing your care journey</p>
+    </div>
+  </div>
+
+  <header class="sticky top-0 z-[1100] border-b border-[#efefef] bg-white">
+    <div class="mx-auto w-[94%] max-w-[1320px]">
+      <div class="relative flex min-h-[84px] items-center justify-between gap-6 py-2">
+        <a href="index.html" class="flex shrink-0 items-center whitespace-nowrap">
+          <img src="image/logo.png" alt="PREHAB DigiCare" class="h-[54px] w-auto block" />
+        </a>
+
+        <nav
+          class="absolute left-1/2 hidden -translate-x-1/2 items-center gap-5 whitespace-nowrap text-[0.82rem] font-medium text-dark xl:flex">
+          <a href="index.html" class="transition hover:text-primary">Home</a>
+          <div class="relative group">
+            <button type="button" class="flex items-center gap-1 transition hover:text-primary focus:outline-none">
+              Services
+              <i class="fa-solid fa-chevron-down text-[0.6rem]"></i>
+            </button>
+            <div
+              class="invisible absolute left-0 top-full z-[1300] min-w-[220px] rounded-lg border border-slate-100 bg-white p-2 opacity-0 shadow-lg transition duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              <a href="physiotharapy.html" class="block rounded-md px-3 py-2 text-[0.82rem] hover:bg-[#fff7f2]">Physical Therapy</a>
+              <a href="nutrition.html" class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] hover:bg-[#fff7f2]">Nutrition</a>
+              <a href="fitness-training.html" class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] hover:bg-[#fff7f2]">Fitness Training</a>
+              <a href="corporate-wellness.html" class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] hover:bg-[#fff7f2]">Corporate Wellness</a>
+            </div>
+          </div>
+          <a href="https://www.prehabclinics.com/category/all-products" class="transition hover:text-primary">Store</a>
+          <a href="https://www.prehabclinics.com/blog" class="transition hover:text-primary">Blog</a>
+          <a href="https://www.prehabclinics.com/about" class="transition hover:text-primary">About</a>
+          <a href="https://www.prehabclinics.com/contact" class="transition hover:text-primary">Contact</a>
+          <a href="https://www.prehabclinics.com/gallery" class="transition hover:text-primary">Gallery</a>
+          <a href="https://www.prehabclinics.com/careers" class="transition hover:text-primary">Careers</a>
+          <div class="relative group">
+            <button type="button" class="flex items-center gap-1 transition hover:text-primary focus:outline-none">
+              Courses
+              <i class="fa-solid fa-chevron-down text-[0.6rem]"></i>
+            </button>
+            <div
+              class="invisible absolute right-0 top-full z-[1300] min-w-[220px] rounded-lg border border-slate-100 bg-white p-2 opacity-0 shadow-lg transition duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              <a href="https://www.prehabclinics.com/course" class="block rounded-md px-3 py-2 text-[0.82rem] hover:bg-[#fff7f2]">MSK &amp; Sports Physiotherapy</a>
+              <a href="https://www.prehabclinics.com/course-1" class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] hover:bg-[#fff7f2]">Strength and Conditioning</a>
+            </div>
+          </div>
+        </nav>
+
+        <div class="ml-auto flex items-center gap-3">
+          <a href="https://www.prehabclinics.com/contact"
+            class="hidden sm:grid h-[42px] w-[42px] place-items-center rounded-full border border-primary bg-white text-primary transition hover:bg-[#fff7f2]">
+            <i class="fa-solid fa-user text-[1.02rem]"></i>
+          </a>
+
+          <button id="header-book-btn" type="button"
+            class="hidden md:inline-block rounded-full bg-primary px-6 py-[12px] text-[0.9rem] font-bold text-white shadow-[0_6px_16px_rgba(254,107,9,0.25)] transition hover:-translate-y-[1px]">
+            Book Appointment
+          </button>
+
+          <a href="https://www.prehabclinics.com/cart-page"
+            class="hidden sm:grid h-[42px] w-[42px] place-items-center rounded-full bg-primary text-white">
+            <i class="fa-solid fa-bag-shopping text-[0.85rem]"></i>
+          </a>
+
+          <button id="menu-btn"
+            class="xl:hidden ml-1 grid h-[42px] w-[42px] place-items-center rounded-full border border-gray-300 text-dark">
+            <i class="fa-solid fa-bars text-lg"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div id="mobile-menu" class="hidden fixed inset-0 z-[1200] bg-white px-6 py-6 overflow-y-auto xl:hidden">
+    <div class="mb-8 flex items-center justify-between border-b border-slate-200 pb-4">
+      <a href="index.html" class="flex items-center">
+        <img src="image/logo.png" alt="PREHAB DigiCare" class="h-[48px] w-auto" />
+      </a>
+      <button id="close-menu"
+        class="grid h-[42px] w-[42px] place-items-center rounded-full border border-gray-300 text-dark">
+        <i class="fa-solid fa-xmark text-xl"></i>
+      </button>
+    </div>
+
+    <div class="flex flex-col gap-5 text-[1rem] font-semibold text-dark">
+      <a href="index.html" class="border-b border-slate-100 pb-3">Home</a>
+      <details class="border-b border-slate-100 pb-3">
+        <summary class="flex cursor-pointer list-none items-center justify-between">Services
+          <i class="fa-solid fa-chevron-down text-[0.7rem]"></i>
+        </summary>
+        <div class="mt-3 flex flex-col gap-2 pl-3 text-[0.95rem] font-medium">
+          <a href="physiotharapy.html">Physical Therapy</a>
+          <a href="nutrition.html">Nutrition</a>
+          <a href="fitness-training.html">Fitness Training</a>
+          <a href="corporate-wellness.html">Corporate Wellness</a>
+        </div>
+      </details>
+      <a href="https://www.prehabclinics.com/category/all-products" class="border-b border-slate-100 pb-3">Store</a>
+      <a href="https://www.prehabclinics.com/blog" class="border-b border-slate-100 pb-3">Blog</a>
+      <a href="https://www.prehabclinics.com/about" class="border-b border-slate-100 pb-3">About</a>
+      <a href="https://www.prehabclinics.com/contact" class="border-b border-slate-100 pb-3">Contact</a>
+      <a href="https://www.prehabclinics.com/gallery" class="border-b border-slate-100 pb-3">Gallery</a>
+      <a href="https://www.prehabclinics.com/careers" class="border-b border-slate-100 pb-3">Careers</a>
+      <details class="border-b border-slate-100 pb-3">
+        <summary class="flex cursor-pointer list-none items-center justify-between">Courses
+          <i class="fa-solid fa-chevron-down text-[0.7rem]"></i>
+        </summary>
+        <div class="mt-3 flex flex-col gap-2 pl-3 text-[0.95rem] font-medium">
+          <a href="https://www.prehabclinics.com/course">MSK &amp; Sports Physiotherapy</a>
+          <a href="https://www.prehabclinics.com/course-1">Strength and Conditioning</a>
+        </div>
+      </details>
+    </div>
+
+    <div class="mt-8 flex flex-col gap-3">
+      <button id="mobile-book-btn" type="button"
+        class="inline-flex min-h-[50px] items-center justify-center rounded-full bg-primary px-6 text-[0.95rem] font-bold text-white">
+        Book Appointment
+      </button>
+      <a href="tel:+918867205650"
+        class="inline-flex min-h-[50px] items-center justify-center rounded-full border border-primary px-6 text-[0.95rem] font-bold text-primary">
+        Call Now
+      </a>
+    </div>
+  </div>
+
+  <div id="appointment-modal" class="fixed inset-0 z-[1400] hidden">
+    <div id="appointment-modal-backdrop" class="absolute inset-0 bg-slate-950/70 backdrop-blur-[2px]"></div>
+    <div class="relative mx-auto flex min-h-full w-full items-center px-3 py-6 sm:max-w-[560px] sm:px-4 sm:py-8">
+      <div class="w-full max-h-[92dvh] overflow-y-auto rounded-2xl border border-white/70 bg-white p-4 shadow-2xl sm:p-7">
+        <div
+          class="sticky top-0 z-10 -mx-4 mb-5 border-b border-slate-100 bg-white/95 px-4 pb-3 pt-1 backdrop-blur sm:static sm:m-0 sm:mb-5 sm:border-0 sm:bg-transparent sm:px-0 sm:pb-0 sm:pt-0">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-[0.72rem] font-bold uppercase tracking-[0.12em] text-primary">PREHAB DigiCare</p>
+              <h3 class="mt-1 text-[1.35rem] font-extrabold leading-tight text-[#062332]">Book Appointment</h3>
+              <p class="mt-1 text-[0.86rem] text-slate-500">Get a call back from our expert team.</p>
+            </div>
+            <button id="appointment-modal-close" type="button"
+              class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-slate-200 text-slate-600 transition hover:bg-slate-100">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+
+        <form id="appointment-form" class="space-y-3 sm:space-y-4">
+          <div>
+            <label for="popup-name" class="mb-1.5 block text-[0.85rem] font-semibold text-slate-700">Full Name</label>
+            <div class="relative">
+              <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+              <input id="popup-name" name="name" type="text" required placeholder="Enter your full name"
+                class="w-full rounded-xl border border-slate-300 bg-slate-50/40 py-3.5 pl-10 pr-4 text-[0.95rem] outline-none transition focus:border-primary focus:bg-white" />
+            </div>
+          </div>
+
+          <div>
+            <label for="popup-phone" class="mb-1.5 block text-[0.85rem] font-semibold text-slate-700">Phone Number</label>
+            <div class="relative">
+              <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+              <input id="popup-phone" name="phone" type="tel" required placeholder="Enter your phone number"
+                class="w-full rounded-xl border border-slate-300 bg-slate-50/40 py-3.5 pl-10 pr-4 text-[0.95rem] outline-none transition focus:border-primary focus:bg-white" />
+            </div>
+          </div>
+
+          <div>
+            <label for="popup-email" class="mb-1.5 block text-[0.85rem] font-semibold text-slate-700">Email (Optional)</label>
+            <div class="relative">
+              <i class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+              <input id="popup-email" name="email" type="email" placeholder="Enter your email"
+                class="w-full rounded-xl border border-slate-300 bg-slate-50/40 py-3.5 pl-10 pr-4 text-[0.95rem] outline-none transition focus:border-primary focus:bg-white" />
+            </div>
+          </div>
+          <p id="appointment-form-message" class="hidden text-[0.84rem] font-medium"></p>
+
+          <div class="sticky bottom-0 -mx-4 mt-4 border-t border-slate-100 bg-white px-4 pb-1 pt-3 sm:static sm:m-0 sm:border-0 sm:px-0 sm:pb-0 sm:pt-0">
+            <button id="appointment-submit-btn" type="submit"
+              class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-[1rem] font-bold text-white shadow-[0_10px_24px_rgba(254,107,9,0.3)] transition hover:bg-primaryDark">
+              Submit Request
+              <i class="fa-solid fa-arrow-right text-[0.85rem]"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="complimentary-modal" class="fixed inset-0 z-[1400] hidden">
+    <div id="complimentary-modal-backdrop" class="absolute inset-0 bg-slate-950/70 backdrop-blur-[2px]"></div>
+    <div class="relative mx-auto flex min-h-full w-full items-center px-3 py-6 sm:max-w-[560px] sm:px-4 sm:py-8">
+      <div class="w-full max-h-[92dvh] overflow-y-auto rounded-2xl border border-white/70 bg-white p-4 shadow-2xl sm:p-7">
+        <div
+          class="sticky top-0 z-10 -mx-4 mb-5 border-b border-slate-100 bg-white/95 px-4 pb-3 pt-1 backdrop-blur sm:static sm:m-0 sm:mb-5 sm:border-0 sm:bg-transparent sm:px-0 sm:pb-0 sm:pt-0">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-[0.72rem] font-bold uppercase tracking-[0.12em] text-primary">PREHAB DigiCare</p>
+              <h3 class="mt-1 text-[1.35rem] font-extrabold leading-tight text-[#062332]">Book your first <span class="text-primary">complimentary</span> appointment now</h3>
+              <p class="mt-1 text-[0.86rem] text-slate-500">Share your details and our expert team will call you back.</p>
+            </div>
+            <button id="complimentary-modal-close" type="button"
+              class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-slate-200 text-slate-600 transition hover:bg-slate-100">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+
+        <form id="complimentary-form" class="space-y-3 sm:space-y-4">
+          <div>
+            <label for="complimentary-name" class="mb-1.5 block text-[0.85rem] font-semibold text-slate-700">Full Name</label>
+            <div class="relative">
+              <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+              <input id="complimentary-name" name="name" type="text" required placeholder="Enter your full name"
+                class="w-full rounded-xl border border-slate-300 bg-slate-50/40 py-3.5 pl-10 pr-4 text-[0.95rem] outline-none transition focus:border-primary focus:bg-white" />
+            </div>
+          </div>
+
+          <div>
+            <label for="complimentary-phone" class="mb-1.5 block text-[0.85rem] font-semibold text-slate-700">Phone Number</label>
+            <div class="relative">
+              <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+              <input id="complimentary-phone" name="phone" type="tel" required placeholder="Enter your phone number"
+                class="w-full rounded-xl border border-slate-300 bg-slate-50/40 py-3.5 pl-10 pr-4 text-[0.95rem] outline-none transition focus:border-primary focus:bg-white" />
+            </div>
+          </div>
+
+          <div>
+            <label for="complimentary-email" class="mb-1.5 block text-[0.85rem] font-semibold text-slate-700">Email (Optional)</label>
+            <div class="relative">
+              <i class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+              <input id="complimentary-email" name="email" type="email" placeholder="Enter your email"
+                class="w-full rounded-xl border border-slate-300 bg-slate-50/40 py-3.5 pl-10 pr-4 text-[0.95rem] outline-none transition focus:border-primary focus:bg-white" />
+            </div>
+          </div>
+
+          <div class="sticky bottom-0 -mx-4 mt-4 border-t border-slate-100 bg-white px-4 pb-1 pt-3 sm:static sm:m-0 sm:border-0 sm:px-0 sm:pb-0 sm:pt-0">
+            <button id="complimentary-submit-btn" type="submit"
+              class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-[1rem] font-bold text-white shadow-[0_10px_24px_rgba(254,107,9,0.3)] transition hover:bg-primaryDark">
+              Submit Request
+              <i class="fa-solid fa-arrow-right text-[0.85rem]"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- Hero -->
+    <section
+      class="relative flex min-h-[320px] items-center justify-center overflow-hidden bg-[#111827] text-center md:min-h-[380px]">
+      <div
+        class="absolute inset-0 scale-[1.03] bg-[linear-gradient(105deg,rgba(15,23,42,0.82)_0%,rgba(15,23,42,0.62)_48%,rgba(15,23,42,0.48)_100%),url('./image/Joint%20Pain.jpg')] bg-cover bg-center bg-no-repeat">
+      </div>
+
+      <div class="relative z-[2] mx-auto w-full max-w-[1280px] px-5 py-[38px] md:py-[50px]">
+        <div class="mx-auto flex max-w-[820px] flex-col items-center justify-center text-white">
+
+          <div
+            class="mb-[18px] inline-flex items-center gap-2 rounded-full border border-[rgba(254,107,9,0.35)] bg-[rgba(254,107,9,0.14)] px-4 py-[9px] text-[0.78rem] font-bold md:text-[0.84rem]">
+            <i class="fa-solid fa-heart-pulse text-primary"></i>
+            Physiotherapy
+          </div>
+
+          <h1
+            class="mb-6 max-w-[820px] text-[clamp(1.7rem,7vw,3.2rem)] font-bold leading-[1.12] tracking-[-0.03em] text-white normal-case">
+            <span class="block">Move better. Recover stronger.</span>
+            <span class="block">Live pain free.</span>
+          </h1>
+
+          <div class="flex w-full flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
+            <a href="index.html#contact"
+              class="book-slot-btn inline-flex min-h-[54px] w-full max-w-[280px] items-center justify-center gap-3 rounded-full bg-primary px-7 text-[16px] font-bold text-white shadow-softxl transition hover:-translate-y-[2px] hover:bg-primaryDark sm:w-auto sm:max-w-none">
+              Book Your Slot
+            </a>
+
+            <a href="#details"
+              class="inline-flex min-h-[54px] w-full max-w-[280px] items-center justify-center gap-3 rounded-full border border-[#ffd6bf] bg-white px-7 text-[16px] font-bold text-dark transition hover:-translate-y-[2px] hover:border-primary hover:text-primary sm:w-auto sm:max-w-none">
+              View Complete Details
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+<section id="details" class="bg-lightBg pt-16 pb-8 md:pt-[88px] md:pb-10">
+  <div class="mx-auto w-full max-w-[1280px] px-5">
+
+    <div class="mx-auto mb-[34px] max-w-[1260px] text-center">
+      <!-- <h2 class="mb-[14px] text-[clamp(28px,3.6vw,44px)] font-extrabold leading-[1.15] tracking-[-0.02em] text-dark">
+        Complete <span class="text-primary">Physiotherapy</span> Service
+      </h2> -->
+      <h2 class="mx-auto mb-0 max-w-[1220px] px-2 text-[clamp(28px,3.3vw,44px)] font-extrabold leading-[1.2] tracking-[-0.02em] text-dark">
+        Consult a specialised <span class="text-primary">musculoskeletal</span> and <span class="text-primary">sports
+        physiotherapist</span> for...
+      </h2>
+      <!-- <p class="text-[15.5px] leading-[1.75] text-muted">
+        Consult a specialized musculoskeletal and sports physiotherapist for expert <br> assessment, consultation, and rehabilitation.
+      </p> -->
+    </div>
+
+    <div class="grid grid-cols-1 gap-7">
+      <div>
+
+        <div>
+          <div class="mx-auto grid max-w-[1120px] grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
+
+            <!-- Card 1 -->
+            <div class="group relative aspect-square overflow-hidden rounded-[16px]">
+              <img
+                src="./image/Lower back pain.jpg"
+                alt="Lower back pain physiotherapy"
+                class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 w-full p-3 sm:p-4">
+                <h4 class="text-[0.85rem] font-bold leading-tight text-white sm:text-[1rem]">Lower Back Pain</h4>
+                <p class="max-h-0 translate-y-1 overflow-hidden text-[0.7rem] leading-[1.4] text-white/80 opacity-0 transition-all duration-300 group-hover:max-h-16 group-hover:translate-y-0 group-hover:opacity-100 sm:text-[0.8rem]">
+                  Disc injury, sciatica, and nerve pain
+                </p>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="group relative aspect-square overflow-hidden rounded-[16px]">
+              <img
+                src="./image/Neck pain.jpg"
+                alt="Neck pain physiotherapy"
+                class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 w-full p-3 sm:p-4">
+                <h4 class="text-[0.85rem] font-bold leading-tight text-white sm:text-[1rem]">Neck Pain</h4>
+                <p class="max-h-0 translate-y-1 overflow-hidden text-[0.7rem] leading-[1.4] text-white/80 opacity-0 transition-all duration-300 group-hover:max-h-16 group-hover:translate-y-0 group-hover:opacity-100 sm:text-[0.8rem]">
+                  Cervical, posture, and stiffness
+                </p>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="group relative aspect-square overflow-hidden rounded-[16px]">
+              <img
+                src="./image/Knee pain.jpg"
+                alt="Knee pain physiotherapy"
+                class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 w-full p-3 sm:p-4">
+                <h4 class="text-[0.85rem] font-bold leading-tight text-white sm:text-[1rem]">Knee Pain</h4>
+                <p class="max-h-0 translate-y-1 overflow-hidden text-[0.7rem] leading-[1.4] text-white/80 opacity-0 transition-all duration-300 group-hover:max-h-16 group-hover:translate-y-0 group-hover:opacity-100 sm:text-[0.8rem]">
+                  Patella and joint-related issues
+                </p>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="group relative aspect-square overflow-hidden rounded-[16px]">
+              <img
+                src="./image/Shoulder pain.jpg"
+                alt="Shoulder pain physiotherapy"
+                class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 w-full p-3 sm:p-4">
+                <h4 class="text-[0.85rem] font-bold leading-tight text-white sm:text-[1rem]">Shoulder Pain</h4>
+                <p class="max-h-0 translate-y-1 overflow-hidden text-[0.7rem] leading-[1.4] text-white/80 opacity-0 transition-all duration-300 group-hover:max-h-16 group-hover:translate-y-0 group-hover:opacity-100 sm:text-[0.8rem]">
+                  Frozen shoulder and rotator cuff pain
+                </p>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="group relative aspect-square overflow-hidden rounded-[16px]">
+              <img
+                src="./image/Sports injuries.jpg"
+                alt="Sports injuries physiotherapy"
+                class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 w-full p-3 sm:p-4">
+                <h4 class="text-[0.85rem] font-bold leading-tight text-white sm:text-[1rem]">Sports Injuries</h4>
+                <p class="max-h-0 translate-y-1 overflow-hidden text-[0.7rem] leading-[1.4] text-white/80 opacity-0 transition-all duration-300 group-hover:max-h-16 group-hover:translate-y-0 group-hover:opacity-100 sm:text-[0.8rem]">
+                  ACL, ankle, and ligament injuries
+                </p>
+              </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="group relative aspect-square overflow-hidden rounded-[16px]">
+              <img
+                src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=800&q=80"
+                alt="Post-surgical rehabilitation"
+                class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 w-full p-3 sm:p-4">
+                <h4 class="text-[0.85rem] font-bold leading-tight text-white sm:text-[1rem]">Post-Surgical Rehab</h4>
+                <p class="max-h-0 translate-y-1 overflow-hidden text-[0.7rem] leading-[1.4] text-white/80 opacity-0 transition-all duration-300 group-hover:max-h-16 group-hover:translate-y-0 group-hover:opacity-100 sm:text-[0.8rem]">
+                  Recovery after surgery and fractures
+                </p>
+              </div>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="group relative aspect-square overflow-hidden rounded-[16px]">
+              <img
+                src="./image/arthritis.jpg"
+                alt="Arthritis physiotherapy support"
+                class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 w-full p-3 sm:p-4">
+                <h4 class="text-[0.85rem] font-bold leading-tight text-white sm:text-[1rem]">Arthritis</h4>
+                <p class="max-h-0 translate-y-1 overflow-hidden text-[0.7rem] leading-[1.4] text-white/80 opacity-0 transition-all duration-300 group-hover:max-h-16 group-hover:translate-y-0 group-hover:opacity-100 sm:text-[0.8rem]">
+                  Osteoarthritis and rheumatoid arthritis
+                </p>
+              </div>
+            </div>
+
+            
+
+            <!-- Card 9 -->
+            <div class="group relative aspect-square overflow-hidden rounded-[16px]">
+              <img
+                src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=800&q=80"
+                alt="Guided home exercise program"
+                class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 w-full p-3 sm:p-4">
+                <h4 class="text-[0.85rem] font-bold leading-tight text-white sm:text-[1rem]">Home Exercise</h4>
+                <p class="max-h-0 translate-y-1 overflow-hidden text-[0.7rem] leading-[1.4] text-white/80 opacity-0 transition-all duration-300 group-hover:max-h-16 group-hover:translate-y-0 group-hover:opacity-100 sm:text-[0.8rem]">
+                  Guided recovery programs
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- USP -->
+    <div class="mt-[34px]">
+      <h3 class="mb-6 text-center text-[clamp(28px,3.6vw,44px)] font-extrabold leading-[1.15] tracking-[-0.02em] text-dark">
+        What We <span class="text-primary">Provide</span>
+      </h3>
+
+      <div class="grid grid-cols-1 gap-[18px] sm:grid-cols-2 xl:grid-cols-5">
+        <div class="flip-card transition hover:-translate-y-1">
+          <div class="flip-card-inner">
+            <div class="flip-face flex flex-col items-center justify-center px-[18px] py-[22px] text-center">
+              <i class="fa-solid fa-user-doctor mx-auto mb-[14px] grid h-[72px] w-[72px] place-items-center rounded-full bg-primarySoft text-[1.55rem] text-primary"></i>
+              <h4 class="text-[1rem] font-extrabold text-dark">1-on-1 Expert consultation</h4>
+            </div>
+            <div class="flip-face flip-back flex flex-col items-center justify-center px-[18px] py-[22px] text-center">
+              <h4 class="mb-2 text-[1rem] font-extrabold text-dark">1-on-1 Expert consultation</h4>
+              <p class="text-[0.92rem] leading-[1.65] text-muted">Dedicated consultation with a qualified physiotherapist.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card transition hover:-translate-y-1">
+          <div class="flip-card-inner">
+            <div class="flip-face flex flex-col items-center justify-center px-[18px] py-[22px] text-center">
+              <i class="fa-solid fa-clipboard-check mx-auto mb-[14px] grid h-[72px] w-[72px] place-items-center rounded-full bg-primarySoft text-[1.55rem] text-primary"></i>
+              <h4 class="text-[1rem] font-extrabold text-dark">Detailed assessment</h4>
+            </div>
+            <div class="flip-face flip-back flex flex-col items-center justify-center px-[18px] py-[22px] text-center">
+              <h4 class="mb-2 text-[1rem] font-extrabold text-dark">Detailed assessment</h4>
+              <p class="text-[0.92rem] leading-[1.65] text-muted">Complete evaluation of pain, movement, posture, and functional limitations.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card transition hover:-translate-y-1">
+          <div class="flip-card-inner">
+            <div class="flip-face flex flex-col items-center justify-center px-[18px] py-[22px] text-center">
+              <i class="fa-solid fa-dumbbell mx-auto mb-[14px] grid h-[72px] w-[72px] place-items-center rounded-full bg-primarySoft text-[1.55rem] text-primary"></i>
+              <h4 class="text-[1rem] font-extrabold text-dark">Personalized rehab plan</h4>
+            </div>
+            <div class="flip-face flip-back flex flex-col items-center justify-center px-[18px] py-[22px] text-center">
+              <h4 class="mb-2 text-[1rem] font-extrabold text-dark">Personalized rehab plan</h4>
+              <p class="text-[0.92rem] leading-[1.65] text-muted">Customized exercise and rehabilitation programs based on your condition.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card transition hover:-translate-y-1">
+          <div class="flip-card-inner">
+            <div class="flip-face flex flex-col items-center justify-center px-[18px] py-[22px] text-center">
+              <i class="fa-solid fa-chart-line mx-auto mb-[14px] grid h-[72px] w-[72px] place-items-center rounded-full bg-primarySoft text-[1.55rem] text-primary"></i>
+              <h4 class="text-[1rem] font-extrabold text-dark">Progress tracking</h4>
+            </div>
+            <div class="flip-face flip-back flex flex-col items-center justify-center px-[18px] py-[22px] text-center">
+              <h4 class="mb-2 text-[1rem] font-extrabold text-dark">Progress tracking</h4>
+              <p class="text-[0.92rem] leading-[1.65] text-muted">Ongoing monitoring, follow-ups, and recovery guidance.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card transition hover:-translate-y-1">
+          <div class="flip-card-inner">
+            <div class="flip-face flex flex-col items-center justify-center px-[18px] py-[22px] text-center">
+              <i class="fa-solid fa-mobile-screen-button mx-auto mb-[14px] grid h-[72px] w-[72px] place-items-center rounded-full bg-primarySoft text-[1.55rem] text-primary"></i>
+              <h4 class="text-[1rem] font-extrabold text-dark">Mobile app support</h4>
+            </div>
+            <div class="flip-face flip-back flex flex-col items-center justify-center px-[18px] py-[22px] text-center">
+              <h4 class="mb-2 text-[1rem] font-extrabold text-dark">Mobile app support</h4>
+              <p class="text-[0.92rem] leading-[1.65] text-muted">Easy access to your home exercise and rehab plan through the mobile app.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    <section class="team-section">
+      <div class="mx-auto w-full max-w-[1280px] px-5">
+        <div class="team-section-header">
+          <h2><span class="text-primary">Meet your physiotherapy</span> care team</h2>
+        </div>
+
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-image-wrap">
+              <img src="image/1.JPG" alt="Dr. Arun Kumar Rawal">
+              <div class="team-overlay">
+                <h3>Dr. Arun Kumar Rawal, PT</h3>
+                <p class="team-role">Musculoskeletal & Sports Physiotherapist</p>
+                <span class="team-exp">Experience: 12 years</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-image-wrap">
+              <img src="image/3.JPG" alt="Vidya Kamat">
+              <div class="team-overlay">
+                <h3>Dr. Vidya Kamat, PT</h3>
+                <p class="team-role">Musculoskeletal & Sports Physiotherapist</p>
+                <span class="team-exp">Experience: 2 years</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-image-wrap">
+              <img src="image/4.JPG" alt="Hemashree">
+              <div class="team-overlay">
+                <h3>Dr. Hemashree, PT</h3>
+                <p class="team-role">Musculoskeletal & Sports Physiotherapist</p>
+                <span class="team-exp">Experience: 2 years</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-image-wrap">
+              <img src="image/p4.jpeg" alt="Dr. Sharath Kumar">
+              <div class="team-overlay">
+                <h3>Dr. Usha H N, PT</h3>
+                <p class="team-role">Musculoskeletal & Sports Physiotherapist</p>
+                <span class="team-exp">Experience: 2 years</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-lightBg pb-16 md:pb-[88px]">
+      <div class="mx-auto w-full max-w-[1280px] px-5">
+        <div
+          class="rounded-[28px] bg-[linear-gradient(135deg,rgba(31,34,48,0.96),rgba(31,34,48,0.86))] px-8 py-[42px] text-center text-white shadow-softxl">
+          <h2 class="mb-[14px] text-[clamp(1.9rem,3.6vw,3rem)] font-black leading-[1.12]">
+            Start your recovery with an <span class="text-primary">expert physiotherapist</span>
+          </h2>
+
+          <!-- <p class="mx-auto mb-6 max-w-[760px] text-[0.92rem] leading-[1.8] text-white/90 sm:text-[0.98rem]">
+            Take the next step toward pain relief, better mobility, and guided rehabilitation. Book your consultation
+            today and get a focused recovery plan designed around your needs.
+          </p> -->
+
+          <a href="index.html#contact"
+            class="cta-book-btn inline-flex min-h-[54px] items-center justify-center gap-3 rounded-full bg-primary px-7 text-[16px] font-bold text-white shadow-softxl transition hover:-translate-y-[2px] hover:bg-primaryDark">
+            Book appointment now
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="free-handouts" class="py-14 bg-[linear-gradient(180deg,#fafafa_0%,#fff8f3_100%)]">
+      <div class="max-w-[1200px] mx-auto px-5">
+        <div class="text-center mb-8">
+          <h2 class="text-[1.85rem] md:text-[2.2rem] font-extrabold text-[#062332]">
+            Free <span class="text-[#FE6B09]">health guides</span>
+          </h2>
+          <p class="mt-2 text-[0.92rem] text-slate-600">
+            Explore three practical guides to support your recovery, fitness, and daily wellness.
+          </p>
+        </div>
+
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <article class="flex flex-col items-center text-center">
+            <div class="flex justify-center">
+              <img src="assests/books/Medical%20Nutrition%20Therapy.jpeg" alt="Medical Nutrition Therapy in Musculoskeletal and Post Rehabilitation"
+                class="max-h-[260px] w-auto h-auto rounded-lg object-contain shadow-[0_10px_24px_rgba(15,23,42,0.16)]" />
+            </div>
+            <h3 class="mt-3 text-[1.02rem] leading-snug font-extrabold text-[#0F172A]">Medical Nutrition Therapy</h3>
+            <a href="#"
+              class="free-copy-btn mt-4 inline-flex min-h-[40px] items-center justify-center rounded-full bg-[#FE6B09] px-4 text-[0.84rem] font-bold text-white transition hover:bg-[#db5a00]"
+              data-title="Medical Nutrition Therapy" data-download="assests/books/copies/Medical%20Nutrition%20Therapy.pdf">
+              Get Free Copy
+            </a>
+          </article>
+
+          <article class="flex flex-col items-center text-center">
+            <div class="flex justify-center">
+              <img src="assests/books/Pilates%20%26%20Your%20Health.jpg.jpeg" alt="Pilates and Your Health"
+                class="max-h-[260px] w-auto h-auto rounded-lg object-contain shadow-[0_10px_24px_rgba(15,23,42,0.16)]" />
+            </div>
+            <h3 class="mt-3 text-[1.02rem] leading-snug font-extrabold text-[#0F172A]">Pilates &amp; Your Health</h3>
+            <a href="#"
+              class="free-copy-btn mt-4 inline-flex min-h-[40px] items-center justify-center rounded-full bg-[#FE6B09] px-4 text-[0.84rem] font-bold text-white transition hover:bg-[#db5a00]"
+              data-title="Pilates &amp; Your Health" data-download="assests/books/copies/Pilates%20%26%20Your%20Health.pdf">
+              Get Free Copy
+            </a>
+          </article>
+
+          <article class="flex flex-col items-center text-center">
+            <div class="flex justify-center">
+              <img src="assests/books/Strength%20Training%20for%20Everybody%20-%20Myths%20and%20Facts.jpeg"
+                alt="Strength Training for Everybody - Myths and Facts" class="max-h-[260px] w-auto h-auto rounded-lg object-contain shadow-[0_10px_24px_rgba(15,23,42,0.16)]" />
+            </div>
+            <h3 class="mt-3 text-[1.02rem] leading-snug font-extrabold text-[#0F172A]">Strength Training for Everybody</h3>
+            <a href="#"
+              class="free-copy-btn mt-4 inline-flex min-h-[40px] items-center justify-center rounded-full bg-[#FE6B09] px-4 text-[0.84rem] font-bold text-white transition hover:bg-[#db5a00]"
+              data-title="Strength Training for Everybody" data-download="assests/books/copies/Strength%20Training%20for%20Everybody%20-%20Myths%20and%20Facts.pdf">
+              Get Free Copy
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#FE6B09] text-white pt-14 pb-6">
+    <div class="max-w-[1200px] mx-auto px-5">
+
+      <!-- GRID -->
+      <div class="grid grid-cols-1 gap-y-8 gap-x-5 sm:grid-cols-2 lg:grid-cols-[140px_1.45fr_1fr_1fr] items-start">
+
+        <!-- LOGO -->
+        <div class="flex justify-center lg:justify-start">
+          <img
+            src="https://static.wixstatic.com/media/377b16_10d7d5bf2d244f48ae237939ccd14569~mv2.png/v1/fill/w_509,h_509,al_c,lg_1,q_85,enc_avif,quality_auto/Asset%2096_100x.png"
+            alt="PREHAB Footer Logo" class="w-32 h-32 object-contain" />
+        </div>
+
+        <!-- CONTACT -->
+        <div>
+          <h4 class="text-[0.95rem] font-bold tracking-wide mb-3 uppercase">
+            Contact
+          </h4>
+          <p class="text-[0.9rem] leading-[1.7] text-white/90">
+            2934, Triveni Arcade, Second Floor,<br>
+            2nd Stage D Block,<br>
+            Mahakavi Kuvempu Rd,<br>
+            Rajajinagar,<br>
+            Bengaluru, Karnataka 560010<br>
+            Landmark Mahakavi Kuvempu<br>
+            Metro Station
+          </p>
+        </div>
+
+        <!-- LINKS -->
+        <div>
+          <h4 class="text-[0.95rem] font-bold tracking-wide mb-3 uppercase">
+            Links
+          </h4>
+          <div class="flex flex-col gap-2 text-[0.9rem] text-white/90">
+            <a href="#home" class="hover:underline">Home</a>
+            <a href="#about" class="hover:underline">About</a>
+            <a href="#contact" class="hover:underline">Contact</a>
+            <a href="#careers" class="hover:underline">Careers</a>
+          </div>
+        </div>
+
+        <!-- POLICIES -->
+        <div>
+          <h4 class="text-[0.95rem] font-bold tracking-wide mb-3 uppercase">
+            Policies
+          </h4>
+          <div class="flex flex-col gap-2 text-[0.9rem] text-white/90">
+            <a href="#" class="hover:underline">Privacy Policy</a>
+            <a href="#" class="hover:underline">Terms and Conditions</a>
+            <a href="#" class="hover:underline">Accessibility Statement</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- DIVIDER -->
+      <div class="mt-10 border-t border-white/30 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+
+        <!-- LEGAL -->
+        <p class="text-[0.8rem] text-white/90 text-center md:text-left">
+          SARVFIT Healthcare Pvt Ltd | CIN U86900KA2024PTC190092 | GSTIN 29ABNCS7588L1Z3
+        </p>
+
+        <!-- BACK TO TOP -->
+        <a href="#home"
+          class="w-10 h-10 flex items-center justify-center rounded-full bg-[#0F172A] text-white shadow-lg hover:scale-105 transition">
+          ↑
+        </a>
+
+      </div>
+
+    </div>
+  </footer>
+
+  <div id="free-copy-modal" class="fixed inset-0 z-[1400] hidden">
+    <div id="free-copy-modal-backdrop" class="absolute inset-0 bg-slate-950/70 backdrop-blur-[2px]"></div>
+    <div class="relative mx-auto flex min-h-full w-full items-center px-3 py-6 sm:max-w-[560px] sm:px-4 sm:py-8">
+      <div class="w-full max-h-[92dvh] overflow-y-auto rounded-2xl border border-white/70 bg-white p-4 shadow-2xl sm:p-7">
+        <div
+          class="sticky top-0 z-10 -mx-4 mb-5 border-b border-slate-100 bg-white/95 px-4 pb-3 pt-1 backdrop-blur sm:static sm:m-0 sm:mb-5 sm:border-0 sm:bg-transparent sm:px-0 sm:pb-0 sm:pt-0">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-[0.72rem] font-bold uppercase tracking-[0.12em] text-primary">Free Download</p>
+              <h3 id="free-copy-modal-title" class="mt-1 text-[1.25rem] font-extrabold leading-tight text-[#0F172A]">Get Free Copy</h3>
+              <p class="mt-1 text-[0.86rem] text-slate-500">Please share your details to download this guide.</p>
+            </div>
+            <button id="free-copy-modal-close" type="button"
+              class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-slate-200 text-slate-600 transition hover:bg-slate-100">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+
+        <form id="free-copy-form" class="space-y-3 sm:space-y-4">
+          <input type="hidden" id="free-copy-file" name="download_file" />
+          <input type="hidden" id="free-copy-guide-name" name="guide_name" />
+
+          <div>
+            <label for="free-copy-name" class="mb-1.5 block text-[0.85rem] font-semibold text-slate-700">Full Name</label>
+            <div class="relative">
+              <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+              <input id="free-copy-name" name="name" type="text" required placeholder="Enter your full name"
+                class="w-full rounded-xl border border-slate-300 bg-slate-50/40 py-3.5 pl-10 pr-4 text-[0.95rem] outline-none transition focus:border-primary focus:bg-white" />
+            </div>
+          </div>
+
+          <div>
+            <label for="free-copy-phone" class="mb-1.5 block text-[0.85rem] font-semibold text-slate-700">Phone Number</label>
+            <div class="relative">
+              <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+              <input id="free-copy-phone" name="phone" type="tel" required placeholder="Enter your phone number"
+                class="w-full rounded-xl border border-slate-300 bg-slate-50/40 py-3.5 pl-10 pr-4 text-[0.95rem] outline-none transition focus:border-primary focus:bg-white" />
+            </div>
+          </div>
+
+          <div>
+            <label for="free-copy-email" class="mb-1.5 block text-[0.85rem] font-semibold text-slate-700">Email ID</label>
+            <div class="relative">
+              <i class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+              <input id="free-copy-email" name="email" type="email" required placeholder="Enter your email"
+                class="w-full rounded-xl border border-slate-300 bg-slate-50/40 py-3.5 pl-10 pr-4 text-[0.95rem] outline-none transition focus:border-primary focus:bg-white" />
+            </div>
+          </div>
+
+          <p id="free-copy-form-message" class="hidden text-[0.84rem] font-medium"></p>
+
+          <div class="sticky bottom-0 -mx-4 mt-4 border-t border-slate-100 bg-white px-4 pb-1 pt-3 sm:static sm:m-0 sm:border-0 sm:px-0 sm:pb-0 sm:pt-0">
+            <button id="free-copy-submit-btn" type="submit"
+              class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-[1rem] font-bold text-white shadow-[0_10px_24px_rgba(254,107,9,0.3)] transition hover:bg-primaryDark">
+              Submit &amp; Download
+              <i class="fa-solid fa-download text-[0.85rem]"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const APPOINTMENT_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzb35JZyVIgSC-fSxDTz53eryyX9YprGTDpFiG_0DWCnIpk8cJjaLhr9rLzl1eDyfBuKA/exec";
+
+    const pageLoader = document.getElementById("pageLoader");
+    const menuBtn = document.getElementById("menu-btn");
+    const closeBtn = document.getElementById("close-menu");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileLinks = document.querySelectorAll("#mobile-menu a");
+    const headerBookBtn = document.getElementById("header-book-btn");
+    const mobileBookBtn = document.getElementById("mobile-book-btn");
+    const bookSlotButtons = document.querySelectorAll(".book-slot-btn, .cta-book-btn");
+    const appointmentModal = document.getElementById("appointment-modal");
+    const appointmentModalClose = document.getElementById("appointment-modal-close");
+    const appointmentModalBackdrop = document.getElementById("appointment-modal-backdrop");
+    const appointmentForm = document.getElementById("appointment-form");
+    const appointmentFormMessage = document.getElementById("appointment-form-message");
+    const appointmentSubmitBtn = document.getElementById("appointment-submit-btn");
+    const complimentaryModal = document.getElementById("complimentary-modal");
+    const complimentaryModalClose = document.getElementById("complimentary-modal-close");
+    const complimentaryModalBackdrop = document.getElementById("complimentary-modal-backdrop");
+    const complimentaryForm = document.getElementById("complimentary-form");
+    const complimentarySubmitBtn = document.getElementById("complimentary-submit-btn");
+    const COMPLIMENTARY_SUBMITTED_KEY = "complimentaryAppointmentSubmitted";
+    const freeCopyButtons = document.querySelectorAll(".free-copy-btn");
+    const freeCopyModal = document.getElementById("free-copy-modal");
+    const freeCopyModalBackdrop = document.getElementById("free-copy-modal-backdrop");
+    const freeCopyModalClose = document.getElementById("free-copy-modal-close");
+    const freeCopyForm = document.getElementById("free-copy-form");
+    const freeCopySubmitBtn = document.getElementById("free-copy-submit-btn");
+    const freeCopyFormMessage = document.getElementById("free-copy-form-message");
+    const freeCopyModalTitle = document.getElementById("free-copy-modal-title");
+    const freeCopyFileInput = document.getElementById("free-copy-file");
+    const freeCopyGuideNameInput = document.getElementById("free-copy-guide-name");
+
+    const getIstTimestamp = () => new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Asia/Kolkata",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false
+    }).format(new Date());
+
+    window.addEventListener("load", () => {
+      if (pageLoader) {
+        pageLoader.classList.add("hidden");
+      }
+      document.body.classList.remove("loading");
+    });
+
+    const syncBodyScrollLock = () => {
+      const isMobileMenuOpen = mobileMenu && !mobileMenu.classList.contains("hidden");
+      const isModalOpen = appointmentModal && !appointmentModal.classList.contains("hidden");
+      const isFreeCopyModalOpen = freeCopyModal && !freeCopyModal.classList.contains("hidden");
+      const isComplimentaryModalOpen = complimentaryModal && !complimentaryModal.classList.contains("hidden");
+      document.body.classList.toggle("overflow-hidden", isMobileMenuOpen || isModalOpen || isFreeCopyModalOpen || isComplimentaryModalOpen);
+    };
+
+    const postToSheet = async ({ name, phone, email, service, message }) => {
+      const payload = new URLSearchParams();
+      payload.append("Tmesatmp", getIstTimestamp());
+      payload.append("Name", String(name || "").trim());
+      payload.append("Phone", String(phone || "").trim());
+      payload.append("Email", String(email || "").trim());
+      payload.append("Service", String(service || "").trim());
+      payload.append("Message", String(message || "").trim());
+
+      const response = await fetch(APPOINTMENT_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+        body: payload.toString()
+      });
+
+      if (!response.ok) throw new Error("Request failed");
+      let result = {};
+      try { result = await response.json(); } catch { result = { result: "success" }; }
+      if (result.result !== "success") throw new Error(result.error || "Unable to submit");
+    };
+
+    if (menuBtn && closeBtn && mobileMenu) {
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.remove("hidden");
+        syncBodyScrollLock();
+      });
+
+      closeBtn.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        syncBodyScrollLock();
+      });
+
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          syncBodyScrollLock();
+        });
+      });
+    }
+
+    if (appointmentModal) {
+      const openAppointmentModal = () => {
+        appointmentModal.classList.remove("hidden");
+        syncBodyScrollLock();
+      };
+
+      const closeAppointmentModal = () => {
+        appointmentModal.classList.add("hidden");
+        syncBodyScrollLock();
+      };
+
+      if (headerBookBtn) {
+        headerBookBtn.addEventListener("click", openAppointmentModal);
+      }
+
+      if (mobileBookBtn) {
+        mobileBookBtn.addEventListener("click", () => {
+          if (mobileMenu) {
+            mobileMenu.classList.add("hidden");
+          }
+          openAppointmentModal();
+        });
+      }
+
+      if (bookSlotButtons.length) {
+        bookSlotButtons.forEach((button) => {
+          button.addEventListener("click", (event) => {
+            event.preventDefault();
+            openAppointmentModal();
+          });
+        });
+      }
+
+      if (appointmentModalClose) {
+        appointmentModalClose.addEventListener("click", closeAppointmentModal);
+      }
+
+      if (appointmentModalBackdrop) {
+        appointmentModalBackdrop.addEventListener("click", closeAppointmentModal);
+      }
+
+      if (appointmentForm && appointmentSubmitBtn) {
+        appointmentForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          if (appointmentFormMessage) {
+            appointmentFormMessage.classList.add("hidden");
+            appointmentFormMessage.classList.remove("text-red-600", "text-green-600", "text-primary");
+          }
+
+          appointmentSubmitBtn.disabled = true;
+          appointmentSubmitBtn.classList.add("opacity-70", "cursor-not-allowed");
+          appointmentSubmitBtn.innerHTML = 'Submitting... <i class="fa-solid fa-spinner fa-spin text-[0.85rem]"></i>';
+
+          if (window.Swal) {
+            Swal.fire({
+              title: "Submitting...",
+              text: "Please wait while we save your details.",
+              allowOutsideClick: false,
+              allowEscapeKey: false,
+              didOpen: () => Swal.showLoading()
+            });
+          }
+
+          try {
+            const formData = new FormData(appointmentForm);
+            await postToSheet({
+              name: formData.get("name"),
+              phone: formData.get("phone"),
+              email: formData.get("email"),
+              service: "General Appointment",
+              message: "Submitted from popup form"
+            });
+
+            appointmentForm.reset();
+            closeAppointmentModal();
+
+            if (window.Swal) {
+              Swal.close();
+              Swal.fire({
+                icon: "success",
+                title: "Submitted!",
+                text: "Your appointment request has been submitted successfully.",
+                confirmButtonColor: "#FE6B09"
+              });
+            }
+          } catch (error) {
+            if (window.Swal) {
+              Swal.close();
+              Swal.fire({
+                icon: "error",
+                title: "Submission failed",
+                text: "Please try again.",
+                confirmButtonColor: "#FE6B09"
+              });
+            }
+
+            if (appointmentFormMessage) {
+              appointmentFormMessage.textContent = "Submission failed. Please try again.";
+              appointmentFormMessage.classList.remove("hidden");
+              appointmentFormMessage.classList.add("text-red-600");
+            }
+          } finally {
+            appointmentSubmitBtn.disabled = false;
+            appointmentSubmitBtn.classList.remove("opacity-70", "cursor-not-allowed");
+            appointmentSubmitBtn.innerHTML = 'Submit Request <i class="fa-solid fa-arrow-right text-[0.85rem]"></i>';
+          }
+        });
+      }
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !appointmentModal.classList.contains("hidden")) {
+          closeAppointmentModal();
+        }
+      });
+    }
+
+    if (complimentaryModal && complimentaryForm && complimentarySubmitBtn) {
+      const hasSubmittedComplimentaryForm = () => sessionStorage.getItem(COMPLIMENTARY_SUBMITTED_KEY) === "true";
+      const openComplimentaryModal = () => {
+        if (hasSubmittedComplimentaryForm()) return;
+        complimentaryModal.classList.remove("hidden");
+        syncBodyScrollLock();
+      };
+      const closeComplimentaryModal = () => {
+        complimentaryModal.classList.add("hidden");
+        syncBodyScrollLock();
+      };
+      const isAnotherModalOpen = () => {
+        const isAppointmentOpen = appointmentModal && !appointmentModal.classList.contains("hidden");
+        const isFreeCopyOpen = freeCopyModal && !freeCopyModal.classList.contains("hidden");
+        return isAppointmentOpen || isFreeCopyOpen;
+      };
+
+      if (complimentaryModalClose) complimentaryModalClose.addEventListener("click", closeComplimentaryModal);
+      if (complimentaryModalBackdrop) complimentaryModalBackdrop.addEventListener("click", closeComplimentaryModal);
+
+      complimentaryForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        complimentarySubmitBtn.innerHTML = 'Submitting... <i class="fa-solid fa-spinner fa-spin text-[0.85rem]"></i>';
+        complimentarySubmitBtn.disabled = true;
+        complimentarySubmitBtn.classList.add("opacity-70", "cursor-not-allowed");
+
+        if (window.Swal) {
+          Swal.fire({
+            title: "Submitting...",
+            text: "Please wait while we submit your appointment request.",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            didOpen: () => Swal.showLoading()
+          });
+        }
+
+        try {
+          const formData = new FormData(complimentaryForm);
+          await postToSheet({
+            name: String(formData.get("name") || "").trim(),
+            phone: String(formData.get("phone") || "").trim(),
+            email: String(formData.get("email") || "").trim(),
+            service: "First Complimentary Appointment",
+            message: "Submitted from complimentary popup form"
+          });
+
+          sessionStorage.setItem(COMPLIMENTARY_SUBMITTED_KEY, "true");
+          complimentaryForm.reset();
+          closeComplimentaryModal();
+
+          if (window.Swal) {
+            Swal.close();
+            Swal.fire({
+              icon: "success",
+              title: "Submitted!",
+              text: "Your appointment request has been submitted successfully.",
+              confirmButtonColor: "#FE6B09"
+            });
+          }
+        } catch (error) {
+          if (window.Swal) {
+            Swal.close();
+            Swal.fire({
+              icon: "error",
+              title: "Submission failed",
+              text: "Could not submit your appointment request. Please try again.",
+              confirmButtonColor: "#FE6B09"
+            });
+          }
+        } finally {
+          complimentarySubmitBtn.disabled = false;
+          complimentarySubmitBtn.classList.remove("opacity-70", "cursor-not-allowed");
+          complimentarySubmitBtn.innerHTML = 'Submit Request <i class="fa-solid fa-arrow-right text-[0.85rem]"></i>';
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !complimentaryModal.classList.contains("hidden")) {
+          closeComplimentaryModal();
+        }
+      });
+
+      const popupIntervalMs = 15000;
+      setTimeout(() => {
+        if (!hasSubmittedComplimentaryForm() && !isAnotherModalOpen()) {
+          openComplimentaryModal();
+        }
+
+        setInterval(() => {
+          if (!hasSubmittedComplimentaryForm() && complimentaryModal.classList.contains("hidden") && !isAnotherModalOpen()) {
+            openComplimentaryModal();
+          }
+        }, popupIntervalMs);
+      }, popupIntervalMs);
+    }
+
+    if (freeCopyModal && freeCopyForm && freeCopySubmitBtn) {
+      const openFreeCopyModal = ({ title, file }) => {
+        if (freeCopyModalTitle) {
+          freeCopyModalTitle.textContent = `Get Free Copy - ${title}`;
+        }
+        if (freeCopyFileInput) {
+          freeCopyFileInput.value = file;
+        }
+        if (freeCopyGuideNameInput) {
+          freeCopyGuideNameInput.value = title;
+        }
+        if (freeCopyFormMessage) {
+          freeCopyFormMessage.classList.add("hidden");
+          freeCopyFormMessage.classList.remove("text-red-600", "text-green-600", "text-primary");
+        }
+        freeCopyModal.classList.remove("hidden");
+        syncBodyScrollLock();
+      };
+
+      const closeFreeCopyModal = () => {
+        freeCopyModal.classList.add("hidden");
+        syncBodyScrollLock();
+      };
+
+      if (freeCopyButtons.length) {
+        freeCopyButtons.forEach((button) => {
+          button.addEventListener("click", (event) => {
+            event.preventDefault();
+            const title = button.getAttribute("data-title") || "Health Guide";
+            const file = button.getAttribute("data-download") || "";
+            openFreeCopyModal({ title, file });
+          });
+        });
+      }
+
+      if (freeCopyModalClose) {
+        freeCopyModalClose.addEventListener("click", closeFreeCopyModal);
+      }
+
+      if (freeCopyModalBackdrop) {
+        freeCopyModalBackdrop.addEventListener("click", closeFreeCopyModal);
+      }
+
+      freeCopyForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        if (freeCopyFormMessage) {
+          freeCopyFormMessage.classList.add("hidden");
+          freeCopyFormMessage.classList.remove("text-red-600", "text-green-600", "text-primary");
+        }
+
+        const defaultBtnHtml = 'Submit &amp; Download <i class="fa-solid fa-download text-[0.85rem]"></i>';
+        freeCopySubmitBtn.innerHTML = 'Submitting... <i class="fa-solid fa-spinner fa-spin text-[0.85rem]"></i>';
+        freeCopySubmitBtn.disabled = true;
+        freeCopySubmitBtn.classList.add("opacity-70", "cursor-not-allowed");
+
+        try {
+          const formData = new FormData(freeCopyForm);
+          const guideName = String(formData.get("guide_name") || "").trim();
+          const downloadFile = String(formData.get("download_file") || "").trim();
+
+          await postToSheet({
+            name: formData.get("name"),
+            phone: formData.get("phone"),
+            email: formData.get("email"),
+            service: `Free Handout - ${guideName || "Health Guide"}`,
+            message: `Requested free copy download: ${downloadFile || "N/A"}`
+          });
+
+          if (downloadFile) {
+            const downloadLink = document.createElement("a");
+            downloadLink.href = downloadFile;
+            const safeFileName = `${(guideName || "health-guide").replace(/[^\w\s-]/g, "").trim().replace(/\s+/g, "-") || "health-guide"}.pdf`;
+            downloadLink.download = safeFileName;
+            downloadLink.rel = "noopener";
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            downloadLink.remove();
+          }
+
+          freeCopyForm.reset();
+          closeFreeCopyModal();
+
+          if (window.Swal) {
+            Swal.fire({
+              icon: "success",
+              title: "Submitted!",
+              text: "Your details are saved and download has started.",
+              confirmButtonColor: "#FE6B09"
+            });
+          }
+        } catch (error) {
+          if (freeCopyFormMessage) {
+            freeCopyFormMessage.textContent = "Submission failed. Please try again.";
+            freeCopyFormMessage.classList.remove("hidden");
+            freeCopyFormMessage.classList.add("text-red-600");
+          }
+
+          if (window.Swal) {
+            Swal.fire({
+              icon: "error",
+              title: "Submission failed",
+              text: "Please try again.",
+              confirmButtonColor: "#FE6B09"
+            });
+          }
+        } finally {
+          freeCopySubmitBtn.disabled = false;
+          freeCopySubmitBtn.classList.remove("opacity-70", "cursor-not-allowed");
+          freeCopySubmitBtn.innerHTML = defaultBtnHtml;
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !freeCopyModal.classList.contains("hidden")) {
+          closeFreeCopyModal();
+        }
+      });
+    }
+  </script>
+
+</body>
+
+</html>
