@@ -130,6 +130,28 @@
       animation-play-state: paused;
     }
 
+    #clients .clients-track>span {
+      min-width: 150px !important;
+      padding-top: 0.6rem !important;
+      padding-bottom: 0.6rem !important;
+      border-right-width: 0 !important;
+    }
+
+    #clients .clients-track img {
+      height: 2.6rem !important;
+    }
+
+    @media (min-width: 640px) {
+      #clients .clients-track>span {
+        min-width: 205px !important;
+        padding: 0.85rem 2rem !important;
+      }
+
+      #clients .clients-track img {
+        height: 3.6rem !important;
+      }
+    }
+
     @keyframes clientsMarquee {
       from {
         transform: translateX(0);
@@ -442,8 +464,8 @@
 
           <div class="w-full max-w-[760px] min-w-0 rounded-2xl bg-[rgba(10,14,30,0.42)] px-3 py-4 text-center backdrop-blur-[1px] sm:bg-transparent sm:px-0 sm:py-0 sm:backdrop-blur-0">
             <h1 class="mb-2 text-[clamp(1.15rem,5.2vw,1.9rem)] font-extrabold uppercase leading-[1.2] tracking-[0.02em] text-white sm:text-[clamp(1.3rem,2.6vw,1.9rem)]">
-              <span class="brand-word text-primary">PREHAB</span><br>
-              Corporate Health &amp; Wellness
+              <span class="brand-word text-white">PREHAB</span><br>
+              <span class="text-primary">Corporate Health &amp; Wellness</span>
             </h1>
             <p class="mx-auto mb-5 max-w-[620px] text-[0.82rem] font-medium leading-[1.45] text-white drop-shadow-[0_1px_10px_rgba(0,0,0,0.35)] sm:text-[0.9rem]">
               <span class="brand-word font-bold tracking-wide text-white">PREHAB</span> partners with organisations that want more than a brochure programme — culture change, healthier bodies, and teams that feel ready for the work ahead.
@@ -464,12 +486,12 @@
       </div>
     </section>
 
-    <section id="clients" class="bg-[#0F172A] py-8 md:py-10">
+    <section id="clients" class="bg-white py-9 md:py-11">
       <div class="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-12">
-        <p class="text-center text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-white/70">Our clients</p>
-        <div class="relative mx-auto mt-3 w-full max-w-[1240px] overflow-hidden rounded-xl border border-white/20 bg-[rgba(17,14,32,0.88)] shadow-[0_14px_34px_rgba(0,0,0,0.28)]">
-          <div class="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-[rgba(17,14,32,0.95)] to-transparent sm:w-14"></div>
-          <div class="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-[rgba(17,14,32,0.95)] to-transparent sm:w-14"></div>
+        <h2 class="text-center text-[clamp(1.65rem,3.5vw,2.35rem)] font-extrabold text-dark">Our clients</h2>
+        <div class="relative mx-auto mt-4 w-full max-w-[1240px] overflow-hidden rounded-xl bg-white shadow-[0_10px_28px_rgba(15,23,42,0.08)]">
+          <div class="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-white to-transparent sm:w-14"></div>
+          <div class="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-white to-transparent sm:w-14"></div>
           <div class="clients-track flex items-stretch">
             <span class="flex min-w-[140px] items-center justify-center border-r border-white/15 px-4 py-2 sm:min-w-[190px] sm:px-7 sm:py-3"><img src="wellnessimg/logo1.png" alt="Reserve Bank of India logo" class="h-8 w-auto object-contain sm:h-12" /></span>
             <span class="flex min-w-[140px] items-center justify-center border-r border-white/15 px-4 py-2 sm:min-w-[190px] sm:px-7 sm:py-3"><img src="wellnessimg/logo2.png" alt="Barbell House Gym logo" class="h-8 w-auto object-contain sm:h-12" /></span>
@@ -608,40 +630,40 @@
         <p class="mx-auto mt-3 max-w-[680px] text-center text-[0.88rem] text-slate-600">
           Real outcomes in a table-style view designed for corporate decision-makers.
         </p>
-        <div class="mx-auto mt-8 grid max-w-[1100px] grid-cols-1 overflow-hidden rounded-2xl border border-white/20 bg-[#130E22] sm:grid-cols-2 lg:grid-cols-4">
-          <article class="advantage-card min-h-[140px] border-b border-white/15 bg-cover bg-center p-5 sm:min-h-[160px] sm:border-r lg:border-b lg:p-6"
+        <div class="mx-auto mt-8 grid max-w-[1240px] grid-cols-1 overflow-hidden rounded-2xl border border-white/20 bg-[#130E22] sm:grid-cols-2 lg:grid-cols-4">
+          <article class="advantage-card min-h-[170px] border-b border-white/15 bg-cover bg-center p-6 sm:min-h-[190px] sm:border-r lg:border-b lg:p-7"
             style="background-image: linear-gradient(rgba(8,10,25,0.78), rgba(8,10,25,0.78)), url('wellnessimg/hero.png');">
             <p class="text-[2rem] font-extrabold leading-none text-white sm:text-[2.3rem]">40%</p>
             <h3 class="mt-3 text-[1rem] font-bold text-white">Increased productivity</h3>
             <p class="mt-1 text-[0.86rem] leading-relaxed text-white/75">Sharper focus and steadier energy throughout the workday.</p>
           </article>
-          <article class="advantage-card min-h-[140px] border-b border-white/15 p-5 sm:min-h-[160px] lg:border-r lg:border-b lg:p-6">
+          <article class="advantage-card min-h-[170px] border-b border-white/15 p-6 sm:min-h-[190px] lg:border-r lg:border-b lg:p-7">
             <p class="text-[1.8rem] font-extrabold leading-none text-primary sm:text-[2rem]">Significant</p>
             <h3 class="mt-3 text-[1rem] font-bold text-white">Reduced absenteeism</h3>
             <p class="mt-1 text-[0.86rem] leading-relaxed text-white/75">Fewer injury and illness episodes improve attendance stability.</p>
           </article>
-          <article class="advantage-card min-h-[140px] border-b border-white/15 p-5 sm:min-h-[160px] sm:border-r lg:border-b lg:p-6">
+          <article class="advantage-card min-h-[170px] border-b border-white/15 p-6 sm:min-h-[190px] sm:border-r lg:border-b lg:p-7">
             <p class="text-[0.74rem] font-semibold uppercase tracking-[0.16em] text-primary/90">Trusted care</p>
             <h3 class="mt-3 text-[1rem] font-bold text-white">Proven excellence</h3>
             <p class="mt-1 text-[0.86rem] leading-relaxed text-white/75"><span class="brand-word font-bold text-white">PREHAB</span> Clinics brings 40+ years of combined clinical experience.</p>
           </article>
-          <article class="advantage-card min-h-[140px] border-b border-white/15 p-5 sm:min-h-[160px] lg:border-b lg:p-6">
+          <article class="advantage-card min-h-[170px] border-b border-white/15 p-6 sm:min-h-[190px] lg:border-b lg:p-7">
             <p class="text-[0.74rem] font-semibold uppercase tracking-[0.16em] text-primary/90">Performance view</p>
             <h3 class="mt-3 text-[1rem] font-bold text-white">Measurable ROI</h3>
             <p class="mt-1 text-[0.86rem] leading-relaxed text-white/75">Lower healthcare cost burden with stronger workforce output.</p>
           </article>
-          <article class="advantage-card min-h-[140px] border-b border-white/15 p-5 sm:min-h-[160px] sm:border-r sm:border-b-0 lg:border-r lg:p-6">
+          <article class="advantage-card min-h-[170px] border-b border-white/15 p-6 sm:min-h-[190px] sm:border-r sm:border-b-0 lg:border-r lg:p-7">
             <p class="text-[0.74rem] font-semibold uppercase tracking-[0.16em] text-primary/90">People impact</p>
             <h3 class="mt-3 text-[1rem] font-bold text-white">Enhanced morale &amp; loyalty</h3>
             <p class="mt-1 text-[0.86rem] leading-relaxed text-white/75">Better employee care strengthens engagement and retention.</p>
           </article>
-          <article class="advantage-card min-h-[140px] border-b border-white/15 bg-cover bg-center p-5 sm:col-span-2 sm:min-h-[160px] sm:border-b-0 lg:col-span-2 lg:border-r lg:p-6"
+          <article class="advantage-card min-h-[170px] border-b border-white/15 bg-cover bg-center p-6 sm:col-span-2 sm:min-h-[190px] sm:border-b-0 lg:col-span-2 lg:border-r lg:p-7"
             style="background-image: linear-gradient(rgba(20,18,40,0.72), rgba(20,18,40,0.72)), url('wellnessimg/aboutimg.png');">
             <p class="text-[0.74rem] font-semibold uppercase tracking-[0.16em] text-white/80">Premium outcome</p>
             <h3 class="mt-3 text-[1.25rem] font-extrabold text-white sm:text-[1.4rem]">100% Customized Programs</h3>
             <p class="mt-2 max-w-[460px] text-[0.9rem] leading-relaxed text-white/90">Tailored to your organization needs and aligned with your company culture.</p>
           </article>
-          <article class="advantage-card min-h-[140px] bg-cover bg-center p-5 sm:min-h-[160px] sm:border-r lg:p-6"
+          <article class="advantage-card min-h-[170px] bg-cover bg-center p-6 sm:min-h-[190px] sm:border-r lg:p-7"
             style="background-image: linear-gradient(rgba(7,12,28,0.76), rgba(7,12,28,0.76)), url('wellnessimg/herosection.jpg');">
             <p class="text-[0.74rem] font-semibold uppercase tracking-[0.16em] text-primary/90">Workforce health</p>
             <h3 class="mt-3 text-[1rem] font-bold text-white">Resilient workforce</h3>
