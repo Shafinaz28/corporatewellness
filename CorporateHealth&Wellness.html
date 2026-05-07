@@ -192,10 +192,11 @@
 
     .loader-orbit {
       position: relative;
-      width: 168px;
+      width: 154px;
       aspect-ratio: 1;
       display: grid;
       place-items: center;
+      overflow: hidden;
     }
 
     .loader-ring {
@@ -217,18 +218,18 @@
     }
 
     .page-loader-logo {
-      width: auto;
-      height: 64px;
-      max-width: 280px;
+      width: min(70%, 116px);
+      height: auto;
+      max-width: 116px;
       object-fit: contain;
       filter: drop-shadow(0 6px 16px rgba(254, 107, 9, 0.25));
       animation: loaderPulse 1.25s ease-in-out infinite;
     }
 
     .loader-text {
-      font-size: 0.78rem;
+      font-size: 0.7rem;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       color: #0F172A;
       text-transform: uppercase;
       opacity: 0.75;
@@ -779,6 +780,7 @@
     const appointmentForm = document.getElementById("appointment-form");
     const appointmentFormMessage = document.getElementById("appointment-form-message");
     const appointmentSubmitBtn = document.getElementById("appointment-submit-btn");
+    const LOADER_MIN_DURATION_MS = 1400;
 
     const getIstTimestamp = () => new Intl.DateTimeFormat("en-GB", {
       timeZone: "Asia/Kolkata",
@@ -792,8 +794,10 @@
     }).format(new Date());
 
     window.addEventListener("load", () => {
-      if (pageLoader) pageLoader.classList.add("hidden");
-      document.body.classList.remove("loading");
+      window.setTimeout(() => {
+        if (pageLoader) pageLoader.classList.add("hidden");
+        document.body.classList.remove("loading");
+      }, LOADER_MIN_DURATION_MS);
     });
 
     const syncBodyScrollLock = () => {
