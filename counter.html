@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Year One Impact | PREHAB</title>
+  <meta name="description"
+    content="Year One Impact at PREHAB — lives transformed, ACL recoveries, pain-free backs, shoulder restorations, and proven success." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#FE6B09",
+            ringPink: "#db2777",
+            ringGreen: "#65a30d",
+            ringBlue: "#0ea5e9",
+            ringViolet: "#7c3aed"
+          },
+          fontFamily: {
+            montserrat: ["Montserrat", "Arial", "Helvetica", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Thick ring with gap at top (like reference) */
+    .counter-outer {
+      --ring: #fe6b09;
+      --ring-dark: #c2410c;
+      padding: 14px;
+      border-radius: 999px;
+      background: conic-gradient(from -90deg,
+          transparent 0deg 42deg,
+          var(--ring) 42deg 200deg,
+          var(--ring-dark) 200deg 318deg,
+          var(--ring) 318deg 360deg);
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.1), inset 0 -6px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .counter-inner {
+      border-radius: 999px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
+
+    .stat-num {
+      font-variant-numeric: tabular-nums;
+    }
+
+    .counter-item {
+      transition: transform 0.3s ease;
+    }
+
+    .counter-item:hover {
+      transform: translateY(-6px);
+    }
+
+    @media (max-width: 640px) {
+      .counter-outer {
+        padding: 11px;
+      }
+
+      .counter-inner {
+        padding-left: 0.55rem !important;
+        padding-right: 0.55rem !important;
+        padding-top: 1rem !important;
+        padding-bottom: 0.8rem !important;
+      }
+
+      .counter-item {
+        width: 162px !important;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .counter-item {
+        width: 148px !important;
+      }
+
+      .counter-inner {
+        padding-left: 0.45rem !important;
+        padding-right: 0.45rem !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-white font-montserrat text-slate-700 antialiased">
+
+
+  <section class="relative px-3 pb-8 pt-8 sm:px-4 sm:pb-10 sm:pt-12 md:px-6 md:pb-12 md:pt-14">
+    <div class="mx-auto max-w-[1200px] text-center">
+      
+      <div class="mx-auto mt-5 max-w-3xl space-y-4 text-left sm:text-center">
+        <p class="text-[0.92rem] leading-relaxed text-slate-600 sm:text-[0.95rem]">
+          Our first year at <span class="font-semibold text-slate-800">PREHAB</span> was built on real outcomes: people
+          moving better, athletes returning to sport, and teams trusting a programme that blends clinical expertise with
+          measurable progress.
+          The figures below summarise what that year looked like in practice — from high-volume musculoskeletal care to
+          focused ACL and shoulder pathways, back-pain relief at scale, and consistently strong rehabilitation results.
+        </p>
+        
+      </div>
+    </div>
+
+    <div id="impact-grid"
+      class="mx-auto mt-10 flex max-w-[1200px] flex-wrap items-start justify-center gap-x-3 gap-y-8 px-1 sm:mt-14 sm:gap-x-8 sm:gap-y-12 sm:px-2 md:gap-x-10 lg:gap-x-8">
+
+      <!-- 1: magenta / pink -->
+      <div class="counter-item flex w-[180px] flex-col items-center sm:w-[200px] md:w-[210px]">
+        <div class="counter-outer w-full max-w-[210px] aspect-square" style="--ring:#db2777;--ring-dark:#9d174d;">
+          <div class="counter-inner relative flex aspect-square w-full flex-col items-center justify-center px-3 pt-5 pb-4">
+            <span
+              class="absolute left-0 top-0 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-[#db2777] text-[0.82rem] text-white shadow-lg ring-4 ring-[#e8eaed] sm:-left-0.5 sm:-top-0.5 sm:h-11 sm:w-11 sm:text-[0.95rem]"
+              aria-hidden="true">
+              <i class="fa-solid fa-users"></i>
+            </span>
+            <p class="text-center text-[0.58rem] font-extrabold uppercase leading-tight tracking-[0.12em] text-[#db2777] sm:text-[0.62rem]">
+              Lives<br>Transformed
+            </p>
+            <p class="stat-num mt-2 text-center text-[clamp(1.85rem,5vw,2.35rem)] font-black leading-none text-[#db2777]">
+              <span class="counter" data-target="1000" data-suffix="+">0</span><span class="suffix">+</span>
+            </p>
+            <p class="mt-2 text-center text-[0.62rem] leading-snug text-slate-500 sm:text-[0.65rem]">
+                Expert care and recovery for musculoskeletal and sports
+                injuries.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2: orange -->
+      <div class="counter-item flex w-[180px] flex-col items-center sm:w-[200px] md:w-[210px]">
+        <div class="counter-outer w-full max-w-[210px] aspect-square" style="--ring:#FE6B09;--ring-dark:#c2410c;">
+          <div class="counter-inner relative flex aspect-square w-full flex-col items-center justify-center px-3 pt-5 pb-4">
+            <span
+              class="absolute left-0 top-0 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-primary text-[0.82rem] text-white shadow-lg ring-4 ring-[#e8eaed] sm:-left-0.5 sm:-top-0.5 sm:h-11 sm:w-11 sm:text-[0.95rem]"
+              aria-hidden="true">
+              <i class="fa-solid fa-person-running"></i>
+            </span>
+            <p class="text-center text-[0.58rem] font-extrabold uppercase leading-tight tracking-[0.12em] text-primary sm:text-[0.62rem]">
+              Elite ACL<br>Recoveries
+            </p>
+            <p class="stat-num mt-2 text-center text-[clamp(1.85rem,5vw,2.35rem)] font-black leading-none text-primary">
+              <span class="counter" data-target="50" data-suffix="+">0</span><span class="suffix">+</span>
+            </p>
+            <p class="mt-2 text-center text-[0.62rem] leading-snug text-slate-500 sm:text-[0.65rem]">
+                Athletes fully returned to play and their peak pre-injury
+                levels.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3: lime green -->
+      <div class="counter-item flex w-[180px] flex-col items-center sm:w-[200px] md:w-[210px]">
+        <div class="counter-outer w-full max-w-[210px] aspect-square" style="--ring:#84cc16;--ring-dark:#4d7c0f;">
+          <div class="counter-inner relative flex aspect-square w-full flex-col items-center justify-center px-3 pt-5 pb-4">
+            <span
+              class="absolute left-0 top-0 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-[#84cc16] text-white shadow-lg ring-4 ring-[#e8eaed] sm:-left-0.5 sm:-top-0.5 sm:h-11 sm:w-11"
+              aria-hidden="true">
+              <!-- Minimal profile: thick outline, hand on lumbar, dotted pain line on lower back -->
+              <svg class="h-[1.2rem] w-[1.2rem] shrink-0" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true">
+                <line x1="11.2" y1="14" x2="11.2" y2="21.2" stroke="#fca5a5" stroke-width="2.2" stroke-linecap="round"
+                  stroke-dasharray="1.2 2.2" />
+                <g stroke="currentColor" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                  <circle cx="23.2" cy="8.4" r="2.85" />
+                  <path d="M 21 11.2 L 19.2 13.2 Q 16.4 15.2 14.8 18.2 Q 13.6 20.8 13.8 23.6" />
+                  <path d="M 13.8 23.6 L 12.4 27.8 M 13.8 23.6 L 15.4 27.8" />
+                  <path d="M 20.2 12.6 Q 17.4 14.4 13.6 16.8" />
+                </g>
+              </svg>
+            </span>
+            <p class="text-center text-[0.58rem] font-extrabold uppercase leading-tight tracking-[0.12em] text-[#65a30d] sm:text-[0.62rem]">
+              Pain Free<br>Backs
+            </p>
+            <p class="stat-num mt-2 text-center text-[clamp(1.85rem,5vw,2.35rem)] font-black leading-none text-[#65a30d]">
+              <span class="counter" data-target="200" data-suffix="+">0</span><span class="suffix">+</span>
+            </p>
+            <p class="mt-2 text-center text-[0.62rem] leading-snug text-slate-500 sm:text-[0.65rem]">
+                Achieving complete functional recovery and lasting relief from
+                lower back pain.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4: sky blue -->
+      <div class="counter-item flex w-[180px] flex-col items-center sm:w-[200px] md:w-[210px]">
+        <div class="counter-outer w-full max-w-[210px] aspect-square" style="--ring:#0ea5e9;--ring-dark:#0369a1;">
+          <div class="counter-inner relative flex aspect-square w-full flex-col items-center justify-center px-3 pt-5 pb-4">
+            <span
+              class="absolute left-0 top-0 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-[#0ea5e9] text-[0.82rem] text-white shadow-lg ring-4 ring-[#e8eaed] sm:-left-0.5 sm:-top-0.5 sm:h-11 sm:w-11 sm:text-[0.95rem]"
+              aria-hidden="true">
+              <i class="fa-solid fa-child-reaching"></i>
+            </span>
+            <p class="text-center text-[0.58rem] font-extrabold uppercase leading-tight tracking-[0.12em] text-[#0284c7] sm:text-[0.62rem]">
+              Shoulder<br>Restorations
+            </p>
+            <p class="stat-num mt-2 text-center text-[clamp(1.85rem,5vw,2.35rem)] font-black leading-none text-[#0284c7]">
+              <span class="counter" data-target="100" data-suffix="+">0</span><span class="suffix">+</span>
+            </p>
+            <p class="mt-2 text-center text-[0.62rem] leading-snug text-slate-500 sm:text-[0.65rem]">
+                Comprehensive recovery for surgical and injury cases to regain daily mobility.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5: violet -->
+      <div class="counter-item flex w-[180px] flex-col items-center sm:w-[200px] md:w-[210px]">
+        <div class="counter-outer w-full max-w-[210px] aspect-square" style="--ring:#8b5cf6;--ring-dark:#5b21b6;">
+          <div class="counter-inner relative flex aspect-square w-full flex-col items-center justify-center px-3 pt-5 pb-4">
+            <span
+              class="absolute left-0 top-0 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-[#8b5cf6] text-[0.82rem] text-white shadow-lg ring-4 ring-[#e8eaed] sm:-left-0.5 sm:-top-0.5 sm:h-11 sm:w-11 sm:text-[0.95rem]"
+              aria-hidden="true">
+              <i class="fa-solid fa-chart-line"></i>
+            </span>
+            <p class="text-center text-[0.58rem] font-extrabold uppercase leading-tight tracking-[0.12em] text-[#7c3aed] sm:text-[0.62rem]">
+              Proven<br>Success
+            </p>
+            <p class="stat-num mt-2 text-center text-[clamp(1.85rem,5vw,2.35rem)] font-black leading-none text-[#7c3aed]">
+              <span class="counter" data-target="98" data-suffix="%">0</span><span class="suffix">%</span>
+            </p>
+            <p class="mt-2 text-center text-[0.62rem] leading-snug text-slate-500 sm:text-[0.65rem]">
+                Exceptional outcomes through our signature personalized
+                rehabilitation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+      function animateValue(el, target, duration) {
+        const start = performance.now();
+        const from = 0;
+        const hasDecimal = String(target).includes(".");
+
+        function frame(now) {
+          const t = Math.min(1, (now - start) / duration);
+          const eased = easeOutCubic(t);
+          let val = from + (target - from) * eased;
+          if (!hasDecimal) val = Math.round(val);
+          el.textContent = hasDecimal ? val.toFixed(1) : String(Math.round(val));
+          if (t < 1) requestAnimationFrame(frame);
+          else el.textContent = hasDecimal ? String(target) : String(Math.round(target));
+        }
+        requestAnimationFrame(frame);
+      }
+
+      const grid = document.getElementById("impact-grid");
+      if (!grid) return;
+
+      const counters = grid.querySelectorAll(".counter");
+      const started = new WeakSet();
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            counters.forEach((el) => {
+              if (started.has(el)) return;
+              started.add(el);
+              const target = parseFloat(el.dataset.target, 10);
+              const span = el.nextElementSibling;
+              if (span && span.classList.contains("suffix")) {
+                span.textContent = el.dataset.suffix || span.textContent;
+              }
+              animateValue(el, target, 1600);
+            });
+            io.disconnect();
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      io.observe(grid);
+    })();
+  </script>
+</body>
+
+</html>
