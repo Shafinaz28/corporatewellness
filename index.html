@@ -192,7 +192,7 @@
 
     .loader-orbit {
       position: relative;
-      width: 154px;
+      width: 176px;
       aspect-ratio: 1;
       display: grid;
       place-items: center;
@@ -218,9 +218,9 @@
     }
 
     .page-loader-logo {
-      width: min(70%, 116px);
+      width: min(72%, 144px);
       height: auto;
-      max-width: 116px;
+      max-width: 144px;
       object-fit: contain;
       filter: drop-shadow(0 6px 16px rgba(254, 107, 9, 0.25));
       animation: loaderPulse 1.25s ease-in-out infinite;
@@ -270,18 +270,18 @@
 
   <header class="relative z-[1100] overflow-visible border-b border-[#efefef] bg-white">
     <div class="mx-auto w-[94%] max-w-[1320px]">
-      <div class="relative flex min-h-[84px] items-center justify-between gap-6 py-2">
+      <div class="flex w-full min-h-[88px] items-center gap-2.5 py-2 sm:min-h-[92px] sm:gap-3 sm:py-2.5 md:min-h-[96px] md:gap-4">
 
         <!-- Logo -->
-        <a href="https://www.prehabclinics.com/" class="flex shrink-0 items-center whitespace-nowrap">
-          <img src="image/logo.png" alt="PREHAB DigiCare" class="h-[54px] w-auto block" />
+        <a href="https://www.prehabclinics.com/" class="-ml-1 flex min-w-0 shrink-0 items-center sm:-ml-2 md:-ml-2.5">
+          <img src="wellnessimg/logo.svg" alt="PREHAB Musculoskeletal &amp; Sports Health Clinics"
+            class="h-[54px] w-auto max-w-[min(280px,58vw)] object-contain sm:h-[60px] sm:max-w-[min(300px,52vw)] md:h-[66px]" />
         </a>
 
         <nav
-          class="absolute left-1/2 hidden -translate-x-1/2 items-center gap-5 whitespace-nowrap text-[0.82rem] font-medium xl:flex">
+          class="hidden min-w-0 flex-1 items-center justify-center gap-x-2.5 gap-y-1 overflow-visible px-1 text-[0.85rem] font-medium sm:gap-x-3.5 sm:text-[0.88rem] md:gap-x-4 md:text-[0.92rem] lg:text-[0.94rem] xl:flex xl:text-[0.96rem]">
 
-          <!-- Orange Text -->
-          <a href="https://www.prehabclinics.com/" class="text-orange-500 transition hover:text-black">
+          <a href="https://www.prehabclinics.com/" class="text-dark transition hover:text-orange-500">
             Home
           </a>
 
@@ -294,7 +294,7 @@
             <button type="button"
               class="flex items-center gap-1 text-orange-500 transition hover:text-black focus:outline-none">
               Services
-              <i class="fa-solid fa-chevron-down text-[0.6rem]"></i>
+              <i class="fa-solid fa-chevron-down text-[0.65rem] md:text-[0.7rem] lg:text-[0.72rem]"></i>
             </button>
 
             <div
@@ -364,7 +364,7 @@
             <button type="button"
               class="flex items-center gap-1 text-orange-500 transition hover:text-black focus:outline-none">
               More
-              <i class="fa-solid fa-chevron-down text-[0.6rem]"></i>
+              <i class="fa-solid fa-chevron-down text-[0.65rem] md:text-[0.7rem] lg:text-[0.72rem]"></i>
             </button>
 
             <div
@@ -415,15 +415,15 @@
         </nav>
 
         <!-- Right Side Buttons -->
-        <div class="ml-auto flex items-center gap-3">
+        <div class="ml-auto flex shrink-0 items-center gap-2 sm:gap-2.5 md:gap-3 xl:ml-0">
           <button id="header-book-btn" type="button"
-            class="hidden md:inline-block rounded-full bg-primary px-6 py-[12px] text-[0.9rem] font-bold text-white shadow-[0_6px_16px_rgba(254,107,9,0.25)] transition hover:-translate-y-[1px]">
+            class="hidden md:inline-block rounded-full bg-primary px-6 py-3 text-[0.9rem] font-bold text-white shadow-[0_6px_16px_rgba(254,107,9,0.25)] transition hover:-translate-y-[1px] md:px-7 md:py-[13px] md:text-[0.95rem]">
             Book Appointment
           </button>
 
           <button id="menu-btn"
-            class="xl:hidden ml-1 grid h-[42px] w-[42px] place-items-center rounded-full border border-gray-300 text-dark">
-            <i class="fa-solid fa-bars text-lg"></i>
+            class="xl:hidden ml-1 grid h-[44px] w-[44px] place-items-center rounded-full border border-gray-300 text-dark sm:h-[46px] sm:w-[46px]">
+            <i class="fa-solid fa-bars text-xl"></i>
           </button>
         </div>
 
@@ -437,8 +437,9 @@
   <!-- Top -->
   <div class="mb-8 flex items-center justify-between border-b border-slate-200 pb-4">
 
-    <a href="index.html" class="flex items-center">
-      <img src="image/logo.png" alt="PREHAB DigiCare" class="h-[48px] w-auto" />
+    <a href="index.html" class="-ml-1 flex items-center sm:-ml-2">
+      <img src="wellnessimg/logo.svg" alt="PREHAB Musculoskeletal &amp; Sports Health Clinics"
+        class="h-[50px] w-auto max-w-[min(280px,82vw)] object-contain sm:h-[56px]" />
     </a>
 
     <button id="close-menu"
@@ -675,16 +676,16 @@
 
   <main class="w-full min-w-0">
     <section id="home"
-      class="relative flex min-h-[600px] w-full min-w-0 items-center overflow-hidden border-b border-white/10 px-4 py-12 sm:px-6 lg:px-12 lg:py-16">
+      class="relative flex min-h-[min(72svh,520px)] w-full min-w-0 items-start overflow-hidden border-b border-white/10 px-4 pb-10 pt-5 sm:min-h-[min(70svh,480px)] sm:px-6 sm:pb-12 sm:pt-6 lg:min-h-[min(68svh,500px)] lg:px-12 lg:pb-14 lg:pt-7">
       <div class="hero-wellness-bg absolute inset-0 scale-[1.02]" aria-hidden="true"></div>
       <div
         class="absolute inset-0 bg-[linear-gradient(105deg,rgba(15,23,42,0.45)_0%,rgba(15,23,42,0.45)_48%,rgba(15,23,42,0.45)_100%)]">
       </div>
 
       <div class="relative z-10 mx-auto w-full max-w-[1280px]">
-        <div class="grid w-full min-w-0 items-center justify-items-center gap-8 text-center lg:gap-10">
+        <div class="grid w-full min-w-0 items-start justify-items-center gap-6 text-center sm:gap-7 lg:gap-8">
 
-          <div class="w-full max-w-[860px] min-w-0 rounded-2xl  px-3 py-4 text-center   sm:px-0 sm:py-0 ">
+          <div class="w-full max-w-[860px] min-w-0 rounded-2xl px-3 py-2 text-center sm:px-0 sm:py-0">
             <h1
               class="mb-1 mx-auto max-w-[760px] text-[1.45rem] font-extrabold leading-[0.98] tracking-[-0.01em] text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.3)] sm:text-[clamp(1.8rem,4vw,3.2rem)] sm:leading-[0.9] sm:tracking-[-0.02em]">
               <span class="brand-word text-white">PREHAB</span><br>
