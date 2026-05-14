@@ -268,189 +268,188 @@
     </div>
   </div>
 
-  <header class="relative z-[1100] overflow-visible border-b border-[#efefef] bg-white">
-    <div class="mx-auto w-[94%] max-w-[1320px]">
-      <div class="flex w-full min-h-[88px] items-center gap-2.5 py-2 sm:min-h-[92px] sm:gap-3 sm:py-2.5 md:min-h-[96px] md:gap-4">
+  <header class="relative z-[1100] overflow-x-hidden overflow-y-visible shadow-[0_8px_24px_rgba(6,35,50,0.08)] xl:overflow-visible">
+    <div class="mx-auto min-w-0 w-[94%] max-w-[1320px]">
+      <!-- Top bar: logo + contact icon + book + menu only -->
+      <div
+        class="flex w-full min-w-0 min-h-[68px] items-center justify-between gap-2 border-b border-borderSoft bg-white py-1.5 sm:min-h-[72px] sm:gap-3 sm:py-2 md:min-h-[76px]">
 
-        <!-- Logo -->
-        <a href="https://www.prehabclinics.com/" class="-ml-1 flex min-w-0 shrink-0 items-center sm:-ml-2 md:-ml-2.5">
+        <a href="https://www.prehabclinics.com/" class="-ml-1 flex min-w-0 max-w-[55%] items-center sm:-ml-2 sm:max-w-none md:-ml-2.5">
           <img src="image/logo.svg" alt="PREHAB Musculoskeletal &amp; Sports Health Clinics"
-            class="h-[54px] w-auto max-w-[min(280px,58vw)] object-contain sm:h-[60px] sm:max-w-[min(300px,52vw)] md:h-[66px]" />
+            class="h-[48px] w-auto max-w-full object-contain sm:h-[54px] md:h-[66px]" />
         </a>
 
-        <nav
-          class="hidden min-w-0 flex-1 items-center justify-center gap-x-2.5 gap-y-1 overflow-visible px-1 text-[0.85rem] font-medium sm:gap-x-3.5 sm:text-[0.88rem] md:gap-x-4 md:text-[0.92rem] lg:text-[0.94rem] xl:flex xl:text-[0.96rem]">
-
-          <a href="https://www.prehabclinics.com/" class="text-dark transition hover:text-orange-500">
-            Home
+        <div class="flex min-w-0 flex-1 items-center justify-end gap-1.5 sm:gap-2 md:gap-3">
+          <a href="mailto:contact@prehabclinics.com"
+            class="inline-flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full border border-slate-200 text-primary transition hover:border-primary hover:bg-primarySoft sm:h-[46px] sm:w-[46px] md:h-[46px] md:w-auto md:max-w-[min(46vw,240px)] md:gap-2 md:px-3 lg:max-w-none"
+            aria-label="Email contact@prehabclinics.com">
+            <i class="fa-solid fa-envelope shrink-0 text-base sm:text-lg" aria-hidden="true"></i>
+            <span
+              class="hidden truncate text-left text-[0.68rem] font-semibold text-slate-700 md:inline md:text-[0.72rem] lg:text-[0.76rem]">contact@prehabclinics.com</span>
           </a>
-
-          <a href="https://www.prehabclinics.com/about" class="text-orange-500 transition hover:text-black">
-            About
+          <a href="tel:+918867205650"
+            class="inline-flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full border border-slate-200 text-primary transition hover:border-primary hover:bg-primarySoft sm:h-[46px] sm:w-auto sm:min-w-0 sm:max-w-[min(42vw,10.5rem)] sm:justify-start sm:gap-1.5 sm:px-2.5 md:max-w-[12rem] lg:max-w-none"
+            aria-label="Call +91 88672 05650">
+            <i class="fa-solid fa-phone shrink-0 text-base sm:text-lg" aria-hidden="true"></i>
+            <span
+              class="hidden truncate text-left text-[0.68rem] font-semibold tabular-nums text-slate-700 sm:inline sm:text-[0.72rem] md:text-[0.76rem]">+91&nbsp;88672&nbsp;05650</span>
           </a>
-
-          <!-- Services Dropdown -->
-          <div class="relative group">
-            <button type="button"
-              class="flex items-center gap-1 text-orange-500 transition hover:text-black focus:outline-none">
-              Services
-              <i class="fa-solid fa-chevron-down text-[0.65rem] md:text-[0.7rem] lg:text-[0.72rem]"></i>
-            </button>
-
-            <div
-              class="invisible absolute left-0 top-[120%] z-[9999] min-w-[300px] rounded-lg border border-slate-100 bg-white p-2 opacity-0 shadow-xl transition duration-200 group-hover:visible group-hover:opacity-100">
-
-              <a href="https://www.prehabclinics.com/joint-and-muscle-pain"
-                class="block rounded-md px-3 py-2 text-[0.82rem] text-black hover:bg-gray-100 hover:text-orange-500">
-                Joint and Muscle Pain
-              </a>
-
-              <a href="https://www.prehabclinics.com/arthritis-and-pain-relief"
-                class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] text-black hover:bg-gray-100 hover:text-orange-500">
-                Arthritis & Pain Relief
-              </a>
-
-              <a href="https://www.prehabclinics.com/lifestyle-diseases"
-                class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] text-black hover:bg-gray-100 hover:text-orange-500">
-                Lifestyle Diseases
-              </a>
-
-              <a href="https://www.prehabclinics.com/post-operative-recovery"
-                class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] text-black hover:bg-gray-100 hover:text-orange-500">
-                Post-Operative Recovery & Return to Play
-              </a>
-
-              <a href="https://www.prehabclinics.com/sports-massage-recovery"
-                class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] text-black hover:bg-gray-100 hover:text-orange-500">
-                Sports Massage Recovery
-              </a>
-
-              <a href="https://www.prehabclinics.com/nutrition"
-                class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] text-black hover:bg-gray-100 hover:text-orange-500">
-                Nutrition
-              </a>
-
-              <a href="https://www.prehabclinics.com/fall-prevention-in-elderly"
-                class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] text-black hover:bg-gray-100 hover:text-orange-500">
-                Fall Prevention in the Elderly
-              </a>
-
-              <a href="https://www.prehabclinics.com/pilates-training"
-                class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] text-black hover:bg-gray-100 hover:text-orange-500">
-                Pilates Training
-              </a>
-            </div>
-          </div>
-
-          <a href="https://digicare.prehabclinics.com/" class="text-orange-500 transition hover:text-black">
-            Digicare
-          </a>
-
-          <a href="#" class="text-orange-500 transition hover:text-black">
-            Corporate Wellness
-          </a>
-
-          <a href="https://www.prehabclinics.com/category/all-products"
-            class="text-orange-500 transition hover:text-black">
-            Store
-          </a>
-
-          <a href="https://www.prehabclinics.com/contact" class="text-orange-500 transition hover:text-black">
-            Contact
-          </a>
-
-          <!-- More Dropdown -->
-          <div class="relative group">
-            <button type="button"
-              class="flex items-center gap-1 text-orange-500 transition hover:text-black focus:outline-none">
-              More
-              <i class="fa-solid fa-chevron-down text-[0.65rem] md:text-[0.7rem] lg:text-[0.72rem]"></i>
-            </button>
-
-            <div
-              class="invisible absolute right-0 top-[120%] z-[9999] min-w-[240px] rounded-lg border border-slate-100 bg-white p-2 opacity-0 shadow-xl transition duration-200 group-hover:visible group-hover:opacity-100">
-
-              <a href="https://www.prehabclinics.com/gallery"
-                class="block rounded-md px-3 py-2 text-[0.82rem] text-black hover:bg-gray-100 hover:text-orange-500">
-                Gallery
-              </a>
-
-              <a href="https://www.prehabclinics.com/careers"
-                class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] text-black hover:bg-gray-100 hover:text-orange-500">
-                Careers
-              </a>
-
-              <!-- Courses Sub Dropdown -->
-              <div class="relative group/course">
-
-                <button type="button"
-                  class="mt-1 flex w-full items-center justify-between rounded-md px-3 py-2 text-[0.82rem] text-black hover:bg-gray-100 hover:text-orange-500">
-                  Courses
-                  <i class="fa-solid fa-chevron-right text-[0.6rem]"></i>
-                </button>
-
-                <div
-                  class="invisible absolute left-full top-0 ml-1 min-w-[240px] rounded-lg border border-slate-100 bg-white p-2 opacity-0 shadow-xl transition duration-200 group-hover/course:visible group-hover/course:opacity-100">
-
-                  <a href="https://www.prehabclinics.com/course"
-                    class="block rounded-md px-3 py-2 text-[0.82rem] text-black hover:bg-gray-100 hover:text-orange-500">
-                    MSK & Sports Physiotherapy
-                  </a>
-
-                  <a href="https://www.prehabclinics.com/course-1"
-                    class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] text-black hover:bg-gray-100 hover:text-orange-500">
-                    Strength and Conditioning
-                  </a>
-
-                </div>
-              </div>
-
-              <a href="https://www.prehabclinics.com/blog"
-                class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] text-black hover:bg-gray-100 hover:text-orange-500">
-                Blog
-              </a>
-
-            </div>
-          </div>
-        </nav>
-
-        <!-- Right Side Buttons -->
-        <div class="ml-auto flex shrink-0 items-center gap-2 sm:gap-2.5 md:gap-3 xl:ml-0">
           <button id="header-book-btn" type="button"
-            class="hidden md:inline-block rounded-full bg-primary px-6 py-3 text-[0.9rem] font-bold text-white shadow-[0_6px_16px_rgba(254,107,9,0.25)] transition hover:-translate-y-[1px] md:px-7 md:py-[13px] md:text-[0.95rem]">
+            class="hidden sm:inline-flex min-h-[44px] items-center rounded-full bg-primary px-4 py-2.5 text-[0.82rem] font-bold text-white shadow-[0_6px_16px_rgba(254,107,9,0.25)] transition hover:-translate-y-[1px] hover:bg-primaryDark sm:px-5 sm:text-[0.86rem] md:min-h-[46px] md:px-6 md:py-3 md:text-[0.9rem]">
             Book Appointment
           </button>
 
           <button id="menu-btn"
-            class="xl:hidden ml-1 grid h-[44px] w-[44px] place-items-center rounded-full border border-gray-300 text-dark sm:h-[46px] sm:w-[46px]">
+            class="xl:hidden grid h-[44px] w-[44px] place-items-center rounded-full border border-gray-300 text-dark sm:h-[46px] sm:w-[46px] hover:border-primary hover:text-primary">
             <i class="fa-solid fa-bars text-xl"></i>
           </button>
         </div>
 
       </div>
     </div>
+
+    <!-- Second bar: full site navigation -->
+    <div class="hidden w-full border-t border-white/20 bg-primary xl:block">
+      <nav
+        class="mx-auto flex w-[94%] max-w-[1320px] min-h-[40px] flex-wrap items-center justify-center gap-x-4 gap-y-1 px-2 py-2 text-[0.76rem] font-semibold text-white sm:gap-x-5 sm:px-3 sm:text-[0.8rem] md:gap-x-6 md:text-[0.84rem] lg:gap-x-7 lg:text-[0.86rem]">
+
+        <a href="https://www.prehabclinics.com/" class="rounded-sm px-2 py-1 text-white/95 transition hover:text-white">
+          Home
+        </a>
+
+        <a href="https://www.prehabclinics.com/about" class="rounded-sm px-2 py-1 text-white/95 transition hover:text-white">
+          About us
+        </a>
+
+        <div class="relative group">
+          <button type="button"
+            class="flex items-center gap-1 rounded-sm px-2 py-1 text-white/95 transition hover:text-white focus:outline-none">
+            Services
+            <i class="fa-solid fa-chevron-down text-[0.6rem]"></i>
+          </button>
+          <div
+            class="invisible absolute left-0 top-[120%] z-[9999] min-w-[280px] rounded-lg border border-slate-100 bg-white p-2 opacity-0 shadow-xl transition duration-200 group-hover:visible group-hover:opacity-100">
+            <a href="https://www.prehabclinics.com/joint-and-muscle-pain"
+              class="block rounded-md px-3 py-2 text-[0.82rem] text-dark hover:bg-gray-100 hover:text-primary">
+              Joint and Muscle Pain
+            </a>
+            <a href="https://www.prehabclinics.com/arthritis-and-pain-relief"
+              class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] text-dark hover:bg-gray-100 hover:text-primary">
+              Arthritis &amp; Pain Relief
+            </a>
+            <a href="https://www.prehabclinics.com/lifestyle-diseases"
+              class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] text-dark hover:bg-gray-100 hover:text-primary">
+              Lifestyle Diseases
+            </a>
+            <a href="https://www.prehabclinics.com/post-operative-recovery"
+              class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] text-dark hover:bg-gray-100 hover:text-primary">
+              Post-Operative Recovery &amp; Return to Play
+            </a>
+            <a href="https://www.prehabclinics.com/sports-massage-recovery"
+              class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] text-dark hover:bg-gray-100 hover:text-primary">
+              Sports Massage Recovery
+            </a>
+            <a href="https://www.prehabclinics.com/nutrition"
+              class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] text-dark hover:bg-gray-100 hover:text-primary">
+              Nutrition
+            </a>
+            <a href="https://www.prehabclinics.com/fall-prevention-in-elderly"
+              class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] text-dark hover:bg-gray-100 hover:text-primary">
+              Fall Prevention in the Elderly
+            </a>
+            <a href="https://www.prehabclinics.com/pilates-training"
+              class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] text-dark hover:bg-gray-100 hover:text-primary">
+              Pilates Training
+            </a>
+          </div>
+        </div>
+
+        <a href="https://digicare.prehabclinics.com/" class="rounded-sm px-2 py-1 text-white/95 transition hover:text-white">
+          DigiCare
+        </a>
+
+        <a href="corporate-wellness.html" class="rounded-sm px-2 py-1 text-white/95 transition hover:text-white">
+          Corporate Wellness
+        </a>
+
+        <a href="https://www.prehabclinics.com/category/all-products"
+          class="rounded-sm px-2 py-1 text-white/95 transition hover:text-white">
+          Store
+        </a>
+
+        <a href="https://www.prehabclinics.com/gallery"
+          class="rounded-sm px-2 py-1 text-white/95 transition hover:text-white">
+          Gallery
+        </a>
+
+        <a href="https://www.prehabclinics.com/blog"
+          class="rounded-sm px-2 py-1 text-white/95 transition hover:text-white">
+          Blogs
+        </a>
+
+        <div class="relative group">
+          <button type="button"
+            class="flex items-center gap-1 rounded-sm px-2 py-1 text-white/95 transition hover:text-white focus:outline-none">
+            Courses
+            <i class="fa-solid fa-chevron-down text-[0.6rem]"></i>
+          </button>
+          <div
+            class="invisible absolute left-1/2 top-[120%] z-[10001] min-w-[260px] -translate-x-1/2 rounded-lg border border-slate-100 bg-white p-2 opacity-0 shadow-xl transition duration-200 group-hover:visible group-hover:opacity-100">
+            <a href="https://www.prehabclinics.com/course"
+              class="block rounded-md px-3 py-2 text-[0.82rem] text-dark hover:bg-gray-100 hover:text-primary">
+              MSK &amp; Sports Physiotherapy
+            </a>
+            <a href="https://www.prehabclinics.com/course-1"
+              class="mt-1 block rounded-md px-3 py-2 text-[0.82rem] text-dark hover:bg-gray-100 hover:text-primary">
+              Strength and Conditioning
+            </a>
+          </div>
+        </div>
+
+        <a href="https://www.prehabclinics.com/careers"
+          class="rounded-sm px-2 py-1 text-white/95 transition hover:text-white">
+          Careers
+        </a>
+
+        <a href="https://www.prehabclinics.com/contact" class="rounded-sm px-2 py-1 text-white/95 transition hover:text-white">
+          Contact us
+        </a>
+      </nav>
+    </div>
   </header>
 
 <div id="mobile-menu"
-  class="hidden fixed inset-0 z-[1200] overflow-y-auto bg-white px-6 py-6 xl:hidden">
+  class="hidden fixed inset-0 z-[1200] overflow-y-auto overflow-x-hidden bg-white px-4 py-[max(1.25rem,env(safe-area-inset-top))] pb-8 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] sm:px-6 sm:py-6 xl:hidden">
 
   <!-- Top -->
-  <div class="mb-8 flex items-center justify-between border-b border-slate-200 pb-4">
+  <div class="mb-6 flex min-w-0 items-center justify-between gap-2 border-b border-slate-200 pb-4 sm:mb-8">
 
-    <a href="index.html" class="-ml-1 flex items-center sm:-ml-2">
+    <a href="index.html" class="-ml-1 flex min-w-0 max-w-[calc(100%-10.5rem)] items-center sm:-ml-2 sm:max-w-[calc(100%-11rem)]">
       <img src="image/logo.svg" alt="PREHAB Musculoskeletal &amp; Sports Health Clinics"
-        class="h-[50px] w-auto max-w-[min(280px,82vw)] object-contain sm:h-[56px]" />
+        class="h-[46px] w-auto max-w-full object-contain sm:h-[52px]" />
     </a>
 
-    <button id="close-menu"
-      class="grid h-[42px] w-[42px] place-items-center rounded-full border border-gray-300 text-orange-500 hover:text-black">
-      <i class="fa-solid fa-xmark text-xl"></i>
-    </button>
+    <div class="flex shrink-0 items-center gap-1.5 sm:gap-2">
+      <a href="mailto:contact@prehabclinics.com"
+        class="grid h-[42px] w-[42px] place-items-center rounded-full border border-gray-300 text-primary transition hover:border-primary hover:bg-primarySoft"
+        aria-label="Email contact@prehabclinics.com">
+        <i class="fa-solid fa-envelope text-lg" aria-hidden="true"></i>
+      </a>
+      <a href="tel:+918867205650"
+        class="grid h-[42px] w-[42px] place-items-center rounded-full border border-gray-300 text-primary transition hover:border-primary hover:bg-primarySoft"
+        aria-label="Call +91 88672 05650">
+        <i class="fa-solid fa-phone text-lg" aria-hidden="true"></i>
+      </a>
+      <button id="close-menu"
+        class="grid h-[42px] w-[42px] place-items-center rounded-full border border-gray-300 text-orange-500 hover:text-black">
+        <i class="fa-solid fa-xmark text-xl"></i>
+      </button>
+    </div>
 
   </div>
 
   <!-- Menu -->
-  <div class="flex flex-col gap-5 text-[1rem] font-semibold text-orange-500">
+  <div class="flex min-w-0 flex-col gap-4 text-[0.95rem] font-semibold text-orange-500 sm:gap-5 sm:text-[1rem]">
 
     <a href="index.html"
       class="border-b border-slate-100 pb-3 hover:text-black">
@@ -459,18 +458,18 @@
 
     <a href="https://www.prehabclinics.com/about"
       class="border-b border-slate-100 pb-3 hover:text-black">
-      About
+      About us
     </a>
 
     <!-- Services -->
     <details class="border-b border-slate-100 pb-3">
 
-      <summary class="flex cursor-pointer list-none items-center justify-between hover:text-black">
+      <summary class="flex min-w-0 cursor-pointer list-none items-center justify-between gap-2 text-left hover:text-black">
         Services
         <i class="fa-solid fa-chevron-down text-[0.7rem]"></i>
       </summary>
 
-      <div class="mt-3 flex flex-col gap-2 pl-3 text-[0.95rem] font-medium">
+      <div class="mt-3 flex min-w-0 flex-col gap-2 break-words pl-3 text-[0.9rem] font-medium sm:text-[0.95rem]">
 
         <a href="https://www.prehabclinics.com/joint-and-muscle-pain"
           class="hover:text-black">
@@ -525,7 +524,7 @@
       DigiCare
     </a>
 
-    <a href="#"
+    <a href="corporate-wellness.html"
       class="border-b border-slate-100 pb-3 hover:text-black">
       Corporate Wellness
     </a>
@@ -535,61 +534,47 @@
       Store
     </a>
 
-    <a href="https://www.prehabclinics.com/contact"
+    <a href="https://www.prehabclinics.com/gallery"
       class="border-b border-slate-100 pb-3 hover:text-black">
-      Contact
+      Gallery
     </a>
 
-    <!-- More -->
+    <a href="https://www.prehabclinics.com/blog"
+      class="border-b border-slate-100 pb-3 hover:text-black">
+      Blogs
+    </a>
+
     <details class="border-b border-slate-100 pb-3">
 
-      <summary class="flex cursor-pointer list-none items-center justify-between hover:text-black">
-        More
+      <summary class="flex min-w-0 cursor-pointer list-none items-center justify-between gap-2 text-left hover:text-black">
+        Courses
         <i class="fa-solid fa-chevron-down text-[0.7rem]"></i>
       </summary>
 
-      <div class="mt-3 flex flex-col gap-2 pl-3 text-[0.95rem] font-medium">
+      <div class="mt-3 flex min-w-0 flex-col gap-2 break-words pl-3 text-[0.9rem] font-medium sm:text-[0.95rem]">
 
-        <a href="https://www.prehabclinics.com/gallery"
-          class="border-b border-slate-100 pb-2 hover:text-black">
-          Gallery
+        <a href="https://www.prehabclinics.com/course"
+          class="hover:text-black">
+          MSK &amp; Sports Physiotherapy
         </a>
 
-        <a href="https://www.prehabclinics.com/careers"
-          class="border-b border-slate-100 pb-2 hover:text-black">
-          Careers
-        </a>
-
-        <!-- Courses -->
-        <details class="border-b border-slate-100 pb-2">
-
-          <summary class="flex cursor-pointer list-none items-center justify-between hover:text-black">
-            Courses
-            <i class="fa-solid fa-chevron-down text-[0.7rem]"></i>
-          </summary>
-
-          <div class="mt-2 flex flex-col gap-2 pl-3 text-[0.9rem]">
-
-            <a href="https://www.prehabclinics.com/course"
-              class="hover:text-black">
-              MSK & Sports Physiotherapy
-            </a>
-
-            <a href="https://www.prehabclinics.com/course-1"
-              class="hover:text-black">
-              Strength and Conditioning
-            </a>
-
-          </div>
-        </details>
-
-        <a href="https://www.prehabclinics.com/blog"
-          class="pb-2 hover:text-black">
-          Blog
+        <a href="https://www.prehabclinics.com/course-1"
+          class="hover:text-black">
+          Strength and Conditioning
         </a>
 
       </div>
     </details>
+
+    <a href="https://www.prehabclinics.com/careers"
+      class="border-b border-slate-100 pb-3 hover:text-black">
+      Careers
+    </a>
+
+    <a href="https://www.prehabclinics.com/contact"
+      class="border-b border-slate-100 pb-3 hover:text-black">
+      Contact us
+    </a>
 
   </div>
 
